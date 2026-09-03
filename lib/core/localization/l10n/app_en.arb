@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "appName": "Islami",
+  "welcome": "Illuminate Your Heart with Faith",
+  "language": "Language",
+  "arabic": "Arabic",
+  "english": "English",
+  "back": "Back",
+  "next": "Next",
+  "finish": "Finish",
+  "welcomeTitle": "Welcome to Islami",
+  "welcomeDescription": "Your companion for the Quran, Azkar, and daily worship.",
+  "readingTitle": "Reading the Quran",
+  "readingDescription": "Read, and your Lord is the Most Generous.",
+  "azkarTitle": "Azkar",
+  "azkarDescription": "Glorify the Name of your Lord, the Most High.",
+  "radioTitle": "Holy Quran Radio",
+  "radioDescription": "Listen to the Holy Quran Radio anytime with ease."
+}
