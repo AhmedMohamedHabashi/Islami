@@ -9,12 +9,12 @@ class AppRouter {
     routes: [
       GoRoute(
         path: RouteNames.splash,
-        builder: (context, state) => const SplashView(),
+        // builder: (context, state) => const SplashView(),
       ),
 
       GoRoute(
         path: RouteNames.onboarding,
-        builder: (context, state) => const OnboardingView(),
+        // builder: (context, state) => const OnboardingView(),
       ),
     ],
   );
