@@ -1,5 +1,6 @@
 abstract class RouteNames {
-  static const String splash = '/';
+  static const String surahSelectionView = '/';
+  // static const String splash = '/';
   static const String onboarding = '/onboarding';
 
   static const String home = '/home';
