@@ -1,19 +1,20 @@
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
+import 'package:islami/features/radio/presentation/views/radio_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RouteNames.splash,
+    initialLocation: RouteNames.radio,
     routes: [
       GoRoute(
-        path: RouteNames.splash,
-        // builder: (context, state) => const SplashView(),
+        path: RouteNames.radio,
+        builder: (context, state) => const RadioView(),
       ),
 
-      GoRoute(
-        path: RouteNames.onboarding,
-        // builder: (context, state) => const OnboardingView(),
-      ),
+      // GoRoute(
+      //   path: RouteNames.onboarding,
+      //   // builder: (context, state) => const OnboardingView(),
+      // ),
     ],
   );
 }

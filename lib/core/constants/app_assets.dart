@@ -10,4 +10,7 @@ class AppAssets {
   static const String onboarding4 = 'assets/images/kabba.png';
   static const String onboarding5 = 'assets/images/doaa.png';
   static const String islami = 'assets/images/Islami.png';
+  static const String radioBackground = 'assets/images/radioBackground.png';
+  static const String radioMask = 'assets/images/MaskGroup.png';
+  static const String radioMask2 = 'assets/images/MaskGroup2.png';
 }
