@@ -7,4 +7,5 @@ class RawColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color transparent = Color(0x00000000);
   static const Color semiTransparent = Color(0x80202020);
+  static const Color progressBackground = Color(0xFF403A30);
 }

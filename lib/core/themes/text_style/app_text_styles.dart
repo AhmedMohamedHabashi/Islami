@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyles {
+  static TextStyle get regular => TextStyle(fontSize: 12.sp);
   static TextStyle get heading1 =>
       TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold);
 
@@ -16,6 +17,12 @@ class AppTextStyles {
 
   static TextStyle get body14 =>
       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  static TextStyle get body12 =>
+      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400);
+
+  static TextStyle get body10 =>
+      TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w400);
 
   static TextStyle get caption12 =>
       TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400);
