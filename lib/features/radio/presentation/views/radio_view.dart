@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islami/core/constants/app_assets.dart';
+import 'package:islami/features/radio/presentation/cubit/radio_cubit.dart';
+import 'package:islami/features/radio/presentation/cubit/radio_state.dart';
 import 'package:islami/features/radio/presentation/views/widgets/radio_body.dart';
 import 'package:islami/core/shared/widgets/radio/custom_radio_bottom.dart';
 
@@ -29,29 +32,37 @@ class RadioView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(AppAssets.radioBackground),
-            fit: BoxFit.cover,
+    return BlocProvider(
+      create: (context) => RadioCubit(),
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(AppAssets.radioBackground),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: BlocBuilder<RadioCubit, RadioState>(
+            builder: (context, state) {
+              final cubit = context.read<RadioCubit>();
+              return RadioBody(
+                selectedTabIndex: state.selectedTabIndex,
+                playingItemTitle: state.playingItemTitle,
+                mutedItemTitles: state.mutedItemTitles,
+                onTabChanged: cubit.changeTab,
+                onItemTap: onItemTap,
+                onPlayPressed: cubit.togglePlay,
+                onMutePressed: cubit.toggleMute,
+              );
+            },
           ),
         ),
-        child: RadioBody(
-          selectedTabIndex: selectedTabIndex,
-          playingItemTitle: playingItemTitle,
-          mutedItemTitles: mutedItemTitles,
-          onTabChanged: onTabChanged,
-          onItemTap: onItemTap,
-          onPlayPressed: onPlayPressed,
-          onMutePressed: onMutePressed,
+        bottomNavigationBar: CustomRadioBottom(
+          selectedIndex: selectedNavigationIndex,
+          onItemSelected: onNavigationItemSelected,
         ),
-      ),
-      bottomNavigationBar: CustomRadioBottom(
-        selectedIndex: selectedNavigationIndex,
-        onItemSelected: onNavigationItemSelected,
       ),
     );
   }

@@ -58,4 +58,22 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get radioDescription =>
       'Listen to the Holy Quran Radio anytime with ease.';
+
+  @override
+  String get radio => 'Radio';
+
+  @override
+  String get reciters => 'Reciters';
+
+  @override
+  String get time => 'Time';
+
+  @override
+  String get tasbih => 'Tasbih';
+
+  @override
+  String get hadith => 'Hadith';
+
+  @override
+  String get quran => 'Quran';
 }
