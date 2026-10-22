@@ -16,10 +16,61 @@
   "azkarDescription": "﴿سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى﴾",
   "radioTitle": "إذاعة القرآن الكريم",
   "radioDescription": "استمع إلى إذاعة القرآن الكريم مباشرةً عبر التطبيق",
-  "radio": "إذاعة",
-  "reciters": "القراء",
-  "time": "الوقت",
-  "tasbih": "التسبيح",
-  "hadith": "الحديث",
-  "quran": "القرآن"
+  "ayahRangeTitle": "تحديد نطاق الحفظ (اختياري)",
+  "fromAyah": "من الآية",
+  "toAyah": "إلى الآية",
+  "recitationModeTitle": "نمط التسميع المفضل",
+  "repetitionMode": "القراءة والترديد",
+  "errorMode": "التسميع بالأخطاء الاصطناعية",
+  "selectedSurah": "اخترت {surahName}",
+  "@selectedSurah": {
+    "placeholders": {
+      "surahName": {
+        "type": "String"
+      }
+    }
+  },
+  "ayahCount": "{count} آية",
+  "@ayahCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "notStartedYet": "لم تبدأ بعد",
+  "meccan": "مكية",
+  "medinan": "مدنية",
+  "dailyWirdRecitation": "الورد اليومي - التسميع",
+  "consecutiveDays": "{count} أيام متتالية",
+  "@consecutiveDays": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "surahAlKahfVerses": "سورة الكهف • الآيات {start} - {end}",
+  "@surahAlKahfVerses": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "currentProgress": "نسبة الإنجاز الحالية",
+  "continueMemorizationNow": "متابعة الحفظ الآن",
+  "noMatchingSurahs": "لا توجد سور مطابقة",
+  "quranSurahsTitle": "سور القرآن الكريم",
+  "surahCount": "{count} سور",
+  "@surahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

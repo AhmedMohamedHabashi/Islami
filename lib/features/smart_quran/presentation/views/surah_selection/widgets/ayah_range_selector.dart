@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'ayah_counter.dart';
 import 'recitation_mode_selector.dart';
@@ -25,6 +26,8 @@ class AyahRangeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Container(
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
@@ -36,7 +39,7 @@ class AyahRangeSelector extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'تحديد نطاق الحفظ (اختياري)',
+            l10n.ayahRangeTitle,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: AppColors.primary,
               fontWeight: FontWeight.w600,
@@ -47,7 +50,7 @@ class AyahRangeSelector extends StatelessWidget {
             children: [
               Expanded(
                 child: AyahCounter(
-                  title: 'من الآية',
+                  title: l10n.fromAyah,
                   value: startAyah,
                   onChanged: onStartAyahChanged,
                 ),
@@ -55,7 +58,7 @@ class AyahRangeSelector extends StatelessWidget {
               SizedBox(width: 10.w),
               Expanded(
                 child: AyahCounter(
-                  title: 'إلى الآية',
+                  title: l10n.toAyah,
                   value: endAyah,
                   onChanged: onEndAyahChanged,
                 ),

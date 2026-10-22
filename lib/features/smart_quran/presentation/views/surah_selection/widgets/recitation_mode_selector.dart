@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
@@ -13,16 +14,15 @@ class RecitationModeSelector extends StatelessWidget {
     required this.onModeChanged,
   });
 
-  static const String repetitionMode = 'القراءة والترديد';
-  static const String errorMode = 'التسميع بالأخطاء الاصطناعية';
-
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'نمط التسميع المفضل',
+          l10n.recitationModeTitle,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: AppColors.white.withValues(alpha: 0.65),
           ),
@@ -30,20 +30,34 @@ class RecitationModeSelector extends StatelessWidget {
         SizedBox(height: 8.h),
         Row(
           children: [
-            Expanded(child: _buildModeButton(repetitionMode)),
+            Expanded(
+              child: _buildModeButton(
+                text: l10n.repetitionMode,
+                selected: selectedMode == 'repetition',
+                onTap: () => onModeChanged('repetition'),
+              ),
+            ),
             SizedBox(width: 8.w),
-            Expanded(child: _buildModeButton(errorMode)),
+            Expanded(
+              child: _buildModeButton(
+                text: l10n.errorMode,
+                selected: selectedMode == 'error',
+                onTap: () => onModeChanged('error'),
+              ),
+            ),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildModeButton(String text) {
-    final bool selected = selectedMode == text;
-
+  Widget _buildModeButton({
+    required String text,
+    required bool selected,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
-      onTap: () => onModeChanged(text),
+      onTap: onTap,
       borderRadius: BorderRadius.circular(8.r),
       child: Container(
         alignment: Alignment.center,
