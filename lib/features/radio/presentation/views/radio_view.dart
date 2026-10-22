@@ -4,7 +4,6 @@ import 'package:islami/core/constants/app_assets.dart';
 import 'package:islami/features/radio/presentation/cubit/radio_cubit.dart';
 import 'package:islami/features/radio/presentation/cubit/radio_state.dart';
 import 'package:islami/features/radio/presentation/views/widgets/radio_body.dart';
-import 'package:islami/core/shared/widgets/radio/custom_radio_bottom.dart';
 
 class RadioView extends StatelessWidget {
   const RadioView({
@@ -58,10 +57,6 @@ class RadioView extends StatelessWidget {
               );
             },
           ),
-        ),
-        bottomNavigationBar: CustomRadioBottom(
-          selectedIndex: selectedNavigationIndex,
-          onItemSelected: onNavigationItemSelected,
         ),
       ),
     );

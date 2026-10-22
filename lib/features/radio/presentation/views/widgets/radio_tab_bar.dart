@@ -14,14 +14,12 @@ class RadioTabBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int>? onTabChanged;
 
-  static const _tabs = ['Radio', 'Reciters'];
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final tabs = [l10n.radio, l10n.reciters];
     return Row(
-      children: List.generate(_tabs.length, (index) {
+      children: List.generate(tabs.length, (index) {
         final isSelected = selectedIndex == index;
 
         return Expanded(
@@ -37,7 +35,7 @@ class RadioTabBar extends StatelessWidget {
                   height: 40.h,
                   child: Center(
                     child: Text(
-                      _tabs[index],
+                      tabs[index],
                       style: AppTextStyles.body16.copyWith(
                         color: isSelected ? AppColors.black : AppColors.white,
                       ),

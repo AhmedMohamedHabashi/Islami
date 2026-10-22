@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/constants/app_icons.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
@@ -15,15 +16,22 @@ class CustomRadioBottom extends StatelessWidget {
   final ValueChanged<int>? onItemSelected;
 
   static const _icons = [
-    AppIcons.timeIcon,
-    AppIcons.radioIcon,
-    AppIcons.sbhaIcon,
-    AppIcons.hadithIcon,
     AppIcons.quranIcon,
+    AppIcons.hadithIcon,
+    AppIcons.sbhaIcon,
+    AppIcons.radioIcon,
+    AppIcons.timeIcon,
   ];
-  static const _labels = ['Time', 'Radio', 'Tasbih', 'Hadith', 'Quran'];
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final labels = [
+      l10n.quran,
+      l10n.hadith,
+      l10n.tasbih,
+      l10n.radio,
+      l10n.time,
+    ];
     return ColoredBox(
       color: AppColors.primary,
       child: SafeArea(
@@ -43,8 +51,8 @@ class CustomRadioBottom extends StatelessWidget {
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 250),
                           padding: EdgeInsets.symmetric(
-                            horizontal: isSelected ? 16.w : 0,
-                            vertical: isSelected ? 6.h : 0,
+                            horizontal: isSelected ? 16 : 0,
+                            vertical: isSelected ? 6 : 0,
                           ),
                           decoration: BoxDecoration(
                             color: isSelected
@@ -62,7 +70,7 @@ class CustomRadioBottom extends StatelessWidget {
                         if (isSelected) ...[
                           SizedBox(height: 2.h),
                           Text(
-                            _labels[index],
+                            labels[index],
                             style: AppTextStyles.caption12.copyWith(
                               color: AppColors.white,
                             ),
