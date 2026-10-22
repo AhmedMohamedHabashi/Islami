@@ -16,9 +16,66 @@
   "azkarDescription": "Glorify the Name of your Lord, the Most High.",
   "radioTitle": "Holy Quran Radio",
   "radioDescription": "Listen to the Holy Quran Radio anytime with ease.",
+  "ayahRangeTitle": "Select Memorization Range (Optional)",
+  "fromAyah": "From Ayah",
+  "toAyah": "To Ayah",
+  "recitationModeTitle": "Preferred Recitation Mode",
+  "repetitionMode": "Reading and Repetition",
+  "errorMode": "Recitation with Simulated Errors",
+  "selectedSurah": "You selected {surahName}",
+  "@selectedSurah": {
+    "placeholders": {
+      "surahName": {
+        "type": "String"
+      }
+    }
+  },
+  "ayahCount": "{count} Ayahs",
+  "@ayahCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "notStartedYet": "Not started yet",
+  "meccan": "Meccan",
+  "medinan": "Medinan",
+  "dailyWirdRecitation": "Daily Recitation",
+  "consecutiveDays": "{count} consecutive days",
+  "@consecutiveDays": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "surahAlKahfVerses": "Surah Al-Kahf • Verses {start} - {end}",
+  "@surahAlKahfVerses": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "currentProgress": "Current Progress",
+  "continueMemorizationNow": "Continue Memorization Now",
+  "noMatchingSurahs": "No matching Surahs found",
+  "quranSurahsTitle": "Quran Surahs",
+  "surahCount": "{count} Surahs",
+  "@surahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "radio": "Radio",
   "reciters": "Reciters",
-  "time": "Time",
+  "time": "Prayer Times",
   "tasbih": "Tasbih",
   "hadith": "Hadith",
   "quran": "Quran"

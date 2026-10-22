@@ -37,7 +37,7 @@ class IslamiHeader extends StatelessWidget {
                       top: 10.h,
                       child: Image.asset(
                         AppAssets.mosque,
-                        height: 190.h,
+                        height: 165.h,
                         fit: BoxFit.contain,
                       ),
                     ),
