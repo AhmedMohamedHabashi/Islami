@@ -56,4 +56,22 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get radioDescription =>
       'استمع إلى إذاعة القرآن الكريم مباشرةً عبر التطبيق';
+
+  @override
+  String get radio => 'إذاعة';
+
+  @override
+  String get reciters => 'القراء';
+
+  @override
+  String get time => 'الوقت';
+
+  @override
+  String get tasbih => 'التسبيح';
+
+  @override
+  String get hadith => 'الحديث';
+
+  @override
+  String get quran => 'القرآن';
 }

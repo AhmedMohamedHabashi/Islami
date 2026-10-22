@@ -15,5 +15,11 @@
   "azkarTitle": "Azkar",
   "azkarDescription": "Glorify the Name of your Lord, the Most High.",
   "radioTitle": "Holy Quran Radio",
-  "radioDescription": "Listen to the Holy Quran Radio anytime with ease."
+  "radioDescription": "Listen to the Holy Quran Radio anytime with ease.",
+  "radio": "Radio",
+  "reciters": "Reciters",
+  "time": "Time",
+  "tasbih": "Tasbih",
+  "hadith": "Hadith",
+  "quran": "Quran"
 }

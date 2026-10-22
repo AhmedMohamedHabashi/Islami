@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 import 'package:islami/features/radio/presentation/views/widgets/custom_audio_controls.dart';
@@ -28,7 +29,7 @@ class RadioItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: AppColors.primary,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(12.r),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
@@ -41,7 +42,7 @@ class RadioItemCard extends StatelessWidget {
                 child: RadioCardDecoration(showWaveform: showWaveform),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(12, 9, 12, 5),
+                padding: EdgeInsets.fromLTRB(12.w, 9.h, 12.w, 5.h),
                 child: Column(
                   children: [
                     Text(

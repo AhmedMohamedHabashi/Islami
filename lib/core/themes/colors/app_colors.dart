@@ -6,5 +6,6 @@ class AppColors {
   static const black = RawColors.black;
   static const white = RawColors.white;
   static const transparent = RawColors.transparent;
+  static const semiTransparent = RawColors.semiTransparent;
   static const progressBackground = RawColors.progressBackground;
 }

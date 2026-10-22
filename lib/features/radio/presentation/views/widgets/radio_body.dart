@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/constants/app_assets.dart';
-import 'package:islami/features/Radio/presentation/views/widgets/radio_header.dart';
+import 'package:islami/core/shared/widgets/header/islami_header.dart';
 import 'package:islami/features/Radio/presentation/views/widgets/radio_item_card.dart';
 import 'package:islami/features/Radio/presentation/views/widgets/radio_tab_bar.dart';
 
@@ -54,29 +55,30 @@ class RadioBody extends StatelessWidget {
         SafeArea(
           child: Column(
             children: [
-              const RadioHeader(),
+              const IslamiHeader.compact(showMosque: true),
+              SizedBox(height: 40.h),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14),
+                padding: EdgeInsets.symmetric(horizontal: 14.w),
                 child: RadioTabBar(
                   selectedIndex: selectedTabIndex,
                   onTabChanged: onTabChanged,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Expanded(
                 child: ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+                  padding: EdgeInsets.fromLTRB(14.w, 0, 14.w, 10.h),
                   itemCount: items.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 20),
+                  separatorBuilder: (_, _) => SizedBox(height: 20.h),
                   itemBuilder: (context, index) {
                     final title = items[index];
-                    final isActive = selectedTabIndex == 0 && index == 1;
+                    final isPlaying = title == playingItemTitle;
 
                     return RadioItemCard(
                       title: title,
-                      isPlaying: isActive,
-                      isMuted: isActive,
-                      showWaveform: isActive,
+                      isPlaying: isPlaying,
+                      isMuted: mutedItemTitles.contains(title),
+                      showWaveform: isPlaying,
                       onTap: () => onItemTap?.call(title),
                       onPlayPressed: () => onPlayPressed?.call(title),
                       onMutePressed: () => onMutePressed?.call(title),

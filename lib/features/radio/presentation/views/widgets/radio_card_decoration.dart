@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/constants/app_assets.dart';
 
 class RadioCardDecoration extends StatelessWidget {
@@ -13,12 +14,12 @@ class RadioCardDecoration extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              left: -15,
-              right: -15,
-              bottom: -25,
+              left: -15.w,
+              right: -15.w,
+              bottom: -25.h,
               child: Image.asset(
                 AppAssets.radioMask2,
-                height: 70,
+                height: 80.h,
                 fit: BoxFit.fill,
               ),
             ),
@@ -33,7 +34,7 @@ class RadioCardDecoration extends StatelessWidget {
         child: Image.asset(
           AppAssets.radioMask,
           width: double.infinity,
-          height: 70,
+          height: 80.h,
           fit: BoxFit.cover,
         ),
       ),
