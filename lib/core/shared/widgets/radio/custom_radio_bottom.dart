@@ -47,7 +47,7 @@ class CustomRadioBottom extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? AppColors.semiTransparent
+                                ? AppColors.primary
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(20),
                           ),

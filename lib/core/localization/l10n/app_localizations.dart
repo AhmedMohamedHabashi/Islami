@@ -193,6 +193,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Listen to the Holy Quran Radio anytime with ease.'**
   String get radioDescription;
+
+  /// No description provided for @ayahRangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Memorization Range (Optional)'**
+  String get ayahRangeTitle;
+
+  /// No description provided for @fromAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'From Ayah'**
+  String get fromAyah;
+
+  /// No description provided for @toAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'To Ayah'**
+  String get toAyah;
+
+  /// No description provided for @recitationModeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Recitation Mode'**
+  String get recitationModeTitle;
+
+  /// No description provided for @repetitionMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading and Repetition'**
+  String get repetitionMode;
+
+  /// No description provided for @errorMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Recitation with Simulated Errors'**
+  String get errorMode;
+
+  /// No description provided for @selectedSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'You selected {surahName}'**
+  String selectedSurah(String surahName);
+
+  /// No description provided for @ayahCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Ayahs'**
+  String ayahCount(String count);
+
+  /// No description provided for @notStartedYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not started yet'**
+  String get notStartedYet;
+
+  /// No description provided for @meccan.
+  ///
+  /// In en, this message translates to:
+  /// **'Meccan'**
+  String get meccan;
+
+  /// No description provided for @medinan.
+  ///
+  /// In en, this message translates to:
+  /// **'Medinan'**
+  String get medinan;
+
+  /// No description provided for @dailyWirdRecitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Recitation'**
+  String get dailyWirdRecitation;
+
+  /// No description provided for @consecutiveDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} consecutive days'**
+  String consecutiveDays(String count);
+
+  /// No description provided for @surahAlKahfVerses.
+  ///
+  /// In en, this message translates to:
+  /// **'Surah Al-Kahf • Verses {start} - {end}'**
+  String surahAlKahfVerses(String start, String end);
+
+  /// No description provided for @currentProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Progress'**
+  String get currentProgress;
+
+  /// No description provided for @continueMemorizationNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Memorization Now'**
+  String get continueMemorizationNow;
+
+  /// No description provided for @noMatchingSurahs.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching Surahs found'**
+  String get noMatchingSurahs;
+
+  /// No description provided for @quranSurahsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran Surahs'**
+  String get quranSurahsTitle;
+
+  /// No description provided for @surahCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Surahs'**
+  String surahCount(int count);
 }
 
 class _AppLocalizationsDelegate

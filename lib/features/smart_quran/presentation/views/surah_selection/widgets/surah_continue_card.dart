@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
@@ -8,6 +9,9 @@ class SurahContinueCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return Container(
       padding: EdgeInsets.all(14.w),
       decoration: BoxDecoration(
@@ -27,21 +31,24 @@ class SurahContinueCard extends StatelessWidget {
           Row(
             children: [
               Icon(Icons.circle, color: AppColors.primary, size: 7.sp),
-              SizedBox(width: 6.h),
+              SizedBox(width: 6.w),
               Expanded(
                 child: Text(
-                  'الورد اليومي - التسميع',
+                  l10n.dailyWirdRecitation,
                   style: Theme.of(
                     context,
                   ).textTheme.bodySmall?.copyWith(color: AppColors.primary),
                 ),
               ),
-              _buildBadge('٧ أيام متتالية'),
+              _buildBadge(l10n.consecutiveDays(isArabic ? '٧' : '7')),
             ],
           ),
           SizedBox(height: 10.h),
           Text(
-            'سورة الكهف • الآيات ١ - ١٥',
+            l10n.surahAlKahfVerses(
+              isArabic ? '١' : '1',
+              isArabic ? '١٥' : '15',
+            ),
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: AppColors.white,
               fontWeight: FontWeight.w600,
@@ -50,15 +57,16 @@ class SurahContinueCard extends StatelessWidget {
           SizedBox(height: 14.h),
           Row(
             children: [
-              Text(
-                'نسبة الإنجاز الحالية',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.white.withValues(alpha: 0.6),
+              Expanded(
+                child: Text(
+                  l10n.currentProgress,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppColors.white.withValues(alpha: 0.6),
+                  ),
                 ),
               ),
-              const Spacer(),
               Text(
-                '٨٥٪',
+                isArabic ? '٨٥٪' : '85%',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.primary,
                   fontWeight: FontWeight.bold,
@@ -80,7 +88,7 @@ class SurahContinueCard extends StatelessWidget {
           ElevatedButton.icon(
             onPressed: () {},
             icon: Icon(Icons.play_arrow_rounded, size: 21.sp),
-            label: const Text('متابعة الحفظ الآن'),
+            label: Text(l10n.continueMemorizationNow),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: AppColors.black,

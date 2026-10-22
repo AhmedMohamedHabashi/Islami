@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 
 class SurahCard extends StatelessWidget {
@@ -9,7 +10,11 @@ class SurahCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final progress = surah['progress'] as int;
+    final String surahName = surah['name'] as String;
+    final String surahType = surah['type'] as String;
+    final String verses = surah['verses'].toString();
 
     return Padding(
       padding: EdgeInsets.only(bottom: 10.h),
@@ -18,7 +23,7 @@ class SurahCard extends StatelessWidget {
         onTap: () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('اخترت ${surah['name']}'),
+              content: Text(l10n.selectedSurah(surahName)),
               duration: const Duration(seconds: 1),
             ),
           );
@@ -57,7 +62,7 @@ class SurahCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      surah['name'] as String,
+                      surahName,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: AppColors.white,
                         fontWeight: FontWeight.w600,
@@ -65,7 +70,7 @@ class SurahCard extends StatelessWidget {
                     ),
                     SizedBox(height: 5.h),
                     Text(
-                      '${surah['type']} • ${surah['verses']} آية',
+                      '$surahType • ${l10n.ayahCount(verses)}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppColors.white.withValues(alpha: 0.55),
                       ),
@@ -94,7 +99,7 @@ class SurahCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    progress > 0 ? '$progress٪' : 'لم تبدأ بعد',
+                    progress > 0 ? '$progress٪' : l10n.notStartedYet,
                     style: Theme.of(
                       context,
                     ).textTheme.labelSmall?.copyWith(color: AppColors.primary),
