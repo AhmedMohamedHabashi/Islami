@@ -34,7 +34,7 @@ class RadioItemCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: SizedBox(
-          height: 102,
+          height: 102.h,
           width: double.infinity,
           child: Stack(
             children: [
