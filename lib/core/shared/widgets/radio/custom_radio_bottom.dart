@@ -25,9 +25,6 @@ class CustomRadioBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    debugPrint(
-      'locale: ${Localizations.localeOf(context)} | name: ${l10n.localeName} | radio: ${l10n.radio}',
-    );
     final labels = [
       l10n.quran,
       l10n.hadith,
