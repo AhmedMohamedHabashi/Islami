@@ -125,4 +125,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String surahCount(int count) {
     return '$count Surahs';
   }
+
+  @override
+  String get radio => 'Radio';
+
+  @override
+  String get reciters => 'Reciters';
+
+  @override
+  String get time => 'Prayer Times';
+
+  @override
+  String get tasbih => 'Tasbih';
+
+  @override
+  String get hadith => 'Hadith';
+
+  @override
+  String get quran => 'Quran';
 }
