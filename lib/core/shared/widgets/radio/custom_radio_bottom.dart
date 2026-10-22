@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/constants/app_icons.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
@@ -28,7 +29,7 @@ class CustomRadioBottom extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: SizedBox(
-          height: 65,
+          height: 65.h,
           child: Row(
             children: List.generate(_icons.length, (index) {
               final isSelected = selectedIndex == index;
@@ -42,24 +43,24 @@ class CustomRadioBottom extends StatelessWidget {
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 250),
                           padding: EdgeInsets.symmetric(
-                            horizontal: isSelected ? 16 : 0,
-                            vertical: isSelected ? 6 : 0,
+                            horizontal: isSelected ? 16.w : 0,
+                            vertical: isSelected ? 6.h : 0,
                           ),
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? AppColors.primary
                                 : Colors.transparent,
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20.r),
                           ),
                           child: Image.asset(
                             _icons[index],
-                            width: 20,
-                            height: 20,
+                            width: 20.w,
+                            height: 20.h,
                             color: isSelected ? AppColors.white : null,
                           ),
                         ),
                         if (isSelected) ...[
-                          const SizedBox(height: 2),
+                          SizedBox(height: 2.h),
                           Text(
                             _labels[index],
                             style: AppTextStyles.caption12.copyWith(
