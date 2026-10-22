@@ -72,5 +72,11 @@
         "type": "int"
       }
     }
-  }
+  },
+  "radio": "Radio",
+  "reciters": "Reciters",
+  "time": "Prayer Times",
+  "tasbih": "Tasbih",
+  "hadith": "Hadith",
+  "quran": "Quran"
 }

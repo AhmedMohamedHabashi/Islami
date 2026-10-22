@@ -307,6 +307,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} Surahs'**
   String surahCount(int count);
+
+  /// No description provided for @radio.
+  ///
+  /// In en, this message translates to:
+  /// **'Radio'**
+  String get radio;
+
+  /// No description provided for @reciters.
+  ///
+  /// In en, this message translates to:
+  /// **'Reciters'**
+  String get reciters;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get time;
+
+  /// No description provided for @tasbih.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbih'**
+  String get tasbih;
+
+  /// No description provided for @hadith.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith'**
+  String get hadith;
+
+  /// No description provided for @quran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran'**
+  String get quran;
 }
 
 class _AppLocalizationsDelegate
