@@ -58,4 +58,89 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get radioDescription =>
       'Listen to the Holy Quran Radio anytime with ease.';
+
+  @override
+  String get ayahRangeTitle => 'Select Memorization Range (Optional)';
+
+  @override
+  String get fromAyah => 'From Ayah';
+
+  @override
+  String get toAyah => 'To Ayah';
+
+  @override
+  String get recitationModeTitle => 'Preferred Recitation Mode';
+
+  @override
+  String get repetitionMode => 'Reading and Repetition';
+
+  @override
+  String get errorMode => 'Recitation with Simulated Errors';
+
+  @override
+  String selectedSurah(String surahName) {
+    return 'You selected $surahName';
+  }
+
+  @override
+  String ayahCount(String count) {
+    return '$count Ayahs';
+  }
+
+  @override
+  String get notStartedYet => 'Not started yet';
+
+  @override
+  String get meccan => 'Meccan';
+
+  @override
+  String get medinan => 'Medinan';
+
+  @override
+  String get dailyWirdRecitation => 'Daily Recitation';
+
+  @override
+  String consecutiveDays(String count) {
+    return '$count consecutive days';
+  }
+
+  @override
+  String surahAlKahfVerses(String start, String end) {
+    return 'Surah Al-Kahf • Verses $start - $end';
+  }
+
+  @override
+  String get currentProgress => 'Current Progress';
+
+  @override
+  String get continueMemorizationNow => 'Continue Memorization Now';
+
+  @override
+  String get noMatchingSurahs => 'No matching Surahs found';
+
+  @override
+  String get quranSurahsTitle => 'Quran Surahs';
+
+  @override
+  String surahCount(int count) {
+    return '$count Surahs';
+  }
+
+  @override
+  String get radio => 'Radio';
+
+  @override
+  String get reciters => 'Reciters';
+
+  @override
+  String get time => 'Prayer Times';
+
+  @override
+  String get tasbih => 'Tasbih';
+
+  @override
+  String get hadith => 'Hadith';
+
+  @override
+  String get quran => 'Quran';
 }
