@@ -8,4 +8,7 @@ class RawColors {
   static const Color transparent = Color(0x00000000);
   static const Color semiTransparent = Color(0x80202020);
   static const Color progressBackground = Color(0xFF403A30);
+  static const Color timeBackground = Color(0xFF856B3F);
+  static const Color time2Background = Color(0xFFB19768);
+  static const Color time3Background = Color(0xff202020);
 }

@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String baseUrl = 'https://api.example.com';
+  static const String prayerTimesBaseUrl = 'https://api.aladhan.com/v1/';
 
   static const Duration receiveTimeout = Duration(seconds: 30);
 

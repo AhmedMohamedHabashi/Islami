@@ -13,4 +13,7 @@ class AppAssets {
   static const String radioBackground = 'assets/images/radioBackground.png';
   static const String radioMask = 'assets/images/MaskGroup.png';
   static const String radioMask2 = 'assets/images/MaskGroup2.png';
+  static const String timeBackground = 'assets/images/timeBackground.png';
+  static const String eveningazkar = 'assets/images/eveningAzkar.png';
+  static const String morningazkar = 'assets/images/morningAzkar.png';
 }

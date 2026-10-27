@@ -22,12 +22,17 @@ class IslamiApp extends StatelessWidget {
             routerConfig: AppRouter.router,
 
             builder: (context, child) {
-              return Directionality(
-                textDirection: state.locale.languageCode == 'ar'
-                    ? TextDirection.rtl
-                    : TextDirection.ltr,
-
-                child: child!,
+              return MediaQuery(
+                // التعديل هنا: بنثبت حجم الخط عشان يمنع حدوث Overflow بسبب تكبير الخط في الموبايل
+                data: MediaQuery.of(
+                  context,
+                ).copyWith(textScaler: const TextScaler.linear(1.0)),
+                child: Directionality(
+                  textDirection: state.locale.languageCode == 'ar'
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                  child: child!,
+                ),
               );
             },
           );

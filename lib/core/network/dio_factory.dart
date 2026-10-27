@@ -3,10 +3,10 @@ import 'package:islami/core/network/api_constants.dart';
 import 'package:islami/core/network/interceptors.dart';
 
 class DioFactory {
-  static Dio createDio() {
+  static Dio createDio(String baseUrl) {
     return Dio(
       BaseOptions(
-        baseUrl: ApiConstants.baseUrl,
+        baseUrl: baseUrl,
         connectTimeout: ApiConstants.connectTimeout,
         receiveTimeout: ApiConstants.receiveTimeout,
       ),

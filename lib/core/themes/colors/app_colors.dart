@@ -8,4 +8,7 @@ class AppColors {
   static const transparent = RawColors.transparent;
   static const semiTransparent = RawColors.semiTransparent;
   static const progressBackground = RawColors.progressBackground;
+  static const timeBackground = RawColors.timeBackground;
+  static const time2Background = RawColors.time2Background;
+  static const time3Background = RawColors.time3Background;
 }
