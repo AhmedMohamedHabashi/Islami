@@ -4,10 +4,11 @@ import 'package:islami/core/shared/widgets/radio/main_layout.dart';
 import 'package:islami/features/radio/presentation/views/radio_view.dart';
 import 'package:islami/features/radio/presentation/views/widgets/coming_soon_page.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/surah_selection_view.dart';
+import 'package:islami/features/time/presentation/views/time_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RouteNames.surahSelectionView,
+    initialLocation: RouteNames.time,
     routes: [
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
@@ -49,7 +50,7 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.time,
-                builder: (_, _) => const ComingSoonPage(title: 'Time'),
+                builder: (_, _) => const TimeView(),
               ),
             ],
           ),
