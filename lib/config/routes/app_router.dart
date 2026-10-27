@@ -13,7 +13,7 @@ import 'package:islami/features/time/presentation/views/time_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RouteNames.surahSelectionView,
+    initialLocation: RouteNames.splash,
     routes: [
       GoRoute(
         path: RouteNames.splash,
