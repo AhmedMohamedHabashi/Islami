@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 
 class OnboardingIndicator extends StatelessWidget {
   const OnboardingIndicator({
     super.key,
     required this.currentIndex,
-    required this.count,
+    required this.itemCount,
   });
 
   final int currentIndex;
-  final int count;
+  final int itemCount;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: List.generate(count, (index) {
-        final  isActive = index == currentIndex; 
-        
-        return AnimatedContainer(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        itemCount,
+        (index) => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          margin: const EdgeInsets.symmetric(horizontal: 3),
-          height: 6,
-          width: isActive ? 24 : 6,
+          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          width: currentIndex == index ? 24.w : 8.w,
+          height: 8.h,
           decoration: BoxDecoration(
-            color: isActive ? AppColors.primary : Colors.grey,
-            borderRadius: BorderRadius.circular(10),
+            color: currentIndex == index
+                ? AppColors.primary
+                : AppColors.primary.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(20.r),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }

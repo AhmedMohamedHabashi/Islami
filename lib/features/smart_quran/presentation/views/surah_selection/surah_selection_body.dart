@@ -24,6 +24,7 @@ class SurahSelectionBody extends StatelessWidget {
     required this.onStartAyahChanged,
     required this.onEndAyahChanged,
     required this.onModeChanged,
+    required this.onStartRecitation,
   });
 
   final TextEditingController searchController;
@@ -40,6 +41,7 @@ class SurahSelectionBody extends StatelessWidget {
   final ValueChanged<int> onStartAyahChanged;
   final ValueChanged<int> onEndAyahChanged;
   final ValueChanged<String> onModeChanged;
+  final VoidCallback onStartRecitation;
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +82,24 @@ class SurahSelectionBody extends StatelessWidget {
             const SurahEmptyState()
           else
             ...surahs.map((surah) => SurahCard(surah: surah)),
+
+          SizedBox(height: 20.h),
+
+          ElevatedButton.icon(
+            onPressed: onStartRecitation,
+            icon: const Icon(Icons.mic_rounded),
+            label: const Text('ابدأ التسميع'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: AppColors.white,
+              minimumSize: Size(double.infinity, 48.h),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+            ),
+          ),
+
+          SizedBox(height: 20.h),
         ],
       ),
     );

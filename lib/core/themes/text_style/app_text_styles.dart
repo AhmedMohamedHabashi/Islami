@@ -15,6 +15,9 @@ class AppTextStyles {
   static TextStyle get body20 =>
       TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500);
 
+  static TextStyle get body24 =>
+      TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w500);
+
   static TextStyle get body14 =>
       TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400);
 

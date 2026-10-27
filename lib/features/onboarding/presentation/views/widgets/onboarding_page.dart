@@ -1,71 +1,78 @@
-
 import 'package:flutter/material.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
-import 'package:islami/features/onboarding/data/models/onboarding_data.dart';
+import 'package:islami/features/onboarding/domain/entities/onboarding_model.dart';
 
 class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({
-    super.key,
-    required this.model,
-    required this.index,
-  });
+  const OnboardingPage({super.key, required this.page});
 
-  final OnboardingModel model;
-  final int index;
+  final OnboardingModel page;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeOut,
 
-    final titles = [
-      l10n.welcome,
-      l10n.welcomeTitle,
-      l10n.readingTitle,
-      l10n.azkarTitle,
-      l10n.radioTitle,
-    ];
+      builder: (context, value, child) {
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              children: [
+                Transform.translate(
+                  offset: Offset(0, 40.h * (1 - value)),
+                  child: Opacity(
+                    opacity: value,
+                    child: Image.asset(
+                      page.image,
+                      height: 240.h,
+                      width: 300.w,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
 
-    final descriptions = [
-      '',
-      l10n.welcomeDescription,
-      l10n.readingDescription,
-      l10n.azkarDescription,
-      l10n.radioDescription,
-    ];
+                SizedBox(height: 80.h),
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          Expanded(
-            child: Image.asset(
-              model.image,
-              fit: BoxFit.contain,
+                Transform.translate(
+                  offset: Offset(0, 20.h * (1 - value)),
+                  child: Opacity(
+                    opacity: value,
+                    child: Text(
+                      page.title,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.heading1.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    ),
+                  ),
+                ),
+
+                if (page.description != null) ...[
+                  SizedBox(height: 20.h),
+
+                  Transform.translate(
+                    offset: Offset(0, 30.h * (1 - value)),
+                    child: Opacity(
+                      opacity: value,
+                      child: Text(
+                        page.description!,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.body20.copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          const SizedBox(height: 24),
-          Text(
-            titles[index],
-            textAlign: TextAlign.center,
-            style: AppTextStyles.heading2.copyWith(
-              color: AppColors.primary,
-            ),
-          ),
-          if (descriptions[index].isNotEmpty) ...[
-            const SizedBox(height: 24),
-            Text(
-              descriptions[index],
-              textAlign: TextAlign.center,
-              style: AppTextStyles.body16.copyWith(
-                color: AppColors.primary,
-              ),
-            ),
-          ],
-          const SizedBox(height: 24),
-        ],
-      ),
+        );
+      },
     );
   }
 }

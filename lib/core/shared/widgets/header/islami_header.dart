@@ -13,7 +13,7 @@ class IslamiHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final headerHeight = compact ? 75.h : 205.h;
+    final headerHeight = compact ? 75.h : 195.h;
     final logoWidth = compact ? 115.w : 166.w;
 
     return TweenAnimationBuilder<double>(

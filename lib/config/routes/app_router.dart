@@ -1,16 +1,19 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/shared/widgets/radio/main_layout.dart';
+import 'package:islami/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:islami/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:islami/features/onboarding/presentation/views/splash_view.dart';
 import 'package:islami/features/radio/presentation/views/radio_view.dart';
 import 'package:islami/features/radio/presentation/views/widgets/coming_soon_page.dart';
+import 'package:islami/features/smart_quran/presentation/views/recitation/recitation_view.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/surah_selection_view.dart';
 import 'package:islami/features/time/presentation/views/time_view.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RouteNames.time,
+    initialLocation: RouteNames.surahSelectionView,
     routes: [
       GoRoute(
         path: RouteNames.splash,
@@ -18,7 +21,12 @@ class AppRouter {
       ),
       GoRoute(
         path: RouteNames.onboarding,
-        builder: (context, state) => const OnboardingView(),
+        builder: (context, state) {
+          return BlocProvider(
+            create: (_) => OnboardingCubit(),
+            child: const OnboardingView(),
+          );
+        },
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
@@ -32,6 +40,20 @@ class AppRouter {
               ),
             ],
           ),
+          //   StatefulShellBranch(
+          //   routes: [
+          //     GoRoute(
+          //       path: RouteNames.quran,
+          //       builder: (context, state) => const SurahSelectionView(),
+          //       routes: [
+          //         GoRoute(
+          //           path: RouteNames.recitationView,
+          //           builder: (context, state) => const RecitationView(),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -69,6 +91,10 @@ class AppRouter {
       GoRoute(
         path: RouteNames.surahSelectionView,
         builder: (context, state) => const SurahSelectionView(),
+      ),
+      GoRoute(
+        path: RouteNames.recitationView,
+        builder: (context, state) => const RecitationView(),
       ),
     ],
   );

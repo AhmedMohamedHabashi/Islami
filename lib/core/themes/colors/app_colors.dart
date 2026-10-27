@@ -8,7 +8,14 @@ class AppColors {
   static const transparent = RawColors.transparent;
   static const semiTransparent = RawColors.semiTransparent;
   static const progressBackground = RawColors.progressBackground;
+
+  // Prayer Times
   static const timeBackground = RawColors.timeBackground;
   static const time2Background = RawColors.time2Background;
   static const time3Background = RawColors.time3Background;
+
+  // Current Ayah Card Gradient
+  static const ayahCardGradientTop = RawColors.ayahCardGradientTop;
+  static const ayahCardGradientMiddle = RawColors.ayahCardGradientMiddle;
+  static const ayahCardGradientBottom = RawColors.ayahCardGradientBottom;
 }

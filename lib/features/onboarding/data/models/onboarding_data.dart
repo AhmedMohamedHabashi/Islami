@@ -1,41 +1,32 @@
+import 'package:islami/core/constants/app_assets.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/features/onboarding/domain/entities/onboarding_model.dart';
 
-class OnboardingModel {
-  final String image;
-  final String title;
-  final String description;
+class OnboardingData {
+  static List<OnboardingModel> getPages(AppLocalizations locale) {
+    return [
+      OnboardingModel(image: AppAssets.welcome, title: locale.welcomeTitle),
+      OnboardingModel(
+        image: AppAssets.onboarding4,
+        title: locale.welcomeTitle,
+        description: locale.welcomeDescription,
+      ),
+      OnboardingModel(
+        image: AppAssets.onboarding2,
+        title: locale.readingTitle,
+        description: locale.readingDescription,
+      ),
+      OnboardingModel(
+        image: AppAssets.onboarding5,
+        title: locale.azkarTitle,
+        description: locale.azkarDescription,
+      ),
 
-  const OnboardingModel({
-    required this.image,
-    required this.title,
-    required this.description,
-  });
+      OnboardingModel(
+        image: AppAssets.onboarding3,
+        title: locale.radioTitle,
+        description: locale.radioDescription,
+      ),
+    ];
+  }
 }
-
-const List<OnboardingModel> onboardingList = [
-  OnboardingModel(
-    image: 'assets/images/welcome.png',
-    title: 'Welcome To Islmi App',
-    description: '',
-  ),
-  OnboardingModel(
-    image: 'assets/images/kabba.png',
-    title: 'Welcome To Islami',
-    description: 'We Are Very Excited To Have You In Our Community',
-  ),
-  OnboardingModel(
-    image: 'assets/images/moushaf.png',
-    title: 'Reading the Quran',
-    description: 'Read, and your Lord is the Most Generous',
-  ),
-  OnboardingModel(
-    image: 'assets/images/doaa.png',
-    title: 'Bearish',
-    description: 'Praise the name of your Lord, the Most High',
-  ),
-  OnboardingModel(
-    image: 'assets/images/maic.png',
-    title: 'Holy Quran Radio',
-    description:
-        'You can listen to the Holy Quran Radio through the application for free and easily',
-  ),
-];
