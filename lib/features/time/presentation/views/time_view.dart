@@ -18,8 +18,7 @@ class TimeView extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                const IslamiHeader(),
-
+                const IslamiHeader(small: true),
                 const Expanded(child: TimeViewBody()),
               ],
             ),
