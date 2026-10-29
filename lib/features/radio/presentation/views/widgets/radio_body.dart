@@ -55,8 +55,8 @@ class RadioBody extends StatelessWidget {
         SafeArea(
           child: Column(
             children: [
-              const IslamiHeader.compact(showMosque: true),
-              SizedBox(height: 40.h),
+              const IslamiHeader(small: true),
+              // SizedBox(height: 40.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 14.w),
                 child: RadioTabBar(
@@ -67,6 +67,7 @@ class RadioBody extends StatelessWidget {
               SizedBox(height: 20.h),
               Expanded(
                 child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.fromLTRB(14.w, 0, 14.w, 10.h),
                   itemCount: items.length,
                   separatorBuilder: (_, _) => SizedBox(height: 20.h),
