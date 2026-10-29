@@ -50,7 +50,7 @@ class SurahSelectionBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const IslamiHeader.compact(showMosque: true),
+          const IslamiHeader(small: true),
           SizedBox(height: 12.h),
 
           const SurahContinueCard(),

@@ -40,7 +40,7 @@ class AppRouter {
               ),
             ],
           ),
-          //   StatefulShellBranch(
+          // StatefulShellBranch(
           //   routes: [
           //     GoRoute(
           //       path: RouteNames.quran,
