@@ -56,7 +56,6 @@ class RadioBody extends StatelessWidget {
           child: Column(
             children: [
               const IslamiHeader(small: true),
-              // SizedBox(height: 40.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 14.w),
                 child: RadioTabBar(
