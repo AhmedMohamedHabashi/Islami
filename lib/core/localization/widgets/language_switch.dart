@@ -15,64 +15,86 @@ class LanguageSwitch extends StatelessWidget {
       builder: (context, state) {
         final isEnglish = state.locale.languageCode == 'en';
 
-        return GestureDetector(
-          onTap: () {
-            context.read<LocaleCubit>().changeLanguage();
+        return PopupMenuButton<String>(
+          tooltip: 'Change language',
+          offset: Offset(0, 40.h),
+          color: AppColors.primaryBackground,
+          elevation: 6,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          onSelected: (languageCode) {
+            if (languageCode != state.locale.languageCode) {
+              context.read<LocaleCubit>().changeLanguage();
+            }
           },
-          child: Container(
-            width: 110.w,
-            height: 38.h,
-            padding: EdgeInsets.all(4.r),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(30.r),
-            ),
-            child: Stack(
-              children: [
-                AnimatedAlign(
-                  duration: const Duration(milliseconds: 250),
-                  curve: Curves.easeInOut,
-                  alignment: isEnglish
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: Container(
-                    width: 50.w,
-                    height: 30.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(25.r),
+          itemBuilder: (context) => [
+            PopupMenuItem<String>(
+              value: 'ar',
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.language_outlined,
+                    color: !isEnglish ? AppColors.primary : AppColors.white,
+                    size: 20.sp,
+                  ),
+                  SizedBox(width: 10.w),
+                  Text(
+                    'العربية',
+                    style: AppTextStyles.body14.copyWith(
+                      color: !isEnglish ? AppColors.primary : AppColors.white,
                     ),
                   ),
-                ),
-
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: _label('العربية', !isEnglish),
-                ),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: _label('English', isEnglish),
+                  const Spacer(),
+                  if (!isEnglish)
+                    Icon(Icons.check, color: AppColors.primary, size: 18.sp),
+                ],
+              ),
+            ),
+            PopupMenuItem<String>(
+              value: 'en',
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.language_outlined,
+                    color: isEnglish ? AppColors.primary : AppColors.white,
+                    size: 20.sp,
+                  ),
+                  SizedBox(width: 10.w),
+                  Text(
+                    'English',
+                    style: AppTextStyles.body14.copyWith(
+                      color: isEnglish ? AppColors.primary : AppColors.white,
+                    ),
+                  ),
+                  const Spacer(),
+                  if (isEnglish)
+                    Icon(Icons.check, color: AppColors.primary, size: 18.sp),
+                ],
+              ),
+            ),
+          ],
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+            decoration: BoxDecoration(
+              color: AppColors.primary.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.language, color: AppColors.primary, size: 23.sp),
+                SizedBox(width: 5.w),
+                Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: AppColors.primary,
+                  size: 20.sp,
                 ),
               ],
             ),
           ),
         );
       },
-    );
-  }
-
-  Widget _label(String text, bool active) {
-    return SizedBox(
-      width: 50.w,
-      child: Center(
-        child: Text(
-          text,
-          style: AppTextStyles.caption12.copyWith(
-            color: active ? AppColors.white : AppColors.primary,
-          ),
-        ),
-      ),
     );
   }
 }
