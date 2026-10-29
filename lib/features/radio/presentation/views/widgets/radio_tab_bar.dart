@@ -26,8 +26,10 @@ class RadioTabBar extends StatelessWidget {
           child: Padding(
             padding: EdgeInsetsDirectional.only(end: index == 0 ? 8 : 0),
             child: Material(
-              color: isSelected ? AppColors.primary : AppColors.primary,
-              borderRadius: BorderRadius.circular(14),
+              color: isSelected
+                  ? AppColors.primary
+                  : AppColors.black.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(14.r),
               child: InkWell(
                 borderRadius: BorderRadius.circular(12.r),
                 onTap: () => onTabChanged?.call(index),
