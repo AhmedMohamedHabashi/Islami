@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-
 import '../entities/PrayerTimingHeaderEntity.dart';
 import '../repositories/prayer_times_repository.dart';
 
@@ -10,13 +9,13 @@ class GetPrayerHeaderUseCase {
   GetPrayerHeaderUseCase(this.repository);
 
   Future<PrayerTimingHeaderEntity> call({
-    required String city,
-    required String country,
+    required double latitude,
+    required double longitude,
     required String date,
   }) async {
     return await repository.getPrayerHeaderInfo(
-      city: city,
-      country: country,
+      latitude: latitude,
+      longitude: longitude,
       date: date,
     );
   }

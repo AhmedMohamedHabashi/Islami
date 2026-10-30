@@ -51,9 +51,7 @@ class AzkarSectionWidget extends StatelessWidget {
       color: AppColors.time3Background,
       borderRadius: BorderRadius.circular(20.r),
       child: InkWell(
-        onTap: () {
-          // Navigation using category.id
-        },
+        onTap: () {},
         borderRadius: BorderRadius.circular(20.r),
         child: Container(
           decoration: BoxDecoration(

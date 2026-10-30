@@ -13,6 +13,7 @@ class RawColors {
   static const Color timeBackground = Color(0xFF856B3F);
   static const Color time2Background = Color(0xFFB19768);
   static const Color time3Background = Color(0xFF202020);
+  static const Color errColor = Color(0xFFFF0000);
 
   // Current Ayah Card Gradient Colors
   static const Color ayahCardGradientTop = Color(0xFF383838);

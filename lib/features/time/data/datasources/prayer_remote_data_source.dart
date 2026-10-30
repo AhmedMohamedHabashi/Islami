@@ -3,23 +3,20 @@ import 'package:injectable/injectable.dart';
 import 'package:islami/core/network/endpoints.dart';
 import '../models/prayer_times_model.dart';
 
-@LazySingleton() 
+@LazySingleton()
 class PrayerRemoteDataSource {
   final Dio dio;
 
   PrayerRemoteDataSource(@Named('prayerDio') this.dio);
 
   Future<PrayerTimesModel> getPrayerTimes({
-    required String city,
-    required String country,
+    required double latitude,
+    required double longitude,
     required String date,
   }) async {
     final response = await dio.get(
-      '${Endpoints.prayerTimingsByCity}/$date',
-      queryParameters: {
-        'city': city,
-        'country': country,
-      },
+      '/${Endpoints.prayerTimings}/$date',
+      queryParameters: {'latitude': latitude, 'longitude': longitude},
     );
 
     if (response.statusCode == 200) {

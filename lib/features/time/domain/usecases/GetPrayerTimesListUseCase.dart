@@ -10,13 +10,13 @@ class GetPrayerTimesListUseCase {
   GetPrayerTimesListUseCase(this.repository);
 
   Future<List<PrayerTimeEntity>> call({
-    required String city,
-    required String country,
+    required double latitude,
+    required double longitude,
     required String date,
   }) async {
     return await repository.getPrayerTimesList(
-      city: city,
-      country: country,
+      latitude: latitude,
+      longitude: longitude,
       date: date,
     );
   }

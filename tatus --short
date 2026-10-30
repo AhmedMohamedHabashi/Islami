@@ -1,0 +1,32 @@
+ android/app/src/main/AndroidManifest.xml           |   2 [32m+[m
+ ios/Runner/Info.plist                              |   4 [32m+[m
+ lib/config/routes/app_router.dart                  |  10 [32m+[m[31m-[m
+ lib/core/di/injection_container.config.dart        |  20 [32m++[m
+ lib/core/di/injection_container.dart               |  15 [32m+[m[31m-[m
+ lib/core/errors/app_errors.dart                    |   6 [32m+[m
+ lib/core/errors/exceptions.dart                    |   7 [32m+[m
+ lib/core/errors/failures.dart                      |  20 [32m++[m
+ lib/core/network/endpoints.dart                    |   2 [32m+[m[31m-[m
+ lib/core/themes/colors/app_colors.dart             |   1 [32m+[m
+ lib/core/themes/colors/raw_colors.dart             |   1 [32m+[m
+ lib/core/utils/helpers/test.dart                   |   0
+ .../datasources/prayer_remote_data_source.dart     |  15 [32m+[m[31m-[m
+ .../time/data/models/prayer_times_model.dart       |  69 [32m++[m[31m---[m
+ .../repositories/prayer_times_repository_impl.dart |  21 [32m+[m[31m-[m
+ .../repositories/prayer_times_repository.dart      |   8 [32m+[m[31m-[m
+ .../domain/usecases/GetPrayerHeaderUseCase.dart    |   9 [32m+[m[31m-[m
+ .../domain/usecases/GetPrayerTimesListUseCase.dart |   8 [32m+[m[31m-[m
+ .../time/presentation/cubit/onboarding_cubit.dart  |   8 [31m-[m
+ .../time/presentation/cubit/onboarding_state.dart  |  10 [31m-[m
+ .../time/presentation/views/time_view.dart         |   8 [32m+[m[31m-[m
+ .../views/widgets/prayer_times_list_widget.dart    |  81 [32m+++[m[31m--[m
+ .../views/widgets/time_header_widget.dart          | 327 [32m++++++++++++[m[31m---------[m
+ lib/main.dart                                      |   9 [32m+[m[31m-[m
+ linux/flutter/generated_plugin_registrant.cc       |   4 [32m+[m
+ linux/flutter/generated_plugins.cmake              |   2 [32m+[m
+ macos/Flutter/GeneratedPluginRegistrant.swift      |   4 [32m+[m
+ pubspec.lock                                       | 292 [32m+++++++++++++++++[m[31m-[m
+ pubspec.yaml                                       |   4 [32m+[m
+ windows/flutter/generated_plugin_registrant.cc     |   6 [32m+[m
+ windows/flutter/generated_plugins.cmake            |   3 [32m+[m
+ 31 files changed, 701 insertions(+), 275 deletions(-)
