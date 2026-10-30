@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/features/radio/presentation/views/widgets/main_layout.dart';
+import 'package:islami/core/di/injection_container.dart';
 import 'package:islami/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:islami/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:islami/features/onboarding/presentation/views/splash_view.dart';
@@ -9,6 +10,7 @@ import 'package:islami/features/radio/presentation/views/radio_view.dart';
 import 'package:islami/features/radio/presentation/views/widgets/coming_soon_page.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation/recitation_view.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/surah_selection_view.dart';
+import 'package:islami/features/time/presentation/cubit/prayer_times/prayer_times_cubit.dart';
 import 'package:islami/features/time/presentation/views/time_view.dart';
 
 class AppRouter {
@@ -82,7 +84,13 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.time,
-                builder: (_, _) => const TimeView(),
+                builder: (context, state) {
+                  return BlocProvider(
+                    create: (context) =>
+                        sl<PrayerTimesCubit>()..fetchPrayerTimes(),
+                    child: const TimeView(),
+                  ); // BlocProvider
+                },
               ),
             ],
           ),

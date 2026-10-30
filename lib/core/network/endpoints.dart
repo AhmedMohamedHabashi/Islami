@@ -1,3 +1,3 @@
 class Endpoints {
-  static const String prayerTimingsByCity = 'timingsByCity';
+  static const String prayerTimings = 'timings';
 }

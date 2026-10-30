@@ -3,14 +3,14 @@ import '../entities/PrayerTimingHeaderEntity.dart';
 
 abstract class PrayerTimesRepository {
   Future<PrayerTimingHeaderEntity> getPrayerHeaderInfo({
-    required String city,
-    required String country,
+    required double latitude,
+    required double longitude,
     required String date,
   });
 
   Future<List<PrayerTimeEntity>> getPrayerTimesList({
-    required String city,
-    required String country,
+    required double latitude,
+    required double longitude,
     required String date,
   });
 }

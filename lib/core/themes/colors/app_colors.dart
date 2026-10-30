@@ -13,6 +13,7 @@ class AppColors {
   static const timeBackground = RawColors.timeBackground;
   static const time2Background = RawColors.time2Background;
   static const time3Background = RawColors.time3Background;
+  static const errColor = RawColors.errColor;
 
   // Current Ayah Card Gradient
   static const ayahCardGradientTop = RawColors.ayahCardGradientTop;

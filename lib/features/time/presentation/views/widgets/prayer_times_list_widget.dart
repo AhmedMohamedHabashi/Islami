@@ -2,29 +2,78 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/features/time/domain/entities/prayer_time_entity.dart';
 
-class PrayerTimesListWidget extends StatelessWidget {
-  const PrayerTimesListWidget({super.key});
+class PrayerTimesListWidget extends StatefulWidget {
+  final List<PrayerTimeEntity> prayersList;
+
+  const PrayerTimesListWidget({super.key, required this.prayersList});
+
+  @override
+  State<PrayerTimesListWidget> createState() => _PrayerTimesListWidgetState();
+}
+
+class _PrayerTimesListWidgetState extends State<PrayerTimesListWidget> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToNextPrayer();
+    });
+  }
+
+  void _scrollToNextPrayer() {
+    if (widget.prayersList.isEmpty) return;
+
+    int nextIndex = widget.prayersList.indexWhere((prayer) => prayer.isNext);
+    if (nextIndex != -1) {
+      double itemWidth = 90.w;
+      double screenWidth = MediaQuery.of(context).size.width;
+
+      double targetOffset =
+          (nextIndex * itemWidth) - (screenWidth / 2) + (itemWidth / 2);
+      if (targetOffset < 0) targetOffset = 0;
+
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          targetOffset,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> dummyPrayers = [
-      {'name': 'Sunrise', 'time': '05:04', 'period': 'AM', 'isNext': false},
-      {'name': 'Dhuhr', 'time': '01:01', 'period': 'PM', 'isNext': false},
-      {'name': 'ASR', 'time': '04:38', 'period': 'PM', 'isNext': true},
-      {'name': 'Maghrib', 'time': '07:57', 'period': 'PM', 'isNext': false},
-      {'name': 'Isha', 'time': '09:12', 'period': 'PM', 'isNext': false},
-    ];
+    if (widget.prayersList.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return SizedBox(
       height: 150.h,
       child: ListView.builder(
+        controller: _scrollController,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.symmetric(horizontal: 12.w),
-        itemCount: dummyPrayers.length,
+        itemCount: widget.prayersList.length,
         itemBuilder: (context, index) {
-          final prayer = dummyPrayers[index];
-          final isNext = prayer['isNext'] as bool;
+          final prayer = widget.prayersList[index];
+          final bool isNext = prayer.isNext;
+
+          final timeParts = prayer.time.split(' ');
+          final String timeOnly = timeParts.isNotEmpty
+              ? timeParts[0]
+              : prayer.time;
+          final String periodOnly = timeParts.length > 1 ? timeParts[1] : '';
 
           return Align(
             alignment: Alignment.center,
@@ -49,7 +98,7 @@ class PrayerTimesListWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    prayer['name'],
+                    prayer.name,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.body14.copyWith(
                       color: AppColors.white,
@@ -58,9 +107,8 @@ class PrayerTimesListWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8.h),
-
                   Text(
-                    prayer['time'],
+                    timeOnly,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.heading1.copyWith(
                       color: AppColors.white,
@@ -70,9 +118,8 @@ class PrayerTimesListWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8.h),
-
                   Text(
-                    prayer['period'],
+                    periodOnly,
                     textAlign: TextAlign.center,
                     style: AppTextStyles.body12.copyWith(
                       color: AppColors.white,
