@@ -20,7 +20,6 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
       builder: (context, state) {
-        // 1. حالة التحميل (Loading)
         if (state is PrayerTimesLoading) {
           return Container(
             width: double.infinity,
@@ -40,7 +39,6 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
           );
         }
 
-        // 2. حالة الخطأ (Error)
         if (state is PrayerTimesError) {
           return Container(
             width: double.infinity,
@@ -59,18 +57,15 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
           );
         }
 
-        // لو الحالة مش Loaded (احتياطاً)
         if (state is! PrayerTimesLoaded) {
           return const SizedBox.shrink();
         }
 
-        // 3. الداتا الحقيقية وقت نجاح الجلب (Loaded)
         final String gregorianDate = state.headerData.gregorianDate;
         final String hijriDate = state.headerData.hijriDate;
         final String dayName = state.headerData.dayName;
         final String nextPrayerTime = state.headerData.nextPrayTime;
 
-        // بنستدعي الكيوبت عشان نعرف حالة الكتم الحالية (isMuted)
         final prayerCubit = context.read<PrayerTimesCubit>();
         final bool isMuted = prayerCubit.isMuted;
 
@@ -100,7 +95,6 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                   ),
                 ),
               ),
-              // التاريخ الهجري
               Positioned(
                 top: 12.h,
                 right: 20.w,
@@ -138,7 +132,6 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                         ),
                       ),
                       SizedBox(height: 2.h),
-                      // اليوم
                       Text(
                         dayName,
                         style: AppTextStyles.body20.copyWith(
@@ -149,12 +142,10 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
 
                       SizedBox(height: 16.h),
 
-                      // لستة الصلوات الحية
                       PrayerTimesListWidget(prayersList: state.prayersList),
 
                       SizedBox(height: 14.h),
 
-                      // الجزء الخاص بـ Next Pray وزرار الصوت الأسود
                       Padding(
                         padding: EdgeInsets.only(
                           bottom: 16.h,
@@ -164,7 +155,6 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
-                            // نص Next Pray وجنبه الوقت القادم
                             Center(
                               child: RichText(
                                 text: TextSpan(
@@ -184,20 +174,17 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                                 ),
                               ),
                             ),
-                            // زرار الصوت الأسود في أقصى اليمين (متصل بالكيوبت)
                             Positioned(
                               right: 0,
                               child: GestureDetector(
                                 onTap: () {
-                                  ;
-                                  // بيغير حالة الصوت (كتم / تفعيل) وبيحدث الشاشة فوراً
                                   prayerCubit.toggleMuteSound();
                                 },
                                 child: Icon(
                                   isMuted
                                       ? Icons.volume_off_rounded
                                       : Icons.volume_up_rounded,
-                                  color: AppColors.black, // لون أسود زي فيجما
+                                  color: AppColors.black,
                                   size: 30.r,
                                 ),
                               ),

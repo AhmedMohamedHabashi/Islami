@@ -1,4 +1,4 @@
-import 'package:islami/core/utils/helpers/PrayerHelper.dart';
+import 'package:islami/core/utils/functions/PrayerTimeFunction.dart';
 import 'package:islami/features/time/domain/entities/PrayerTimingHeaderEntity.dart';
 import '../../domain/entities/prayer_time_entity.dart';
 
@@ -25,26 +25,24 @@ class PrayerTimesModel {
     });
 
     final date = data['date'] ?? {};
-
     final gregorian = date['gregorian'] ?? {};
-    final gDay = gregorian['day'] ?? {};
+    final gDay = gregorian['day'] ?? '';
 
     final monthData = gregorian['month'] ?? {};
     final gMonth = (monthData['abbrev'] ?? monthData['en'] ?? '').toString();
     final formattedGMonth = gMonth.length >= 3
         ? gMonth.substring(0, 3)
         : gMonth;
-
-    final gYear = gregorian['year'] ?? {};
+    final gYear = gregorian['year'] ?? '';
     final formattedGregorian = '$gDay $formattedGMonth,\n$gYear';
 
     final hijri = date['hijri'] ?? {};
-    final hDay = hijri['day'] ?? {};
+    final hDay = hijri['day'] ?? '';
     final hMonthEn = hijri['month'] != null
         ? (hijri['month']['en'] ?? '').toString()
         : '';
     final hMonth = hMonthEn.length >= 3 ? hMonthEn.substring(0, 3) : hMonthEn;
-    final hYear = hijri['year'] ?? {};
+    final hYear = hijri['year'] ?? '';
     final formattedHijri = '$hDay $hMonth,\n$hYear';
 
     final weekday = gregorian['weekday'] != null
@@ -59,15 +57,13 @@ class PrayerTimesModel {
     );
   }
 
-  // استخدام الهيلبر الخارجي لتوليد الهيدر وإرسال الوقت القادم
   PrayerTimingHeaderEntity toHeaderEntity({
     String? nextPrayTime,
     bool isMuted = false,
   }) {
-    // بنجيب اسم الصلاة القادمة باستخدام الهيلبر
-    final nextPrayerKey = PrayerHelper.calculateNextPrayerKey(timings);
+    final nextPrayerKey = PrayerTimeFunction.calculateNextPrayerKey(timings);
     final rawTime = timings[nextPrayerKey] ?? '05:00';
-    final formattedTime = PrayerHelper.convertTo12HourFormat(rawTime);
+    final formattedTime = PrayerTimeFunction.convertTo12HourFormat(rawTime);
 
     return PrayerTimingHeaderEntity(
       gregorianDate: gregorianDate,
@@ -78,7 +74,6 @@ class PrayerTimesModel {
     );
   }
 
-  // تحويل لستة الصلوات مع تحديد الـ isNext باستخدام الهيلبر
   List<PrayerTimeEntity> toPrayerTimesList() {
     final List<String> prayerNames = [
       'Fajr',
@@ -87,15 +82,13 @@ class PrayerTimesModel {
       'Maghrib',
       'Isha',
     ];
-
-    // بنجيب اسم الصلاة القادمة من الهيلبر
-    final nextPrayerKey = PrayerHelper.calculateNextPrayerKey(timings);
+    final nextPrayerKey = PrayerTimeFunction.calculateNextPrayerKey(timings);
 
     return prayerNames.map((name) {
       String rawTime24 = timings[name] ?? '00:00';
-      String formattedTime12 = PrayerHelper.convertTo12HourFormat(rawTime24);
-
-      // بنحدد هل الصلاة دي هي اللي عليها الدور ولا لأ
+      String formattedTime12 = PrayerTimeFunction.convertTo12HourFormat(
+        rawTime24,
+      );
       bool isThisNext = (name.toLowerCase() == nextPrayerKey.toLowerCase());
 
       return PrayerTimeEntity(

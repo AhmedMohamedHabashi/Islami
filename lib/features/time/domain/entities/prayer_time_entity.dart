@@ -1,7 +1,7 @@
 class PrayerTimeEntity {
-  final String name; // اسم الصلاة (مثال: الفجر، الظهر)
-  final String time; // وقت الصلاة (مثال: 05:00 AM)
-  final bool isNext; // تحديد هل دي الصلاة القادمة عشان الـ UI يبرزها
+  final String name;
+  final String time;
+  final bool isNext;
 
   const PrayerTimeEntity({
     required this.name,

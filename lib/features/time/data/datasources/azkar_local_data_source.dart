@@ -6,52 +6,52 @@ abstract class AzkarLocalDataSource {
     AzkarCategoryEntity(
       id: 'evening',
       title: 'Evening Azkar',
-      iconPath: AppAssets.eveningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.eveningazkar,
     ),
     AzkarCategoryEntity(
       id: 'morning',
       title: 'Morning Azkar',
-      iconPath: AppAssets.morningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.morningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'evening',
       title: 'Evening Azkar',
-      iconPath: AppAssets.eveningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.eveningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'morning',
       title: 'Morning Azkar',
-      iconPath: AppAssets.morningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.morningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'evening',
       title: 'Evening Azkar',
-      iconPath: AppAssets.eveningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.eveningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'morning',
       title: 'Morning Azkar',
-      iconPath: AppAssets.morningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.morningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'evening',
       title: 'Evening Azkar',
-      iconPath: AppAssets.eveningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.eveningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'morning',
       title: 'Morning Azkar',
-      iconPath: AppAssets.morningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.morningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'evening',
       title: 'Evening Azkar',
-      iconPath: AppAssets.eveningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.eveningazkar, 
     ),
     AzkarCategoryEntity(
       id: 'morning',
       title: 'Morning Azkar',
-      iconPath: AppAssets.morningazkar, // ربط الصورة من AppAssets
+      iconPath: AppAssets.morningazkar, 
     ),
   ];
 }

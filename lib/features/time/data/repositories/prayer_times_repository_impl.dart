@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:islami/features/time/domain/entities/PrayerTimingHeaderEntity.dart';
 import '../../domain/entities/prayer_time_entity.dart';
-import '../../domain/repositories/prayer_times_repository.dart'; // استيراد العقد من الدومين
+import '../../domain/repositories/prayer_times_repository.dart';
 import '../datasources/prayer_remote_data_source.dart';
 
 @LazySingleton(as: PrayerTimesRepository)

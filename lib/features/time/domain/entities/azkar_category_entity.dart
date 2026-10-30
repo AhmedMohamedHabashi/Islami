@@ -1,8 +1,7 @@
 class AzkarCategoryEntity {
-  final String
-  id; // المعرف الفريد للتصنيف (عشان نعرف المستخدم داس على أنهي قسم)
-  final String title; // اسم القسم (مثال: أذكار الصباح، أذكار المساء)
-  final String iconPath; // مسار الأيقونة أو الصورة الخاصة بالقسم
+  final String id;
+  final String title;
+  final String iconPath;
 
   const AzkarCategoryEntity({
     required this.id,

@@ -1,9 +1,9 @@
 class PrayerTimingHeaderEntity {
-  final String gregorianDate; // 16 Jul, 2024
-  final String hijriDate; // 09 Muh, 1446
-  final String dayName; // Tuesday
-  final String nextPrayTime; // 02:32
-  final bool isMuted; // حالة زرار الصوت
+  final String gregorianDate;
+  final String hijriDate;
+  final String dayName;
+  final String nextPrayTime;
+  final bool isMuted;
 
   const PrayerTimingHeaderEntity({
     required this.gregorianDate,
