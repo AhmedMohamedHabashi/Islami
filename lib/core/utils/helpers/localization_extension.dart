@@ -111,3 +111,4 @@ extension LocalizationExtension on BuildContext {
     return '$day $monthName,\n$year';
   }
 }
+// فارس
