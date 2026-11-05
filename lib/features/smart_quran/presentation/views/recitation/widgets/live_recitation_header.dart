@@ -35,7 +35,9 @@ class LiveRecitationHeader extends StatelessWidget {
                   width: 8.w,
                   height: 8.w,
                   decoration: BoxDecoration(
-                    color: isRecording ? Colors.redAccent : AppColors.primary,
+                    color: isRecording
+                        ? AppColors.incorrectWord
+                        : AppColors.primary,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -61,7 +63,7 @@ class LiveRecitationHeader extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.05),
+              color: AppColors.white.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
                 color: AppColors.primary.withValues(alpha: 0.35),

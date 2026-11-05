@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
-class RecitationSurahHeader extends StatelessWidget {
-  final String surahName;
-  final String ayahInfo;
+class CustomAppBar extends StatelessWidget {
+  final String title;
+  final String subtitle;
   final VoidCallback? onBack;
   final VoidCallback? onHelp;
 
-  const RecitationSurahHeader({
+  const CustomAppBar({
     super.key,
-    required this.surahName,
-    required this.ayahInfo,
+    required this.title,
+    required this.subtitle,
     this.onBack,
     this.onHelp,
   });
@@ -24,33 +24,38 @@ class RecitationSurahHeader extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // اسم السورة ومعلومات الآيات في المنتصف.
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                surahName,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.heading2.copyWith(color: AppColors.white),
-              ),
-              SizedBox(height: 2.h),
-              Flexible(
-                child: Text(
-                  ayahInfo,
+          // Title and subtitle in the center.
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 52.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.body14.copyWith(
+                  style: AppTextStyles.heading2.copyWith(
                     color: AppColors.primary,
-                    height: 1.0.h,
                   ),
                 ),
-              ),
-            ],
+                SizedBox(height: 2.h),
+                Text(
+                  subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.subtitleStyle.copyWith(
+                    color: AppColors.white.withOpacity(0.6),
+                    height: 1.0,
+                  ),
+                ),
+              ],
+            ),
           ),
 
+          // Help button on the left.
           Align(
             alignment: Alignment.centerLeft,
             child: _HeaderActionButton(
@@ -59,6 +64,7 @@ class RecitationSurahHeader extends StatelessWidget {
             ),
           ),
 
+          // Back button on the right.
           Align(
             alignment: Alignment.centerRight,
             child: _HeaderActionButton(

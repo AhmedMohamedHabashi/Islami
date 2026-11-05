@@ -19,4 +19,9 @@ class RawColors {
   static const Color ayahCardGradientTop = Color(0xFF383838);
   static const Color ayahCardGradientMiddle = Color(0xFF222222);
   static const Color ayahCardGradientBottom = Color(0xFF111111);
+
+  // Smart Quran - Recitation Word Status Colors
+  static const Color correctWord = Color(0xFF4CAF50);
+  static const Color incorrectWord = Color(0xFFF44336);
+  static const Color missingWord = Color(0xFFFF9800);
 }

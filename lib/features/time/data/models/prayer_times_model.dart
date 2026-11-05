@@ -4,23 +4,15 @@ import '../../domain/entities/prayer_time_entity.dart';
 
 class PrayerTimesModel {
   final Map<String, String> timings;
-  final int gregorianDay;
-  final int gregorianMonth;
-  final int gregorianYear;
-  final int hijriDay;
-  final int hijriMonth;
-  final int hijriYear;
-  final DateTime gregorianDate;
+  final String gregorianDate;
+  final String hijriDate;
+  final String dayName;
 
   PrayerTimesModel({
     required this.timings,
-    required this.gregorianDay,
-    required this.gregorianMonth,
-    required this.gregorianYear,
-    required this.hijriDay,
-    required this.hijriMonth,
-    required this.hijriYear,
     required this.gregorianDate,
+    required this.hijriDate,
+    required this.dayName,
   });
 
   factory PrayerTimesModel.fromJson(Map<String, dynamic> json) {
@@ -33,30 +25,35 @@ class PrayerTimesModel {
     });
 
     final date = data['date'] ?? {};
-
     final gregorian = date['gregorian'] ?? {};
-    final gDay = int.tryParse(gregorian['day']?.toString() ?? '1') ?? 1;
-    final gMonth =
-        int.tryParse(gregorian['month']?['number']?.toString() ?? '1') ?? 1;
-    final gYear = int.tryParse(gregorian['year']?.toString() ?? '2024') ?? 2024;
+    final gDay = gregorian['day'] ?? '';
 
-    final gDate = DateTime(gYear, gMonth, gDay);
+    final monthData = gregorian['month'] ?? {};
+    final gMonth = (monthData['abbrev'] ?? monthData['en'] ?? '').toString();
+    final formattedGMonth = gMonth.length >= 3
+        ? gMonth.substring(0, 3)
+        : gMonth;
+    final gYear = gregorian['year'] ?? '';
+    final formattedGregorian = '$gDay $formattedGMonth,\n$gYear';
 
     final hijri = date['hijri'] ?? {};
-    final hDay = int.tryParse(hijri['day']?.toString() ?? '1') ?? 1;
-    final hMonth =
-        int.tryParse(hijri['month']?['number']?.toString() ?? '1') ?? 1;
-    final hYear = int.tryParse(hijri['year']?.toString() ?? '1446') ?? 1446;
+    final hDay = hijri['day'] ?? '';
+    final hMonthEn = hijri['month'] != null
+        ? (hijri['month']['en'] ?? '').toString()
+        : '';
+    final hMonth = hMonthEn.length >= 3 ? hMonthEn.substring(0, 3) : hMonthEn;
+    final hYear = hijri['year'] ?? '';
+    final formattedHijri = '$hDay $hMonth,\n$hYear';
+
+    final weekday = gregorian['weekday'] != null
+        ? gregorian['weekday']['en'] ?? ''
+        : '';
 
     return PrayerTimesModel(
       timings: parsedTimings,
-      gregorianDay: gDay,
-      gregorianMonth: gMonth,
-      gregorianYear: gYear,
-      hijriDay: hDay,
-      hijriMonth: hMonth,
-      hijriYear: hYear,
-      gregorianDate: gDate,
+      gregorianDate: formattedGregorian,
+      hijriDate: formattedHijri,
+      dayName: weekday,
     );
   }
 
@@ -70,9 +67,8 @@ class PrayerTimesModel {
 
     return PrayerTimingHeaderEntity(
       gregorianDate: gregorianDate,
-      hijriDay: hijriDay,
-      hijriMonth: hijriMonth,
-      hijriYear: hijriYear,
+      hijriDate: hijriDate,
+      dayName: dayName,
       nextPrayTime: nextPrayTime ?? formattedTime,
       isMuted: isMuted,
     );
