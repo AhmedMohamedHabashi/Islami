@@ -78,5 +78,22 @@
   "time": "Prayer Times",
   "tasbih": "Tasbih",
   "hadith": "Hadith",
-  "quran": "Quran"
+  "quran": "Quran",
+
+
+"prayTimeHeader": "Prayer Times",
+  "fajr": "Fajr",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "nextPray": "Next Pray",
+  "azkarSectionHeader": "Azkar",
+  "morningAzkar": "Morning Azkar",
+  "eveningAzkar": "Evening Azkar",
+  "wakingUpAzkar": "Waking Up Azkar",
+  "adhanAzkar": "Adhan Azkar",
+  "afterPrayerAzkar": "After Prayer Azkar",
+  "sleepingAzkar": "Sleeping Azkar"
+
 }
