@@ -143,44 +143,44 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quran => 'القرآن';
 
   @override
-  String get recitationReportHelpTitle => 'دليل التقرير';
+  String get prayTimeHeader => 'مواقيت الصلاة';
 
   @override
-  String get recitationReportHelpMessage =>
-      'يعرض التقرير نسبة الإتقان، والكلمات الصحيحة والخاطئة والناقصة، مع تحليل مواضع التنبيه وتوصيات تساعدك على مراجعة التلاوة.';
+  String get fajr => 'الفجر';
 
   @override
-  String get recitationReportTitle => 'تقرير مراجعة التسميع';
+  String get dhuhr => 'الظهر';
 
   @override
-  String recitationPronunciationAlert(Object word) {
-    return 'تنبيه النطق في كلمة: ($word)';
-  }
+  String get asr => 'العصر';
 
   @override
-  String recitationAyahNumber(Object number) {
-    return 'الآية $number';
-  }
+  String get maghrib => 'المغرب';
 
   @override
-  String recitationCorrectFace(Object ruleName) {
-    return 'الوجه الصحيح ($ruleName)';
-  }
+  String get isha => 'العشاء';
 
   @override
-  String get recitationRecordedTitle => 'تسميعك المسجل';
+  String get nextPray => 'الصلاة القادمة';
 
   @override
-  String get recitationGuidanceTitle =>
-      'توجيهات الذكاء الاصطناعي للمراجعة القادمة';
+  String get azkarSectionHeader => 'الأذكار';
 
   @override
-  String get recitationApproveButton =>
-      'اعتماد النتيجة وإضافة السورة للمحفوظات';
+  String get morningAzkar => 'أذكار الصباح';
 
   @override
-  String get recitationRetryButton => 'إعادة تسميع المقطع لتصحيح التنبيه';
+  String get eveningAzkar => 'أذكار المساء';
 
   @override
-  String get startRecitation => 'ابدأ التسميع';
+  String get wakingUpAzkar => 'أذكار الاستيقاظ من النوم';
+
+  @override
+  String get adhanAzkar => 'أذكار الآذان';
+
+  @override
+  String get afterPrayerAzkar => 'الأذكار بعد السلام من الصلاة';
+
+  @override
+  String get sleepingAzkar => 'أذكار النوم';
 }

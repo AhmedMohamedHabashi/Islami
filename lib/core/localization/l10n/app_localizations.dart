@@ -344,71 +344,89 @@ abstract class AppLocalizations {
   /// **'Quran'**
   String get quran;
 
-  /// No description provided for @recitationReportHelpTitle.
+  /// No description provided for @prayTimeHeader.
   ///
   /// In en, this message translates to:
-  /// **'Report Guide'**
-  String get recitationReportHelpTitle;
+  /// **'Prayer Times'**
+  String get prayTimeHeader;
 
-  /// No description provided for @recitationReportHelpMessage.
+  /// No description provided for @fajr.
   ///
   /// In en, this message translates to:
-  /// **'The report displays your recitation accuracy, correct, incorrect, and missing words, along with an analysis of flagged words and recommendations to help you review your recitation.'**
-  String get recitationReportHelpMessage;
+  /// **'Fajr'**
+  String get fajr;
 
-  /// No description provided for @recitationReportTitle.
+  /// No description provided for @dhuhr.
   ///
   /// In en, this message translates to:
-  /// **'Recitation Review Report'**
-  String get recitationReportTitle;
+  /// **'Dhuhr'**
+  String get dhuhr;
 
-  /// No description provided for @recitationPronunciationAlert.
+  /// No description provided for @asr.
   ///
   /// In en, this message translates to:
-  /// **'Pronunciation alert for: ({word})'**
-  String recitationPronunciationAlert(Object word);
+  /// **'Asr'**
+  String get asr;
 
-  /// No description provided for @recitationAyahNumber.
+  /// No description provided for @maghrib.
   ///
   /// In en, this message translates to:
-  /// **'Ayah {number}'**
-  String recitationAyahNumber(Object number);
+  /// **'Maghrib'**
+  String get maghrib;
 
-  /// No description provided for @recitationCorrectFace.
+  /// No description provided for @isha.
   ///
   /// In en, this message translates to:
-  /// **'Correct pronunciation ({ruleName})'**
-  String recitationCorrectFace(Object ruleName);
+  /// **'Isha'**
+  String get isha;
 
-  /// No description provided for @recitationRecordedTitle.
+  /// No description provided for @nextPray.
   ///
   /// In en, this message translates to:
-  /// **'Your recorded recitation'**
-  String get recitationRecordedTitle;
+  /// **'Next Pray'**
+  String get nextPray;
 
-  /// No description provided for @recitationGuidanceTitle.
+  /// No description provided for @azkarSectionHeader.
   ///
   /// In en, this message translates to:
-  /// **'AI Guidance for Your Next Review'**
-  String get recitationGuidanceTitle;
+  /// **'Azkar'**
+  String get azkarSectionHeader;
 
-  /// No description provided for @recitationApproveButton.
+  /// No description provided for @morningAzkar.
   ///
   /// In en, this message translates to:
-  /// **'Approve Result & Add Surah to Memorized'**
-  String get recitationApproveButton;
+  /// **'Morning Azkar'**
+  String get morningAzkar;
 
-  /// No description provided for @recitationRetryButton.
+  /// No description provided for @eveningAzkar.
   ///
   /// In en, this message translates to:
-  /// **'Retry Recitation to Correct the Alert'**
-  String get recitationRetryButton;
+  /// **'Evening Azkar'**
+  String get eveningAzkar;
 
-  /// No description provided for @startRecitation.
+  /// No description provided for @wakingUpAzkar.
   ///
   /// In en, this message translates to:
-  /// **'Start Recitation'**
-  String get startRecitation;
+  /// **'Waking Up Azkar'**
+  String get wakingUpAzkar;
+
+  /// No description provided for @adhanAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Azkar'**
+  String get adhanAzkar;
+
+  /// No description provided for @afterPrayerAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'After Prayer Azkar'**
+  String get afterPrayerAzkar;
+
+  /// No description provided for @sleepingAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleeping Azkar'**
+  String get sleepingAzkar;
 }
 
 class _AppLocalizationsDelegate

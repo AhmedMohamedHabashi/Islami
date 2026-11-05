@@ -6,10 +6,6 @@
     <string>يحتاج التطبيق إذن الوصول إلى موقعك الجغرافي لعرض مواعيد الصلاة بدقة بناءً على مدينتك الحالية.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>يحتاج التطبيق إذن الوصول إلى موقعك الجغرافي لعرض مواعيد الصلاة بدقة بناءً على مدينتك الحالية.</string>
-<key>NSMicrophoneUsageDescription</key>
-<string>يحتاج التطبيق إلى إذن الميكروفون لتسجيل التسميع القرآني وتحليل النطق.</string>
-<key>NSSpeechRecognitionUsageDescription</key>
-<string>يحتاج التطبيق إلى إذن التعرف على الكلام لتحويل التسميع إلى نص.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

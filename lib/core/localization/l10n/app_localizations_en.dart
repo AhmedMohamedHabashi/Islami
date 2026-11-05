@@ -145,43 +145,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quran => 'Quran';
 
   @override
-  String get recitationReportHelpTitle => 'Report Guide';
+  String get prayTimeHeader => 'Prayer Times';
 
   @override
-  String get recitationReportHelpMessage =>
-      'The report displays your recitation accuracy, correct, incorrect, and missing words, along with an analysis of flagged words and recommendations to help you review your recitation.';
+  String get fajr => 'Fajr';
 
   @override
-  String get recitationReportTitle => 'Recitation Review Report';
+  String get dhuhr => 'Dhuhr';
 
   @override
-  String recitationPronunciationAlert(Object word) {
-    return 'Pronunciation alert for: ($word)';
-  }
+  String get asr => 'Asr';
 
   @override
-  String recitationAyahNumber(Object number) {
-    return 'Ayah $number';
-  }
+  String get maghrib => 'Maghrib';
 
   @override
-  String recitationCorrectFace(Object ruleName) {
-    return 'Correct pronunciation ($ruleName)';
-  }
+  String get isha => 'Isha';
 
   @override
-  String get recitationRecordedTitle => 'Your recorded recitation';
+  String get nextPray => 'Next Pray';
 
   @override
-  String get recitationGuidanceTitle => 'AI Guidance for Your Next Review';
+  String get azkarSectionHeader => 'Azkar';
 
   @override
-  String get recitationApproveButton =>
-      'Approve Result & Add Surah to Memorized';
+  String get morningAzkar => 'Morning Azkar';
 
   @override
-  String get recitationRetryButton => 'Retry Recitation to Correct the Alert';
+  String get eveningAzkar => 'Evening Azkar';
 
   @override
-  String get startRecitation => 'Start Recitation';
+  String get wakingUpAzkar => 'Waking Up Azkar';
+
+  @override
+  String get adhanAzkar => 'Adhan Azkar';
+
+  @override
+  String get afterPrayerAzkar => 'After Prayer Azkar';
+
+  @override
+  String get sleepingAzkar => 'Sleeping Azkar';
 }

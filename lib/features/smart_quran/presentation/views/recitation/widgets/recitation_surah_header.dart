@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
-class CustomAppBar extends StatelessWidget {
-  final String title;
-  final String subtitle;
+class RecitationSurahHeader extends StatelessWidget {
+  final String surahName;
+  final String ayahInfo;
   final VoidCallback? onBack;
   final VoidCallback? onHelp;
 
-  const CustomAppBar({
+  const RecitationSurahHeader({
     super.key,
-    required this.title,
-    required this.subtitle,
+    required this.surahName,
+    required this.ayahInfo,
     this.onBack,
     this.onHelp,
   });
@@ -24,38 +24,33 @@ class CustomAppBar extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Title and subtitle in the center.
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 52.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
+          // اسم السورة ومعلومات الآيات في المنتصف.
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                surahName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.heading2.copyWith(color: AppColors.white),
+              ),
+              SizedBox(height: 2.h),
+              Flexible(
+                child: Text(
+                  ayahInfo,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.heading2.copyWith(
+                  style: AppTextStyles.body14.copyWith(
                     color: AppColors.primary,
+                    height: 1.0.h,
                   ),
                 ),
-                SizedBox(height: 2.h),
-                Text(
-                  subtitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.subtitleStyle.copyWith(
-                    color: AppColors.white.withOpacity(0.6),
-                    height: 1.0,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
 
-          // Help button on the left.
           Align(
             alignment: Alignment.centerLeft,
             child: _HeaderActionButton(
@@ -64,7 +59,6 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
 
-          // Back button on the right.
           Align(
             alignment: Alignment.centerRight,
             child: _HeaderActionButton(
