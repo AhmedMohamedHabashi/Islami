@@ -12,8 +12,4 @@ abstract class RegisterModule {
   @lazySingleton
   @Named('prayerDio')
   Dio get dio => DioFactory.createDio(ApiConstants.prayerTimesBaseUrl);
-
-  @lazySingleton
-  @Named('azkarDio')
-  Dio get azkarDio => DioFactory.createDio(ApiConstants.azkarBaseUrl);
 }
