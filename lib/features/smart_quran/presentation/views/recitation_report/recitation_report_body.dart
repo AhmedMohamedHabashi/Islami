@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/core/shared/widgets/bouttons/custom_action_button.dart';
 import 'package:islami/core/shared/widgets/header/custom_app_bar.dart';
 import 'package:islami/core/shared/widgets/dialogs/custom_info_dialog.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/themes/text_style/app_text_styles.dart';
 import 'cubit/recitation_report_cubit.dart';
 import 'widgets/recitation_report_content.dart';
 import 'widgets/report_summary_card.dart';
@@ -94,21 +96,21 @@ class RecitationReportBody extends StatelessWidget {
               size: 42.sp,
             ),
             SizedBox(height: 12.h),
+
             Text(
               state.message,
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppColors.white, fontSize: 15.sp),
+              style: AppTextStyles.body14.copyWith(color: AppColors.white),
             ),
             SizedBox(height: 16.h),
-            ElevatedButton(
+
+            CustomActionButton(
+              title: 'إعادة المحاولة',
+              icon: Icons.refresh_rounded,
+              isPrimary: true,
               onPressed: () {
                 context.read<RecitationReportCubit>().loadReport();
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                foregroundColor: AppColors.black,
-              ),
-              child: const Text('إعادة المحاولة'),
             ),
           ],
         ),

@@ -1,17 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
+import 'package:islami/core/di/injection_container.dart';
 import 'package:islami/features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_details_view.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_view.dart';
-import 'package:islami/features/radio/presentation/views/widgets/main_layout.dart';
-import 'package:islami/core/di/injection_container.dart';
 import 'package:islami/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:islami/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:islami/features/onboarding/presentation/views/splash_view.dart';
 import 'package:islami/features/radio/presentation/views/radio_view.dart';
 import 'package:islami/features/radio/presentation/views/widgets/coming_soon_page.dart';
+import 'package:islami/features/radio/presentation/views/widgets/main_layout.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation/recitation_view.dart';
+import 'package:islami/features/smart_quran/presentation/views/recitation_report/cubit/recitation_report_cubit.dart';
+import 'package:islami/features/smart_quran/presentation/views/recitation_report/recitation_report_view.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/surah_selection_view.dart';
 import 'package:islami/features/time/presentation/cubit/azkar/oazkar_cubit.dart';
 import 'package:islami/features/time/presentation/cubit/prayer_times/prayer_times_cubit.dart';
@@ -42,24 +44,16 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.quran,
-                builder: (_, _) => const ComingSoonPage(title: 'Quran'),
+                builder: (context, state) => const SurahSelectionView(),
+                routes: [
+                  GoRoute(
+                    path: RouteNames.recitationView,
+                    builder: (context, state) => const RecitationView(),
+                  ),
+                ],
               ),
             ],
           ),
-          // StatefulShellBranch(
-          //   routes: [
-          //     GoRoute(
-          //       path: RouteNames.quran,
-          //       builder: (context, state) => const SurahSelectionView(),
-          //       routes: [
-          //         GoRoute(
-          //           path: RouteNames.recitationView,
-          //           builder: (context, state) => const RecitationView(),
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -117,8 +111,11 @@ class AppRouter {
         builder: (context, state) => const RecitationView(),
       ),
       GoRoute(
-        path: RouteNames.recitationView,
-        builder: (context, state) => const RecitationView(),
+        path: RouteNames.recitationReportView,
+        builder: (context, state) => BlocProvider(
+          create: (_) => RecitationReportCubit(),
+          child: const RecitationReportView(),
+        ),
       ),
       GoRoute(
         path: RouteNames.azkar,
