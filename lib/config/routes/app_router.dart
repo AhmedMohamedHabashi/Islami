@@ -44,7 +44,13 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.quran,
-                builder: (_, _) => const ComingSoonPage(title: 'Quran'),
+                builder: (context, state) => const SurahSelectionView(),
+                routes: [
+                  GoRoute(
+                    path: RouteNames.recitationView,
+                    builder: (context, state) => const RecitationView(),
+                  ),
+                ],
               ),
             ],
           ),
