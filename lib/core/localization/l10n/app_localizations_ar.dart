@@ -175,11 +175,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'توجيهات الذكاء الاصطناعي للمراجعة القادمة';
 
   @override
-  String get recitationApproveButton =>
-      'اعتماد النتيجة وإضافة السورة للمحفوظات';
+  String get recitationApproveButton => 'اعتماد النتيجة';
 
   @override
-  String get recitationRetryButton => 'إعادة تسميع المقطع لتصحيح التنبيه';
+  String get recitationRetryButton => 'إعادة التسميع';
 
   @override
   String get startRecitation => 'ابدأ التسميع';
@@ -225,4 +224,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sleepingAzkar => 'أذكار النوم';
+
+  @override
+  String get recitationHelpTitle => 'دليل التسميع الصوتي';
+
+  @override
+  String get recitationHelpMessage =>
+      '1. اختر السورة ومجموعة الآيات التي تريد تسميعها.\n\n2. اقرأ الآيات الظاهرة أمامك وراجعها جيدًا.\n\n3. اضغط على زر الميكروفون لبدء التسميع.\n\n4. حاول قراءة الآيات بوضوح وتركيز.\n\n5. اضغط على إنهاء التسميع لعرض تقرير المراجعة ومعرفة الكلمات الصحيحة والأخطاء والكلمات الناقصة.';
+
+  @override
+  String get dialogOkButton => 'حسنًا';
+
+  @override
+  String get searchSurahHint => 'ابحث عن اسم السورة أو الجزء...';
 }

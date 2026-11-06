@@ -87,10 +87,9 @@
   "recitationCorrectFace": "الوجه الصحيح ({ruleName})",
   "recitationRecordedTitle": "تسميعك المسجل",
   "recitationGuidanceTitle": "توجيهات الذكاء الاصطناعي للمراجعة القادمة",
-  "recitationApproveButton": "اعتماد النتيجة وإضافة السورة للمحفوظات",
-  "recitationRetryButton": "إعادة تسميع المقطع لتصحيح التنبيه",
+  "recitationApproveButton": "اعتماد النتيجة",
+  "recitationRetryButton": "إعادة التسميع",
   "startRecitation": "ابدأ التسميع",
-
   "prayTimeHeader": "مواقيت الصلاة",
   "fajr": "الفجر",
   "dhuhr": "الظهر",
@@ -104,5 +103,9 @@
   "wakingUpAzkar": "أذكار الاستيقاظ من النوم",
   "adhanAzkar": "أذكار الآذان",
   "afterPrayerAzkar": "الأذكار بعد السلام من الصلاة",
-  "sleepingAzkar": "أذكار النوم"
+  "sleepingAzkar": "أذكار النوم",
+  "recitationHelpTitle": "دليل التسميع الصوتي",
+  "recitationHelpMessage": "1. اختر السورة ومجموعة الآيات التي تريد تسميعها.\n\n2. اقرأ الآيات الظاهرة أمامك وراجعها جيدًا.\n\n3. اضغط على زر الميكروفون لبدء التسميع.\n\n4. حاول قراءة الآيات بوضوح وتركيز.\n\n5. اضغط على إنهاء التسميع لعرض تقرير المراجعة ومعرفة الكلمات الصحيحة والأخطاء والكلمات الناقصة.",
+  "dialogOkButton": "حسنًا",
+  "searchSurahHint": "ابحث عن اسم السورة أو الجزء..."
 }

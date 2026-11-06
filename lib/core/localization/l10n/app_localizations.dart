@@ -395,13 +395,13 @@ abstract class AppLocalizations {
   /// No description provided for @recitationApproveButton.
   ///
   /// In en, this message translates to:
-  /// **'Approve Result & Add Surah to Memorized'**
+  /// **'Approve Result'**
   String get recitationApproveButton;
 
   /// No description provided for @recitationRetryButton.
   ///
   /// In en, this message translates to:
-  /// **'Retry Recitation to Correct the Alert'**
+  /// **'Retry Recitation'**
   String get recitationRetryButton;
 
   /// No description provided for @startRecitation.
@@ -493,6 +493,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sleeping Azkar'**
   String get sleepingAzkar;
+
+  /// No description provided for @recitationHelpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice Recitation Guide'**
+  String get recitationHelpTitle;
+
+  /// No description provided for @recitationHelpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Choose the Surah and the range of Ayahs you want to recite.\n\n2. Read the displayed Ayahs and review them carefully.\n\n3. Tap the microphone button to start recitation.\n\n4. Try to recite clearly and carefully.\n\n5. Tap Finish Recitation to view your review report and see correct, incorrect, and missing words.'**
+  String get recitationHelpMessage;
+
+  /// No description provided for @dialogOkButton.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get dialogOkButton;
+
+  /// No description provided for @searchSurahHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by Surah name or Juz...'**
+  String get searchSurahHint;
 }
 
 class _AppLocalizationsDelegate

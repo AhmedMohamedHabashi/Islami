@@ -176,11 +176,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recitationGuidanceTitle => 'AI Guidance for Your Next Review';
 
   @override
-  String get recitationApproveButton =>
-      'Approve Result & Add Surah to Memorized';
+  String get recitationApproveButton => 'Approve Result';
 
   @override
-  String get recitationRetryButton => 'Retry Recitation to Correct the Alert';
+  String get recitationRetryButton => 'Retry Recitation';
 
   @override
   String get startRecitation => 'Start Recitation';
@@ -226,4 +225,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sleepingAzkar => 'Sleeping Azkar';
+
+  @override
+  String get recitationHelpTitle => 'Voice Recitation Guide';
+
+  @override
+  String get recitationHelpMessage =>
+      '1. Choose the Surah and the range of Ayahs you want to recite.\n\n2. Read the displayed Ayahs and review them carefully.\n\n3. Tap the microphone button to start recitation.\n\n4. Try to recite clearly and carefully.\n\n5. Tap Finish Recitation to view your review report and see correct, incorrect, and missing words.';
+
+  @override
+  String get dialogOkButton => 'OK';
+
+  @override
+  String get searchSurahHint => 'Search by Surah name or Juz...';
 }

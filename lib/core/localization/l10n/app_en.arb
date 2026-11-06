@@ -87,10 +87,9 @@
   "recitationCorrectFace": "Correct pronunciation ({ruleName})",
   "recitationRecordedTitle": "Your recorded recitation",
   "recitationGuidanceTitle": "AI Guidance for Your Next Review",
-  "recitationApproveButton": "Approve Result & Add Surah to Memorized",
-  "recitationRetryButton": "Retry Recitation to Correct the Alert",
+  "recitationApproveButton": "Approve Result",
+  "recitationRetryButton": "Retry Recitation",
   "startRecitation": "Start Recitation",
-
   "prayTimeHeader": "Prayer Times",
   "fajr": "Fajr",
   "dhuhr": "Dhuhr",
@@ -104,6 +103,9 @@
   "wakingUpAzkar": "Waking Up Azkar",
   "adhanAzkar": "Adhan Azkar",
   "afterPrayerAzkar": "After Prayer Azkar",
-  "sleepingAzkar": "Sleeping Azkar"
-
+  "sleepingAzkar": "Sleeping Azkar",
+  "recitationHelpTitle": "Voice Recitation Guide",
+  "recitationHelpMessage": "1. Choose the Surah and the range of Ayahs you want to recite.\n\n2. Read the displayed Ayahs and review them carefully.\n\n3. Tap the microphone button to start recitation.\n\n4. Try to recite clearly and carefully.\n\n5. Tap Finish Recitation to view your review report and see correct, incorrect, and missing words.",
+  "dialogOkButton": "OK",
+  "searchSurahHint": "Search by Surah name or Juz..."
 }
