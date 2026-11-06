@@ -89,5 +89,20 @@
   "recitationGuidanceTitle": "توجيهات الذكاء الاصطناعي للمراجعة القادمة",
   "recitationApproveButton": "اعتماد النتيجة وإضافة السورة للمحفوظات",
   "recitationRetryButton": "إعادة تسميع المقطع لتصحيح التنبيه",
-  "startRecitation": "ابدأ التسميع"
+  "startRecitation": "ابدأ التسميع",
+
+  "prayTimeHeader": "مواقيت الصلاة",
+  "fajr": "الفجر",
+  "dhuhr": "الظهر",
+  "asr": "العصر",
+  "maghrib": "المغرب",
+  "isha": "العشاء",
+  "nextPray": "الصلاة القادمة",
+  "azkarSectionHeader": "الأذكار",
+  "morningAzkar": "أذكار الصباح",
+  "eveningAzkar": "أذكار المساء",
+  "wakingUpAzkar": "أذكار الاستيقاظ من النوم",
+  "adhanAzkar": "أذكار الآذان",
+  "afterPrayerAzkar": "الأذكار بعد السلام من الصلاة",
+  "sleepingAzkar": "أذكار النوم"
 }

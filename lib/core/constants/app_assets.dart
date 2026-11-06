@@ -16,4 +16,12 @@ class AppAssets {
   static const String timeBackground = 'assets/images/timeBackground.png';
   static const String eveningazkar = 'assets/images/eveningAzkar.png';
   static const String morningazkar = 'assets/images/morningAzkar.png';
+  static const String azkarBackground = 'assets/images/azkarBackground.png';
+  static const String azkarCard = 'assets/images/azkarCard.png';
+  static const String wakeupAzkar = 'assets/images/wakeup_azkar.png';
+  static const String azkarAzan = 'assets/images/azan_azkar.png';
+  static const String azkarAfterPrayer = 'assets/images/prayer_azkar.png';
+  static const String sleepAzkar = 'assets/images/sleep_azkar.png';
+  static const String azkardetailsBackground =
+      'assets/images/azkardetailsBackground.png';
 }

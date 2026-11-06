@@ -1,5 +1,4 @@
 class PrayerTimeFunction {
-  // دالة تحويل الـ 24 لـ 12 ساعة
   static String convertTo12HourFormat(String time24) {
     try {
       final cleanTime = time24.split(' ').first;
@@ -21,7 +20,6 @@ class PrayerTimeFunction {
     }
   }
 
-  // دالة معرفة اسم الصلاة القادمة
   static String calculateNextPrayerKey(Map<String, String> timings) {
     try {
       final now = DateTime.now();

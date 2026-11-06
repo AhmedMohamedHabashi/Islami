@@ -9,7 +9,9 @@ sealed class RouteNames {
   static const String hadith = '/hadith';
   static const String tasbih = '/tasbih';
   static const String time = '/time';
+  static const String azkar = '/azkarview';
+  static const String azkardetails = '/azkardetails';
+  static const String recitationReportView = '/recitationReport';
 
   static const String recitationView = '/recitation';
-  static const String recitationReportView = '/recitationReport';
 }

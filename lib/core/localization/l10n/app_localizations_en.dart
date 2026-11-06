@@ -184,4 +184,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get startRecitation => 'Start Recitation';
+
+  @override
+  String get prayTimeHeader => 'Prayer Times';
+
+  @override
+  String get fajr => 'Fajr';
+
+  @override
+  String get dhuhr => 'Dhuhr';
+
+  @override
+  String get asr => 'Asr';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Isha';
+
+  @override
+  String get nextPray => 'Next Pray';
+
+  @override
+  String get azkarSectionHeader => 'Azkar';
+
+  @override
+  String get morningAzkar => 'Morning Azkar';
+
+  @override
+  String get eveningAzkar => 'Evening Azkar';
+
+  @override
+  String get wakingUpAzkar => 'Waking Up Azkar';
+
+  @override
+  String get adhanAzkar => 'Adhan Azkar';
+
+  @override
+  String get afterPrayerAzkar => 'After Prayer Azkar';
+
+  @override
+  String get sleepingAzkar => 'Sleeping Azkar';
 }

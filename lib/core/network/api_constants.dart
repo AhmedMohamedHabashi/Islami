@@ -1,5 +1,7 @@
 class ApiConstants {
   static const String prayerTimesBaseUrl = 'https://api.aladhan.com/v1/';
+  static const String azkarBaseUrl = 'https://www.anaalmuslim.com/api/';
+
   static const String smartquranBaseUrl = 'https://api.alquran.cloud/v1/';
 
   static const Duration receiveTimeout = Duration(seconds: 30);
