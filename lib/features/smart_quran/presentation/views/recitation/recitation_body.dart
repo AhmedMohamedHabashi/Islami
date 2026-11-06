@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/shared/widgets/header/custom_app_bar.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/current_ayah_card.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/live_recitation_header.dart';
@@ -17,7 +19,7 @@ class RecitationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(16.w, 58.h, 16.w, 16.h),
+      padding: EdgeInsets.fromLTRB(16.w, 40.h, 16.w, 16.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -49,7 +51,7 @@ class RecitationBody extends StatelessWidget {
               // TODO: Connect Quran audio playback later.
             },
             onFinish: () {
-              // TODO: Open the recitation report later.
+              context.push(RouteNames.recitationReportView);
             },
           ),
         ],
