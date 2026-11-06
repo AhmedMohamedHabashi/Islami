@@ -425,6 +425,90 @@ abstract class AppLocalizations {
   /// No description provided for @sleepingAzkar.
   ///
   /// In en, this message translates to:
+  /// **'Start Recitation'**
+  String get startRecitation;
+
+  /// No description provided for @prayTimeHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get prayTimeHeader;
+
+  /// No description provided for @fajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr'**
+  String get fajr;
+
+  /// No description provided for @dhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhuhr'**
+  String get dhuhr;
+
+  /// No description provided for @asr.
+  ///
+  /// In en, this message translates to:
+  /// **'Asr'**
+  String get asr;
+
+  /// No description provided for @maghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib'**
+  String get maghrib;
+
+  /// No description provided for @isha.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha'**
+  String get isha;
+
+  /// No description provided for @nextPray.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Pray'**
+  String get nextPray;
+
+  /// No description provided for @azkarSectionHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Azkar'**
+  String get azkarSectionHeader;
+
+  /// No description provided for @morningAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning Azkar'**
+  String get morningAzkar;
+
+  /// No description provided for @eveningAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Evening Azkar'**
+  String get eveningAzkar;
+
+  /// No description provided for @wakingUpAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Waking Up Azkar'**
+  String get wakingUpAzkar;
+
+  /// No description provided for @adhanAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Azkar'**
+  String get adhanAzkar;
+
+  /// No description provided for @afterPrayerAzkar.
+  ///
+  /// In en, this message translates to:
+  /// **'After Prayer Azkar'**
+  String get afterPrayerAzkar;
+
+  /// No description provided for @sleepingAzkar.
+  ///
+  /// In en, this message translates to:
   /// **'Sleeping Azkar'**
   String get sleepingAzkar;
 }

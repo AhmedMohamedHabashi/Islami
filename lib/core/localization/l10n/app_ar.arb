@@ -79,9 +79,19 @@
   "tasbih": "التسبيح",
   "hadith": "الحديث",
   "quran": "القرآن",
+  "recitationReportHelpTitle": "دليل التقرير",
+  "recitationReportHelpMessage": "يعرض التقرير نسبة الإتقان، والكلمات الصحيحة والخاطئة والناقصة، مع تحليل مواضع التنبيه وتوصيات تساعدك على مراجعة التلاوة.",
+  "recitationReportTitle": "تقرير مراجعة التسميع",
+  "recitationPronunciationAlert": "تنبيه النطق في كلمة: ({word})",
+  "recitationAyahNumber": "الآية {number}",
+  "recitationCorrectFace": "الوجه الصحيح ({ruleName})",
+  "recitationRecordedTitle": "تسميعك المسجل",
+  "recitationGuidanceTitle": "توجيهات الذكاء الاصطناعي للمراجعة القادمة",
+  "recitationApproveButton": "اعتماد النتيجة وإضافة السورة للمحفوظات",
+  "recitationRetryButton": "إعادة تسميع المقطع لتصحيح التنبيه",
+  "startRecitation": "ابدأ التسميع",
 
-
-"prayTimeHeader": "مواقيت الصلاة",
+  "prayTimeHeader": "مواقيت الصلاة",
   "fajr": "الفجر",
   "dhuhr": "الظهر",
   "asr": "العصر",
@@ -95,5 +105,4 @@
   "adhanAzkar": "أذكار الآذان",
   "afterPrayerAzkar": "الأذكار بعد السلام من الصلاة",
   "sleepingAzkar": "أذكار النوم"
-
 }
