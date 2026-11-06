@@ -38,28 +38,28 @@ class AppRouter {
         builder: (context, state, navigationShell) =>
             MainLayout(navigationShell: navigationShell),
         branches: [
-          // StatefulShellBranch(
-          //   routes: [
-          //     GoRoute(
-          //       path: RouteNames.quran,
-          //       builder: (_, _) => const ComingSoonPage(title: 'Quran'),
-          //     ),
-          //   ],
-          // ),
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: RouteNames.quran,
-                builder: (context, state) => const SurahSelectionView(),
-                routes: [
-                  GoRoute(
-                    path: RouteNames.recitationView,
-                    builder: (context, state) => const RecitationView(),
-                  ),
-                ],
+                builder: (_, _) => const ComingSoonPage(title: 'Quran'),
               ),
             ],
           ),
+          // StatefulShellBranch(
+          //   routes: [
+          //     GoRoute(
+          //       path: RouteNames.quran,
+          //       builder: (context, state) => const SurahSelectionView(),
+          //       routes: [
+          //         GoRoute(
+          //           path: RouteNames.recitationView,
+          //           builder: (context, state) => const RecitationView(),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -111,6 +111,10 @@ class AppRouter {
       GoRoute(
         path: RouteNames.surahSelectionView,
         builder: (context, state) => const SurahSelectionView(),
+      ),
+      GoRoute(
+        path: RouteNames.recitationView,
+        builder: (context, state) => const RecitationView(),
       ),
       GoRoute(
         path: RouteNames.recitationView,

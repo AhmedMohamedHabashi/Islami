@@ -13,5 +13,4 @@ sealed class RouteNames {
   static const String azkardetails = '/azkardetails';
 
   static const String recitationView = '/recitation';
-  static const String recitationReportView = '/recitationReport';
 }
