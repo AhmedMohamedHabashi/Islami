@@ -79,15 +79,21 @@
   "tasbih": "Tasbih",
   "hadith": "Hadith",
   "quran": "Quran",
-  "recitationReportHelpTitle": "Report Guide",
-  "recitationReportHelpMessage": "The report displays your recitation accuracy, correct, incorrect, and missing words, along with an analysis of flagged words and recommendations to help you review your recitation.",
-  "recitationReportTitle": "Recitation Review Report",
-  "recitationPronunciationAlert": "Pronunciation alert for: ({word})",
-  "recitationAyahNumber": "Ayah {number}",
-  "recitationCorrectFace": "Correct pronunciation ({ruleName})",
-  "recitationRecordedTitle": "Your recorded recitation",
-  "recitationGuidanceTitle": "AI Guidance for Your Next Review",
-  "recitationApproveButton": "Approve Result & Add Surah to Memorized",
-  "recitationRetryButton": "Retry Recitation to Correct the Alert",
-  "startRecitation": "Start Recitation"
+
+
+"prayTimeHeader": "Prayer Times",
+  "fajr": "Fajr",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "nextPray": "Next Pray",
+  "azkarSectionHeader": "Azkar",
+  "morningAzkar": "Morning Azkar",
+  "eveningAzkar": "Evening Azkar",
+  "wakingUpAzkar": "Waking Up Azkar",
+  "adhanAzkar": "Adhan Azkar",
+  "afterPrayerAzkar": "After Prayer Azkar",
+  "sleepingAzkar": "Sleeping Azkar"
+
 }

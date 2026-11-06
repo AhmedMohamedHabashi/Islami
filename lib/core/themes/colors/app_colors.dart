@@ -19,9 +19,4 @@ class AppColors {
   static const ayahCardGradientTop = RawColors.ayahCardGradientTop;
   static const ayahCardGradientMiddle = RawColors.ayahCardGradientMiddle;
   static const ayahCardGradientBottom = RawColors.ayahCardGradientBottom;
-
-  // Smart Quran - Recitation Word Status Colors
-  static const correctWord = RawColors.correctWord;
-  static const incorrectWord = RawColors.incorrectWord;
-  static const missingWord = RawColors.missingWord;
 }

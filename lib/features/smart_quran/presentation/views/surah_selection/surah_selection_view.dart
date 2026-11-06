@@ -58,9 +58,7 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
                   onStartAyahChanged: cubit.changeStartAyah,
                   onEndAyahChanged: cubit.changeEndAyah,
                   onModeChanged: cubit.changeMode,
-                  onStartRecitation: () {
-                    context.push(RouteNames.recitationView);
-                  },
+                  onStartRecitation: _startRecitation,
                 ),
               ),
             ),

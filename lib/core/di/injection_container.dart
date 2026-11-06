@@ -10,6 +10,5 @@ final sl = GetIt.instance;
   asExtension: false,
 )
 Future<void> init() async {
-  // الـ injectable هيتولى تسجيل كل حاجة أوتوماتيك بما فيها الـ Dio والموديولز
   await $initGetIt(sl);
 }
