@@ -47,20 +47,30 @@ class CustomActionButton extends StatelessWidget {
           ? ElevatedButton.icon(
               onPressed: isEnabled ? onPressed : null,
               icon: Icon(icon, size: 20.sp),
-              label: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.body16.copyWith(color: AppColors.black),
+              label: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  softWrap: false,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.body16.copyWith(color: AppColors.black),
+                ),
               ),
               style: buttonStyle,
             )
           : OutlinedButton.icon(
               onPressed: isEnabled ? onPressed : null,
               icon: Icon(icon, size: 20.sp),
-              label: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.body16,
+              label: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  softWrap: false,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.body16,
+                ),
               ),
               style: buttonStyle,
             ),

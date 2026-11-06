@@ -16,7 +16,9 @@ class RecitationMicrophoneButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonColor = isRecording ? Colors.redAccent : AppColors.primary;
+    final buttonColor = isRecording
+        ? AppColors.incorrectWord
+        : AppColors.primary;
 
     return Semantics(
       button: true,

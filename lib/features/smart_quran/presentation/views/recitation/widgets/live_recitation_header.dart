@@ -17,7 +17,7 @@ class LiveRecitationHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(14.w),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: AppColors.ayahCardGradientBottom,
         borderRadius: BorderRadius.circular(16.r),
@@ -35,11 +35,15 @@ class LiveRecitationHeader extends StatelessWidget {
                   width: 8.w,
                   height: 8.w,
                   decoration: BoxDecoration(
-                    color: isRecording ? Colors.redAccent : AppColors.primary,
+                    color: isRecording
+                        ? AppColors.incorrectWord
+                        : AppColors.primary,
                     shape: BoxShape.circle,
                   ),
                 ),
+
                 SizedBox(width: 8.w),
+
                 Flexible(
                   child: Text(
                     'تسميع صوتي مباشر',
@@ -57,7 +61,6 @@ class LiveRecitationHeader extends StatelessWidget {
 
           SizedBox(width: 12.w),
 
-          // كونتينر الوقت الداخلي: نفس التصميم السابق.
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             decoration: BoxDecoration(
@@ -76,7 +79,9 @@ class LiveRecitationHeader extends StatelessWidget {
                   color: AppColors.primary,
                   size: 16.sp,
                 ),
+
                 SizedBox(width: 6.w),
+
                 Text(
                   duration,
                   style: AppTextStyles.body14.copyWith(

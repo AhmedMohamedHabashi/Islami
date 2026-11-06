@@ -9,6 +9,9 @@ class AppTextStyles {
   static TextStyle get heading2 =>
       TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold);
 
+  static TextStyle get heading3 =>
+      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold);
+
   static TextStyle get body16 =>
       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500);
 

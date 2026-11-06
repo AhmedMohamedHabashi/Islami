@@ -26,7 +26,9 @@ class RecitationControls extends StatelessWidget {
             isEnabled: isEnabled,
           ),
         ),
+
         SizedBox(width: 12.w),
+
         Expanded(
           child: CustomActionButton(
             title: 'إنهاء التسميع',

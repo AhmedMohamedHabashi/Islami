@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/current_ayah_card.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/live_recitation_header.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/recitation_controls.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/recitation_microphone_button.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/recitation_status_indicator.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/recitation_surah_header.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation/widgets/recording_dynamic_island.dart';
+import 'package:islami/core/utils/helpers/recitation_help_dialog.dart';
+import 'recitation_body.dart';
+import 'widgets/recording_dynamic_island.dart';
 
 class RecitationView extends StatelessWidget {
   const RecitationView({super.key});
 
   static void _onMicrophoneTap() {
     // TODO: Connect to RecitationCubit later.
+  }
+  static void _onListen() {
+    // TODO: Connect Quran audio playback later.
   }
 
   @override
@@ -24,55 +24,20 @@ class RecitationView extends StatelessWidget {
       backgroundColor: AppColors.primaryBackground,
       body: Stack(
         children: [
+          // Main recitation content.
           SafeArea(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(16.w, 58.h, 16.w, 16.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const RecitationSurahHeader(
-                    surahName: 'سورة الكهف',
-                    ayahInfo: 'الآيات 1 - 10',
-                  ),
-                  SizedBox(height: 15.h),
-
-                  const LiveRecitationHeader(duration: '00:00'),
-                  SizedBox(height: 15.h),
-
-                  const CurrentAyahCard(
-                    surahName: 'سورة الكهف',
-                    ayahNumber: 1,
-                    ayahText:
-                        'الْحَمْدُ لِلَّهِ الَّذِي أَنزَلَ عَلَىٰ عَبْدِهِ الْكِتَابَ',
-                    highlightedWord: 'أَنزَلَ',
-                  ),
-                  SizedBox(height: 15.h),
-
-                  const RecitationStatusIndicator(
-                    statusText: 'استعد للتسميع عند الضغط على الميكروفون',
-                  ),
-                  SizedBox(height: 15.h),
-
-                  Center(
-                    child: RecitationMicrophoneButton(onTap: _onMicrophoneTap),
-                  ),
-                  SizedBox(height: 15.h),
-
-                  RecitationControls(
-                    onListen: () {
-                      // TODO: Connect Quran audio playback later.
-                    },
-                    onFinish: () {
-                      // TODO: Open the recitation report later.
-                    },
-                  ),
-                ],
-              ),
+            child: RecitationBody(
+              onHelp: () => RecitationHelpDialog.show(context),
+              onMicrophoneTap: _onMicrophoneTap,
+              onListen: _onListen,
+              onFinish: () {
+                context.push(RouteNames.recitationReportView);
+              },
             ),
           ),
 
           Positioned(
-            top: topInset + 2.h,
+            top: topInset + 2,
             left: 0,
             right: 0,
             child: const Center(child: RecordingDynamicIsland()),

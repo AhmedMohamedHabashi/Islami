@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/core/shared/widgets/bouttons/custom_action_button.dart';
 import 'package:islami/core/shared/widgets/header/islami_header.dart';
-import 'package:islami/core/themes/colors/app_colors.dart';
-import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/shared/widgets/text_fields/custom_search_field.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/ayah_range_selector.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_card.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_continue_card.dart';
@@ -45,6 +46,7 @@ class SurahSelectionBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
@@ -56,7 +58,7 @@ class SurahSelectionBody extends StatelessWidget {
           const SurahContinueCard(),
           SizedBox(height: 12.h),
 
-          _buildSearchField(),
+          _buildSearchField(l10n.searchSurahHint),
           SizedBox(height: 12.h),
 
           SurahFilters(
@@ -85,18 +87,11 @@ class SurahSelectionBody extends StatelessWidget {
 
           SizedBox(height: 20.h),
 
-          ElevatedButton.icon(
+          CustomActionButton(
+            title: l10n.startRecitation,
+            isPrimary: true,
+            icon: Icons.mic_rounded,
             onPressed: onStartRecitation,
-            icon: const Icon(Icons.mic_rounded),
-            label: const Text('ابدأ التسميع'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
-              foregroundColor: AppColors.white,
-              minimumSize: Size(double.infinity, 48.h),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-            ),
           ),
 
           SizedBox(height: 20.h),
@@ -105,41 +100,11 @@ class SurahSelectionBody extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchField() {
-    return TextField(
+  Widget _buildSearchField(String hintText) {
+    return CustomSearchField(
       controller: searchController,
       onChanged: onSearchChanged,
-      style: const TextStyle(color: AppColors.white),
-      decoration: InputDecoration(
-        hintText: 'ابحث عن اسم السورة أو الجزء...',
-        hintStyle: AppTextStyles.regular.copyWith(
-          color: AppColors.white.withValues(alpha: 0.45),
-        ),
-        prefixIcon: Icon(
-          Icons.search_rounded,
-          color: AppColors.primary,
-          size: 20.sp,
-        ),
-        filled: true,
-        fillColor: AppColors.black.withValues(alpha: 0.22),
-        contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: BorderSide(
-            color: AppColors.white.withValues(alpha: 0.15),
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: BorderSide(
-            color: AppColors.white.withValues(alpha: 0.15),
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(color: AppColors.primary),
-        ),
-      ),
+      hintText: hintText,
     );
   }
 }
