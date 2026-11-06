@@ -183,4 +183,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get startRecitation => 'ابدأ التسميع';
+
+  @override
+  String get prayTimeHeader => 'مواقيت الصلاة';
+
+  @override
+  String get fajr => 'الفجر';
+
+  @override
+  String get dhuhr => 'الظهر';
+
+  @override
+  String get asr => 'العصر';
+
+  @override
+  String get maghrib => 'المغرب';
+
+  @override
+  String get isha => 'العشاء';
+
+  @override
+  String get nextPray => 'الصلاة القادمة';
+
+  @override
+  String get azkarSectionHeader => 'الأذكار';
+
+  @override
+  String get morningAzkar => 'أذكار الصباح';
+
+  @override
+  String get eveningAzkar => 'أذكار المساء';
+
+  @override
+  String get wakingUpAzkar => 'أذكار الاستيقاظ من النوم';
+
+  @override
+  String get adhanAzkar => 'أذكار الآذان';
+
+  @override
+  String get afterPrayerAzkar => 'الأذكار بعد السلام من الصلاة';
+
+  @override
+  String get sleepingAzkar => 'أذكار النوم';
 }

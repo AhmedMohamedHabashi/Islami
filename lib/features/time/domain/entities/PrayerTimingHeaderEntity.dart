@@ -1,15 +1,17 @@
 class PrayerTimingHeaderEntity {
-  final String gregorianDate;
-  final String hijriDate;
-  final String dayName;
+  final DateTime gregorianDate;
+  final int hijriDay;
+  final int hijriMonth;
+  final int hijriYear;
   final String nextPrayTime;
   final bool isMuted;
 
-  const PrayerTimingHeaderEntity({
+  PrayerTimingHeaderEntity({
     required this.gregorianDate,
-    required this.hijriDate,
-    required this.dayName,
+    required this.hijriDay,
+    required this.hijriMonth,
+    required this.hijriYear,
     required this.nextPrayTime,
-    this.isMuted = false,
+    required this.isMuted,
   });
 }
