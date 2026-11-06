@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/helpers/localization_extension.dart';
 import 'package:islami/features/time/domain/entities/prayer_time_entity.dart';
 
 class PrayerTimesListWidget extends StatefulWidget {
@@ -70,10 +71,24 @@ class _PrayerTimesListWidgetState extends State<PrayerTimesListWidget> {
           final bool isNext = prayer.isNext;
 
           final timeParts = prayer.time.split(' ');
-          final String timeOnly = timeParts.isNotEmpty
-              ? timeParts[0]
-              : prayer.time;
-          final String periodOnly = timeParts.length > 1 ? timeParts[1] : '';
+
+          final translatedTime = context.formatTime(
+            DateTime(
+              2024,
+              1,
+              1,
+              int.parse(timeParts[0].split(':')[0]),
+              int.parse(timeParts[0].split(':')[1]),
+            ),
+          );
+          final translatedParts = translatedTime.split(' ');
+
+          final String timeOnly = translatedParts.isNotEmpty
+              ? translatedParts[0]
+              : translatedTime;
+          final String periodOnly = translatedParts.length > 1
+              ? translatedParts[1]
+              : '';
 
           return Align(
             alignment: Alignment.center,
@@ -98,7 +113,7 @@ class _PrayerTimesListWidgetState extends State<PrayerTimesListWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    prayer.name,
+                    context.translatePrayerName(prayer.name),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.body14.copyWith(
                       color: AppColors.white,

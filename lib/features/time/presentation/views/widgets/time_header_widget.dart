@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/helpers/localization_extension.dart';
 import 'package:islami/features/time/presentation/cubit/prayer_times/prayer_times_cubit.dart';
 import 'package:islami/features/time/presentation/cubit/prayer_times/prayer_times_state.dart';
 import 'package:islami/features/time/presentation/views/widgets/header_curve_clipper.dart';
@@ -18,6 +21,7 @@ class TimeHeaderWidget extends StatefulWidget {
 class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
       builder: (context, state) {
         if (state is PrayerTimesLoading) {
@@ -34,7 +38,7 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
               ),
             ),
             child: const Center(
-              child: CircularProgressIndicator(color: AppColors.white),
+              child: CircularProgressIndicator(color: AppColors.primary),
             ),
           );
         }
@@ -61,10 +65,28 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
           return const SizedBox.shrink();
         }
 
-        final String gregorianDate = state.headerData.gregorianDate;
-        final String hijriDate = state.headerData.hijriDate;
-        final String dayName = state.headerData.dayName;
-        final String nextPrayerTime = state.headerData.nextPrayTime;
+        final String formattedGregorianDate = context.formatGregorianDate(
+          state.headerData.gregorianDate,
+        );
+        final String dayName = context.formatDayName(
+          state.headerData.gregorianDate,
+        );
+        final String formattedHijriDate = context.formatHijriDate(
+          state.headerData.hijriDay,
+          state.headerData.hijriMonth,
+          state.headerData.hijriYear,
+        );
+
+        final String rawNextPrayerTime = state.headerData.nextPrayTime;
+        DateTime parsedNextTime;
+        try {
+          parsedNextTime = DateFormat('hh:mm a').parse(rawNextPrayerTime);
+        } catch (e) {
+          parsedNextTime = DateTime(2024, 1, 1, 12, 0);
+        }
+        final String translatedNextPrayerTime = context.formatTime(
+          parsedNextTime,
+        );
 
         final prayerCubit = context.read<PrayerTimesCubit>();
         final bool isMuted = prayerCubit.isMuted;
@@ -85,26 +107,31 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
               Positioned(
                 top: 12.h,
                 left: 20.w,
-                child: Text(
-                  gregorianDate,
-                  textDirection: TextDirection.ltr,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.body14.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    formattedGregorianDate,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.body14.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
+              // التاريخ الهجري
               Positioned(
                 top: 12.h,
                 right: 20.w,
-                child: Text(
-                  hijriDate,
-                  textDirection: TextDirection.ltr,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.body14.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    formattedHijriDate,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.body14.copyWith(
+                      color: AppColors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -125,7 +152,7 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                     children: [
                       SizedBox(height: 10.h),
                       Text(
-                        'Pray Time',
+                        l10n.prayTimeHeader,
                         style: AppTextStyles.body14.copyWith(
                           color: AppColors.black.withOpacity(0.7),
                           fontWeight: FontWeight.bold,
@@ -157,14 +184,15 @@ class _TimeHeaderWidgetState extends State<TimeHeaderWidget> {
                           children: [
                             Center(
                               child: RichText(
+                                textDirection: Directionality.of(context),
                                 text: TextSpan(
-                                  text: 'Next Pray - ',
+                                  text: '${l10n.nextPray} - ',
                                   style: AppTextStyles.body16.copyWith(
                                     color: AppColors.black,
                                   ),
                                   children: [
                                     TextSpan(
-                                      text: nextPrayerTime,
+                                      text: translatedNextPrayerTime,
                                       style: AppTextStyles.body16.copyWith(
                                         color: AppColors.black,
                                         fontWeight: FontWeight.bold,
