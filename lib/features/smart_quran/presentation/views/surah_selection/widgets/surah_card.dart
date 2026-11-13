@@ -2,38 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/features/smart_quran/domain/entities/surah.dart';
 
 class SurahCard extends StatelessWidget {
-  final Map<String, dynamic> surah;
+  final Surah surah;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  const SurahCard({super.key, required this.surah});
+  const SurahCard({
+    super.key,
+    required this.surah,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final progress = surah['progress'] as int;
-    final String surahName = surah['name'] as String;
-    final String surahType = surah['type'] as String;
-    final String verses = surah['verses'].toString();
+
+    final int progress = surah.progress;
+    final String surahName = surah.name;
+    final String surahType = surah.typeArabic;
+    final String verses = surah.numberOfAyahs.toString();
 
     return Padding(
       padding: EdgeInsets.only(bottom: 10.h),
       child: InkWell(
         borderRadius: BorderRadius.circular(12.r),
-        onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(l10n.selectedSurah(surahName)),
-              duration: const Duration(seconds: 1),
-            ),
-          );
-        },
+        onTap: onTap,
         child: Container(
           padding: EdgeInsets.all(12.dg),
           decoration: BoxDecoration(
-            color: AppColors.black.withValues(alpha: 0.22),
+            color: isSelected
+                ? AppColors.primary.withValues(alpha: 0.10)
+                : AppColors.black.withValues(alpha: 0.22),
             borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(color: AppColors.white.withValues(alpha: 0.13)),
+            border: Border.all(
+              color: isSelected
+                  ? AppColors.primary
+                  : AppColors.white.withValues(alpha: 0.13),
+            ),
           ),
           child: Row(
             children: [
@@ -49,7 +57,7 @@ class SurahCard extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  '${surah['number']}',
+                  '${surah.number}',
                   style: const TextStyle(
                     color: AppColors.primary,
                     fontWeight: FontWeight.bold,
@@ -98,12 +106,19 @@ class SurahCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    progress > 0 ? '$progress٪' : l10n.notStartedYet,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.labelSmall?.copyWith(color: AppColors.primary),
-                  ),
+                  if (isSelected)
+                    Icon(
+                      Icons.check_circle_rounded,
+                      color: AppColors.primary,
+                      size: 20.sp,
+                    )
+                  else
+                    Text(
+                      progress > 0 ? '$progress٪' : l10n.notStartedYet,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    ),
                   SizedBox(height: 5.h),
                   Icon(
                     Icons.chevron_left_rounded,

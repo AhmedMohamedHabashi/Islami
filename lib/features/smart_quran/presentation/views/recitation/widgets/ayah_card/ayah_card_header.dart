@@ -5,14 +5,14 @@ import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
 class AyahCardHeader extends StatelessWidget {
   final String? surahName;
+  final bool showBasmala;
 
-  const AyahCardHeader({super.key, this.surahName});
+  const AyahCardHeader({super.key, this.surahName, this.showBasmala = true});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Top decoration.
         Padding(
           padding: EdgeInsets.only(top: 12.h),
           child: Row(
@@ -33,7 +33,6 @@ class AyahCardHeader extends StatelessWidget {
 
         SizedBox(height: 5.h),
 
-        // Surah name.
         Text(
           surahName ?? 'سورة',
           textAlign: TextAlign.center,
@@ -43,19 +42,18 @@ class AyahCardHeader extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 5.h),
-
-        // Basmala.
-        Text(
-          'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.rtl,
-          style: AppTextStyles.body20.copyWith(
-            color: AppColors.primary,
-            fontWeight: FontWeight.w600,
-            height: 1.8,
+        if (showBasmala) ...[
+          SizedBox(height: 5.h),
+          Text(
+            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+            textAlign: TextAlign.center,
+            textDirection: TextDirection.rtl,
+            style: AppTextStyles.body20.copyWith(
+              color: AppColors.primary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
+        ],
       ],
     );
   }

@@ -7,7 +7,7 @@ import 'package:islami/core/shared/widgets/app_bar/custom_app_bar.dart';
 import 'package:islami/core/shared/widgets/dialogs/custom_info_dialog.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
-import 'cubit/recitation_report_cubit.dart';
+import '../../cubit/recitation_report/recitation_report_cubit.dart';
 import 'widgets/recitation_report_content.dart';
 import 'widgets/report_summary_card.dart';
 

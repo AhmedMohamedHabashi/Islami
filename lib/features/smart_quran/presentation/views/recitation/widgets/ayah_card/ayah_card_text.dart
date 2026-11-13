@@ -12,10 +12,13 @@ class AyahCardText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.start,
       textDirection: TextDirection.rtl,
       text: TextSpan(
-        style: AppTextStyles.body24.copyWith(color: AppColors.primary),
+        style: AppTextStyles.body24.copyWith(
+          color: AppColors.primary,
+          height: 1.7.h,
+        ),
         children: _buildAyahSpans(),
       ),
     );

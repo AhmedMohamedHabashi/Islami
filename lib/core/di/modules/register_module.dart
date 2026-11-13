@@ -16,4 +16,8 @@ abstract class RegisterModule {
   @lazySingleton
   @Named('azkarDio')
   Dio get azkarDio => DioFactory.createDio(ApiConstants.azkarBaseUrl);
+
+  @lazySingleton
+  @Named('smartQuranDio')
+  Dio get smartQuranDio => DioFactory.createDio(ApiConstants.smartquranBaseUrl);
 }

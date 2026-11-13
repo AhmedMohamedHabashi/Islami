@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+
 import 'ayah_counter.dart';
 import 'recitation_mode_selector.dart';
 
 class AyahRangeSelector extends StatelessWidget {
   final int startAyah;
   final int endAyah;
+  final int maxAyah;
   final String selectedMode;
 
   final ValueChanged<int> onStartAyahChanged;
@@ -18,6 +20,7 @@ class AyahRangeSelector extends StatelessWidget {
     super.key,
     required this.startAyah,
     required this.endAyah,
+    required this.maxAyah,
     required this.selectedMode,
     required this.onStartAyahChanged,
     required this.onEndAyahChanged,
@@ -52,6 +55,7 @@ class AyahRangeSelector extends StatelessWidget {
                 child: AyahCounter(
                   title: l10n.fromAyah,
                   value: startAyah,
+                  maxValue: maxAyah,
                   onChanged: onStartAyahChanged,
                 ),
               ),
@@ -60,6 +64,7 @@ class AyahRangeSelector extends StatelessWidget {
                 child: AyahCounter(
                   title: l10n.toAyah,
                   value: endAyah,
+                  maxValue: maxAyah,
                   onChanged: onEndAyahChanged,
                 ),
               ),

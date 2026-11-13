@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/shared/widgets/app_bar/custom_app_bar.dart';
+import 'package:islami/features/smart_quran/domain/entities/ayah.dart';
 
 import 'widgets/current_ayah_card.dart';
 import 'widgets/live_recitation_header.dart';
@@ -19,12 +20,12 @@ class RecitationBody extends StatelessWidget {
   final String surahName;
   final String ayahInfo;
   final String duration;
-  final String ayahText;
   final String statusText;
 
-  final int ayahNumber;
+  final List<Ayah> ayahs;
 
   final String? highlightedWord;
+  final bool showBasmala;
 
   final bool isRecording;
   final bool isLoading;
@@ -35,19 +36,18 @@ class RecitationBody extends StatelessWidget {
     required this.onMicrophoneTap,
     required this.onListen,
     required this.onFinish,
+    required this.ayahs,
     this.onBack,
     this.onHelp,
     this.surahName = 'سورة الكهف',
     this.ayahInfo = 'الآيات 1 - 10',
     this.duration = '00:00',
-    this.ayahText =
-        'الْحَمْدُ لِلَّهِ الَّذِي أَنزَلَ عَلَىٰ عَبْدِهِ الْكِتَابَ',
-    this.ayahNumber = 1,
-    this.highlightedWord = 'أَنزَلَ',
+    this.highlightedWord,
     this.statusText = 'استعد للتسميع عند الضغط على الميكروفون',
     this.isRecording = false,
     this.isLoading = false,
     this.isEnabled = true,
+    this.showBasmala = true,
   });
 
   @override
@@ -72,20 +72,19 @@ class RecitationBody extends StatelessWidget {
 
           CurrentAyahCard(
             surahName: surahName,
-            ayahNumber: ayahNumber,
-            ayahText: ayahText,
+            ayahs: ayahs,
             highlightedWord: highlightedWord,
+            showBasmala: showBasmala,
           ),
           SizedBox(height: 15.h),
 
-          // Recitation status.
           RecitationStatusIndicator(
             statusText: statusText,
             isLoading: isLoading,
           ),
+
           SizedBox(height: 15.h),
 
-          // Microphone button.
           Center(
             child: RecitationMicrophoneButton(
               onTap: onMicrophoneTap,

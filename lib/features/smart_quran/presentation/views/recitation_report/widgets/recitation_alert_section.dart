@@ -5,7 +5,7 @@ import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation_report/widgets/recitation_audio_card.dart';
 import '../../../../domain/entities/recitation_report.dart';
-import '../cubit/recitation_report_cubit.dart';
+import '../../../cubit/recitation_report/recitation_report_cubit.dart';
 
 class RecitationAlertSection extends StatelessWidget {
   final RecitationWord word;

@@ -11,8 +11,9 @@ import 'package:islami/features/onboarding/presentation/views/splash_view.dart';
 import 'package:islami/features/radio/presentation/views/radio_view.dart';
 import 'package:islami/features/radio/presentation/views/widgets/coming_soon_page.dart';
 import 'package:islami/features/radio/presentation/views/widgets/main_layout.dart';
+import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation/recitation_view.dart';
-import 'package:islami/features/smart_quran/presentation/views/recitation_report/cubit/recitation_report_cubit.dart';
+import 'package:islami/features/smart_quran/presentation/cubit/recitation_report/recitation_report_cubit.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation_report/recitation_report_view.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/surah_selection_view.dart';
 import 'package:islami/features/time/presentation/cubit/azkar/oazkar_cubit.dart';
@@ -47,8 +48,12 @@ class AppRouter {
                 builder: (context, state) => const SurahSelectionView(),
                 routes: [
                   GoRoute(
-                    path: RouteNames.recitationView,
-                    builder: (context, state) => const RecitationView(),
+                    path: RouteNames.recitationView.replaceFirst('/', ''),
+                    builder: (context, state) {
+                      return RecitationView(
+                        args: state.extra as RecitationArgs,
+                      );
+                    },
                   ),
                 ],
               ),
@@ -108,7 +113,15 @@ class AppRouter {
       ),
       GoRoute(
         path: RouteNames.recitationView,
-        builder: (context, state) => const RecitationView(),
+        redirect: (context, state) {
+          if (state.extra is! RecitationArgs) {
+            return RouteNames.quran;
+          }
+          return null;
+        },
+        builder: (context, state) {
+          return RecitationView(args: state.extra as RecitationArgs);
+        },
       ),
       GoRoute(
         path: RouteNames.recitationReportView,

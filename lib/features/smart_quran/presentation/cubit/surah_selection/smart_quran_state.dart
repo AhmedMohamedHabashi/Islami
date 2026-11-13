@@ -11,13 +11,29 @@ final class SmartQuranInitial extends SmartQuranState {
   const SmartQuranInitial();
 }
 
+final class SmartQuranLoading extends SmartQuranState {
+  const SmartQuranLoading();
+}
+
+final class SmartQuranError extends SmartQuranState {
+  final String message;
+
+  const SmartQuranError(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
 final class SmartQuranLoaded extends SmartQuranState {
-  final List<Map<String, dynamic>> surahs;
+  final List<Surah> surahs;
   final String searchQuery;
   final String selectedFilter;
   final String selectedMode;
   final int startAyah;
   final int endAyah;
+
+  // The Surah selected by the user.
+  final Surah? selectedSurah;
 
   const SmartQuranLoaded({
     required this.surahs,
@@ -26,15 +42,20 @@ final class SmartQuranLoaded extends SmartQuranState {
     required this.selectedMode,
     required this.startAyah,
     required this.endAyah,
+    this.selectedSurah,
   });
 
+  // Maximum Ayah number for the selected Surah.
+  int? get maxAyah => selectedSurah?.numberOfAyahs;
+
   SmartQuranLoaded copyWith({
-    List<Map<String, dynamic>>? surahs,
+    List<Surah>? surahs,
     String? searchQuery,
     String? selectedFilter,
     String? selectedMode,
     int? startAyah,
     int? endAyah,
+    Surah? selectedSurah,
   }) {
     return SmartQuranLoaded(
       surahs: surahs ?? this.surahs,
@@ -43,20 +64,19 @@ final class SmartQuranLoaded extends SmartQuranState {
       selectedMode: selectedMode ?? this.selectedMode,
       startAyah: startAyah ?? this.startAyah,
       endAyah: endAyah ?? this.endAyah,
+      selectedSurah: selectedSurah ?? this.selectedSurah,
     );
   }
 
-  List<Map<String, dynamic>> get filteredSurahs {
+  List<Surah> get filteredSurahs {
     return surahs.where((surah) {
-      final name = surah['name'] as String;
-
-      final matchesSearch = name.contains(searchQuery);
+      final matchesSearch = surah.name.contains(searchQuery);
 
       final matchesFilter = switch (selectedFilter) {
-        'المحفوظة' => surah['saved'] == true,
+        'المحفوظة' => surah.isSaved,
         'المقترحة' => true,
-        'المكية' => surah['type'] == 'مكية',
-        'المدنية' => surah['type'] == 'مدنية',
+        'المكية' => surah.revelationType == 'Meccan',
+        'المدنية' => surah.revelationType == 'Medinan',
         _ => true,
       };
 
@@ -72,5 +92,6 @@ final class SmartQuranLoaded extends SmartQuranState {
     selectedMode,
     startAyah,
     endAyah,
+    selectedSurah,
   ];
 }
