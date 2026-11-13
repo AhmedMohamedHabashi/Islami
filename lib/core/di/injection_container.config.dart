@@ -19,6 +19,20 @@ import '../../features/azkar/domain/usecases/get_zkars_by_category_usecase.dart'
     as _i476;
 import '../../features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart'
     as _i870;
+import '../../features/smart_quran/data/datasources/surah_remote_data_source.dart'
+    as _i40;
+import '../../features/smart_quran/data/repo/smart_quran_repository_impl.dart'
+    as _i788;
+import '../../features/smart_quran/domain/repo/smart_quran_repository.dart'
+    as _i1005;
+import '../../features/smart_quran/domain/usecases/get_ayahs_usecase.dart'
+    as _i705;
+import '../../features/smart_quran/domain/usecases/get_surahs_usecase.dart'
+    as _i1059;
+import '../../features/smart_quran/presentation/cubit/recitation/recitation_cubit.dart'
+    as _i606;
+import '../../features/smart_quran/presentation/cubit/surah_selection/smart_quran_cubit.dart'
+    as _i867;
 import '../../features/time/data/datasources/azkar_remote_data_source.dart'
     as _i154;
 import '../../features/time/data/datasources/prayer_remote_data_source.dart'
@@ -69,6 +83,10 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i932.NetworkInfo>(
     () => _i865.NetworkInfoImpl(gh<_i895.Connectivity>()),
   );
+  gh.lazySingleton<_i361.Dio>(
+    () => registerModule.smartQuranDio,
+    instanceName: 'smartQuranDio',
+  );
   gh.lazySingleton<_i545.PrayerRemoteDataSource>(
     () =>
         _i545.PrayerRemoteDataSource(gh<_i361.Dio>(instanceName: 'prayerDio')),
@@ -76,6 +94,11 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i722.AzkarRepository>(
     () => _i721.AzkarRepositoryImpl(
       remoteDataSource: gh<_i154.AzkarRemoteDataSource>(),
+    ),
+  );
+  gh.lazySingleton<_i40.SurahRemoteDataSource>(
+    () => _i40.SurahRemoteDataSource(
+      dio: gh<_i361.Dio>(instanceName: 'smartQuranDio'),
     ),
   );
   gh.lazySingleton<_i476.GetZkarsByCategoryUseCase>(
@@ -94,6 +117,11 @@ _i174.GetIt $initGetIt(
       remoteDataSource: gh<_i545.PrayerRemoteDataSource>(),
     ),
   );
+  gh.lazySingleton<_i1005.SmartQuranRepository>(
+    () => _i788.SmartQuranRepositoryImpl(
+      remoteDataSource: gh<_i40.SurahRemoteDataSource>(),
+    ),
+  );
   gh.factory<_i870.AzkarDetailsCubit>(
     () => _i870.AzkarDetailsCubit(gh<_i476.GetZkarsByCategoryUseCase>()),
   );
@@ -109,6 +137,20 @@ _i174.GetIt $initGetIt(
       getPrayerTimesListUseCase: gh<_i406.GetPrayerTimesListUseCase>(),
       locationService: gh<_i669.LocationService>(),
     ),
+  );
+  gh.lazySingleton<_i705.GetAyahsUseCase>(
+    () => _i705.GetAyahsUseCase(repository: gh<_i1005.SmartQuranRepository>()),
+  );
+  gh.lazySingleton<_i1059.GetSurahsUseCase>(
+    () =>
+        _i1059.GetSurahsUseCase(repository: gh<_i1005.SmartQuranRepository>()),
+  );
+  gh.factory<_i606.RecitationCubit>(
+    () => _i606.RecitationCubit(getAyahsUseCase: gh<_i705.GetAyahsUseCase>()),
+  );
+  gh.factory<_i867.SmartQuranCubit>(
+    () =>
+        _i867.SmartQuranCubit(getSurahsUseCase: gh<_i1059.GetSurahsUseCase>()),
   );
   return getIt;
 }

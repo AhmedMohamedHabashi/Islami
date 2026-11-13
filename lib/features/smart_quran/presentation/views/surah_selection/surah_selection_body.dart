@@ -4,6 +4,7 @@ import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/shared/widgets/bouttons/custom_action_button.dart';
 import 'package:islami/core/shared/widgets/header/islami_header.dart';
 import 'package:islami/core/shared/widgets/text_fields/custom_search_field.dart';
+import 'package:islami/features/smart_quran/domain/entities/surah.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/ayah_range_selector.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_card.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_continue_card.dart';
@@ -26,16 +27,23 @@ class SurahSelectionBody extends StatelessWidget {
     required this.onEndAyahChanged,
     required this.onModeChanged,
     required this.onStartRecitation,
+    required this.selectedSurah,
+    required this.onSurahSelected,
+    required this.maxAyah,
   });
 
   final TextEditingController searchController;
-  final List<Map<String, dynamic>> surahs;
+  final List<Surah> surahs;
+
+  final Surah? selectedSurah;
+  final ValueChanged<Surah> onSurahSelected;
 
   final String selectedFilter;
   final String selectedMode;
 
   final int startAyah;
   final int endAyah;
+  final int maxAyah;
 
   final ValueChanged<String> onSearchChanged;
   final ValueChanged<String> onFilterChanged;
@@ -74,6 +82,7 @@ class SurahSelectionBody extends StatelessWidget {
             onStartAyahChanged: onStartAyahChanged,
             onEndAyahChanged: onEndAyahChanged,
             onModeChanged: onModeChanged,
+            maxAyah: maxAyah,
           ),
           SizedBox(height: 12.h),
 
@@ -83,7 +92,13 @@ class SurahSelectionBody extends StatelessWidget {
           if (surahs.isEmpty)
             const SurahEmptyState()
           else
-            ...surahs.map((surah) => SurahCard(surah: surah)),
+            ...surahs.map(
+              (surah) => SurahCard(
+                surah: surah,
+                isSelected: selectedSurah?.number == surah.number,
+                onTap: () => onSurahSelected(surah),
+              ),
+            ),
 
           SizedBox(height: 20.h),
 

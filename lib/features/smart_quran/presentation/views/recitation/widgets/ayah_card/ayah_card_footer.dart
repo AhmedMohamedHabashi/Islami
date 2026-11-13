@@ -4,9 +4,14 @@ import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 
 class AyahCardFooter extends StatelessWidget {
-  final int ayahNumber;
+  final int startAyah;
+  final int endAyah;
 
-  const AyahCardFooter({super.key, required this.ayahNumber});
+  const AyahCardFooter({
+    super.key,
+    required this.startAyah,
+    required this.endAyah,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class AyahCardFooter extends StatelessWidget {
 
         SizedBox(height: 5.h),
 
-        // Ayah information.
+        // Selected ayah range.
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,7 +49,7 @@ class AyahCardFooter extends StatelessWidget {
 
             Flexible(
               child: Text(
-                'الآية $ayahNumber • اقرأ بتأنٍّ وركّز في التلاوة',
+                'من الآية $startAyah إلى الآية $endAyah',
                 textAlign: TextAlign.center,
                 style: AppTextStyles.body12.copyWith(
                   color: AppColors.white.withValues(alpha: 0.65),

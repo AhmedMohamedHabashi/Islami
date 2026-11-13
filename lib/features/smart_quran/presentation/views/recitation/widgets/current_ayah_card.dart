@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
-
+import 'package:islami/features/smart_quran/domain/entities/ayah.dart';
+import 'package:islami/core/utils/functions/ayah_text_formatter.dart';
 import 'ayah_card/ayah_card_corner.dart';
 import 'ayah_card/ayah_card_footer.dart';
 import 'ayah_card/ayah_card_header.dart';
 import 'ayah_card/ayah_card_text.dart';
 
 class CurrentAyahCard extends StatelessWidget {
-  final String ayahText;
-  final int ayahNumber;
+  final List<Ayah> ayahs;
   final String? surahName;
   final String? highlightedWord;
+  final bool showBasmala;
 
   const CurrentAyahCard({
     super.key,
-    required this.ayahText,
-    required this.ayahNumber,
+    required this.ayahs,
     this.surahName = 'سورة الكهف',
     this.highlightedWord,
+    this.showBasmala = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (ayahs.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(20.w),
@@ -51,25 +56,21 @@ class CurrentAyahCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Golden corners.
           const Positioned(
             top: 0,
             left: 0,
             child: AyahCardCorner(quarterTurns: 0),
           ),
-
           const Positioned(
             top: 0,
             right: 0,
             child: AyahCardCorner(quarterTurns: 1),
           ),
-
           const Positioned(
             bottom: 0,
             left: 0,
             child: AyahCardCorner(quarterTurns: 3),
           ),
-
           const Positioned(
             bottom: 0,
             right: 0,
@@ -81,18 +82,24 @@ class CurrentAyahCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                AyahCardHeader(surahName: surahName),
+                AyahCardHeader(surahName: surahName, showBasmala: showBasmala),
 
-                SizedBox(height: 5.h),
+                SizedBox(height: 16.h),
 
                 AyahCardText(
-                  ayahText: ayahText,
+                  ayahText: AyahTextFormatter.formatAyahs(
+                    ayahs: ayahs,
+                    showBasmala: showBasmala,
+                  ),
                   highlightedWord: highlightedWord,
                 ),
 
-                SizedBox(height: 5.h),
+                SizedBox(height: 16.h),
 
-                AyahCardFooter(ayahNumber: ayahNumber),
+                AyahCardFooter(
+                  startAyah: ayahs.first.numberInSurah,
+                  endAyah: ayahs.last.numberInSurah,
+                ),
               ],
             ),
           ),

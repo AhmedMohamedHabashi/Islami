@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'cubit/recitation_report_cubit.dart';
+import '../../cubit/recitation_report/recitation_report_cubit.dart';
 import 'recitation_report_body.dart';
 
 class RecitationReportView extends StatelessWidget {

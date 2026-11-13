@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../data/mock/recitation_report_mock.dart';
-import '../../../../domain/entities/recitation_report.dart';
+import '../../../data/mock/recitation_report_mock.dart';
+import '../../../domain/entities/recitation_report.dart';
 
 part 'recitation_report_state.dart';
 

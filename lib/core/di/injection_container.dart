@@ -10,5 +10,5 @@ final sl = GetIt.instance;
   asExtension: false,
 )
 Future<void> init() async {
-  await $initGetIt(sl);
+  $initGetIt(sl);
 }

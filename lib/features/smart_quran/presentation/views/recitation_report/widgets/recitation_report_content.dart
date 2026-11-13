@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
-import '../cubit/recitation_report_cubit.dart';
+import '../../../cubit/recitation_report/recitation_report_cubit.dart';
 import 'recitation_alert_section.dart';
 import 'recitation_guidance_section.dart';
 import 'recitation_report_actions.dart';
