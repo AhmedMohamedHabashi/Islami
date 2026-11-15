@@ -238,4 +238,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchSurahHint => 'Search by Surah name or Juz...';
+
+  @override
+  String get recitationMode => 'Recitation mode';
+
+  @override
+  String get recording => 'Recording';
+
+  @override
+  String get listenToAyah => 'Listen to the ayah';
+
+  @override
+  String get finishRecitation => 'Finish recitation';
 }

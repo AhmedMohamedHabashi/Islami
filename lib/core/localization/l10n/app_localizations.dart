@@ -517,6 +517,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search by Surah name or Juz...'**
   String get searchSurahHint;
+
+  /// No description provided for @recitationMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Recitation mode'**
+  String get recitationMode;
+
+  /// No description provided for @recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Recording'**
+  String get recording;
+
+  /// No description provided for @listenToAyah.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to the ayah'**
+  String get listenToAyah;
+
+  /// No description provided for @finishRecitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish recitation'**
+  String get finishRecitation;
 }
 
 class _AppLocalizationsDelegate

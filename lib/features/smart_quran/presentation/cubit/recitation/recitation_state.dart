@@ -28,7 +28,19 @@ final class RecitationLoaded extends RecitationState {
   final List<Ayah> ayahs;
   final int currentAyahIndex;
 
-  const RecitationLoaded({required this.ayahs, this.currentAyahIndex = 0});
+  final bool isListening;
+  final String recognizedText;
+  final bool isFinalResult;
+  final String? speechError;
+
+  const RecitationLoaded({
+    required this.ayahs,
+    this.currentAyahIndex = 0,
+    this.isListening = false,
+    this.recognizedText = '',
+    this.isFinalResult = false,
+    this.speechError,
+  });
 
   Ayah? get currentAyah {
     if (ayahs.isEmpty) return null;
@@ -39,6 +51,32 @@ final class RecitationLoaded extends RecitationState {
 
   bool get hasPreviousAyah => currentAyahIndex > 0;
 
+  RecitationLoaded copyWith({
+    List<Ayah>? ayahs,
+    int? currentAyahIndex,
+    bool? isListening,
+    String? recognizedText,
+    bool? isFinalResult,
+    String? speechError,
+    bool clearSpeechError = false,
+  }) {
+    return RecitationLoaded(
+      ayahs: ayahs ?? this.ayahs,
+      currentAyahIndex: currentAyahIndex ?? this.currentAyahIndex,
+      isListening: isListening ?? this.isListening,
+      recognizedText: recognizedText ?? this.recognizedText,
+      isFinalResult: isFinalResult ?? this.isFinalResult,
+      speechError: clearSpeechError ? null : speechError ?? this.speechError,
+    );
+  }
+
   @override
-  List<Object?> get props => [ayahs, currentAyahIndex];
+  List<Object?> get props => [
+    ayahs,
+    currentAyahIndex,
+    isListening,
+    recognizedText,
+    isFinalResult,
+    speechError,
+  ];
 }

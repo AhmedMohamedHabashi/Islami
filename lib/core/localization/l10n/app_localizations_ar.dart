@@ -237,4 +237,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchSurahHint => 'ابحث عن اسم السورة أو الجزء...';
+
+  @override
+  String get recitationMode => 'وضع التسميع';
+
+  @override
+  String get recording => 'جاري التسجيل';
+
+  @override
+  String get listenToAyah => 'استمع للآية';
+
+  @override
+  String get finishRecitation => 'إنهاء التسميع';
 }
