@@ -19,6 +19,8 @@ import '../../features/azkar/domain/usecases/get_zkars_by_category_usecase.dart'
     as _i476;
 import '../../features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart'
     as _i870;
+import '../../features/smart_quran/data/datasources/speech_to_text_data_source.dart'
+    as _i90;
 import '../../features/smart_quran/data/datasources/surah_remote_data_source.dart'
     as _i40;
 import '../../features/smart_quran/data/repo/smart_quran_repository_impl.dart'
@@ -69,6 +71,9 @@ _i174.GetIt $initGetIt(
   final registerModule = _$RegisterModule();
   gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
   gh.lazySingleton<_i669.LocationService>(() => _i669.LocationService());
+  gh.lazySingleton<_i90.SpeechToTextDataSource>(
+    () => _i90.SpeechToTextDataSource(),
+  );
   gh.lazySingleton<_i361.Dio>(
     () => registerModule.azkarDio,
     instanceName: 'azkarDio',
@@ -146,7 +151,10 @@ _i174.GetIt $initGetIt(
         _i1059.GetSurahsUseCase(repository: gh<_i1005.SmartQuranRepository>()),
   );
   gh.factory<_i606.RecitationCubit>(
-    () => _i606.RecitationCubit(getAyahsUseCase: gh<_i705.GetAyahsUseCase>()),
+    () => _i606.RecitationCubit(
+      getAyahsUseCase: gh<_i705.GetAyahsUseCase>(),
+      speechDataSource: gh<_i90.SpeechToTextDataSource>(),
+    ),
   );
   gh.factory<_i867.SmartQuranCubit>(
     () =>

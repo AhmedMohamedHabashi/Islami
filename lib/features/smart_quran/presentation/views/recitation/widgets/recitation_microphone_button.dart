@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/shared/animations/press_scale.dart';
+import 'package:islami/core/shared/animations/pulse_rings.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 
 class RecitationMicrophoneButton extends StatelessWidget {
@@ -16,51 +18,92 @@ class RecitationMicrophoneButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonColor = isRecording
-        ? AppColors.incorrectWord
-        : AppColors.primary;
+    final color = isRecording ? AppColors.incorrectWord : AppColors.primary;
+    final inner = 68.w;
 
     return Semantics(
       button: true,
       enabled: isEnabled,
       label: isRecording ? 'إيقاف التسجيل' : 'بدء التسميع',
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
+      child: SizedBox(
         width: 88.w,
         height: 88.w,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: buttonColor.withValues(alpha: 0.12),
-          boxShadow: [
-            BoxShadow(
-              color: buttonColor.withValues(alpha: 0.15),
-              blurRadius: 22.r,
-              spreadRadius: 4.r,
+        child: Stack(
+          alignment: Alignment.center,
+          clipBehavior: Clip.none,
+          children: [
+            // الهالة + الجلو
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 350),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: color.withValues(alpha: 0.12),
+                boxShadow: [
+                  BoxShadow(
+                    color: color.withValues(alpha: isRecording ? 0.28 : 0.15),
+                    blurRadius: isRecording ? 30.r : 22.r,
+                    spreadRadius: isRecording ? 6.r : 4.r,
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-        child: Center(
-          child: Material(
-            color: isEnabled ? buttonColor : AppColors.progressBackground,
-            shape: const CircleBorder(),
-            child: InkWell(
+
+            PulseRings(active: isRecording, color: color, size: inner),
+
+            PressScale(
               onTap: isEnabled ? onTap : null,
-              customBorder: const CircleBorder(),
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
-                width: 68.w,
-                height: 68.w,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeOutBack,
+                width: inner,
+                height: inner,
                 alignment: Alignment.center,
-                child: Icon(
-                  isRecording ? Icons.stop_rounded : Icons.mic_rounded,
-                  color: isEnabled
-                      ? AppColors.black
-                      : AppColors.progressBackground,
-                  size: 32.sp,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    isRecording ? 22.r : inner / 2,
+                  ),
+                  color: isEnabled ? null : AppColors.progressBackground,
+                  gradient: isEnabled
+                      ? LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color.lerp(color, Colors.white, 0.18)!,
+                            color,
+                          ],
+                        )
+                      : null,
+                  boxShadow: isEnabled
+                      ? [
+                          BoxShadow(
+                            color: color.withValues(alpha: 0.35),
+                            blurRadius: 12.r,
+                            offset: Offset(0, 4.h),
+                          ),
+                        ]
+                      : null,
+                ),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, anim) => RotationTransition(
+                    turns: Tween(begin: 0.85, end: 1.0).animate(anim),
+                    child: ScaleTransition(
+                      scale: anim,
+                      child: FadeTransition(opacity: anim, child: child),
+                    ),
+                  ),
+                  child: Icon(
+                    isRecording ? Icons.stop_rounded : Icons.mic_rounded,
+                    key: ValueKey(isRecording),
+                    color: AppColors.black.withValues(
+                      alpha: isEnabled ? 1 : 0.35,
+                    ),
+                    size: 32.sp,
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
