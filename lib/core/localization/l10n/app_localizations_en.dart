@@ -250,4 +250,78 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get finishRecitation => 'Finish recitation';
+
+  @override
+  String get showMore => 'Show more';
+
+  @override
+  String get showLess => 'Show less';
+
+  @override
+  String get networkError => 'No Internet Connection';
+
+  @override
+  String get timeoutError => 'Request timed out';
+
+  @override
+  String get serverError => 'Server Error';
+
+  @override
+  String get unexpectedError => 'An unexpected error occurred';
+
+  @override
+  String get badRequest => 'Invalid request';
+
+  @override
+  String get unauthorized => 'Unauthorized access';
+
+  @override
+  String get forbidden => 'Access denied';
+
+  @override
+  String get notFound => 'Requested resource not found';
+
+  @override
+  String get conflict => 'Request conflict';
+
+  @override
+  String get validationError => 'Invalid data';
+
+  @override
+  String get tooManyRequests => 'Too many requests, please try again later';
+
+  @override
+  String get serviceUnavailable => 'Service temporarily unavailable';
+
+  @override
+  String get cacheError => 'Cache Error';
+
+  @override
+  String get requestCancelled => 'Request was cancelled';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get selectSurahFirst => 'Please select a Surah first';
+
+  @override
+  String get noAyahsFound => 'No Ayahs found in the selected range.';
+
+  @override
+  String get listeningStatus => 'Listening...';
+
+  @override
+  String get readyToRecite => 'Ready to recite. Tap the microphone to start.';
+
+  @override
+  String get speechUnavailable =>
+      'Speech recognition service is currently unavailable';
+
+  @override
+  String get speechRecognitionError =>
+      'An error occurred during speech recognition. Please try again';
+
+  @override
+  String get somethingWentWrongTitle => 'Something went wrong';
 }

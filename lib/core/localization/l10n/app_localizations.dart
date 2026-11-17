@@ -541,6 +541,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Finish recitation'**
   String get finishRecitation;
+
+  /// No description provided for @showMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get showMore;
+
+  /// No description provided for @showLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Show less'**
+  String get showLess;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet Connection'**
+  String get networkError;
+
+  /// No description provided for @timeoutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timed out'**
+  String get timeoutError;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'Server Error'**
+  String get serverError;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get unexpectedError;
+
+  /// No description provided for @badRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid request'**
+  String get badRequest;
+
+  /// No description provided for @unauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Unauthorized access'**
+  String get unauthorized;
+
+  /// No description provided for @forbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Access denied'**
+  String get forbidden;
+
+  /// No description provided for @notFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested resource not found'**
+  String get notFound;
+
+  /// No description provided for @conflict.
+  ///
+  /// In en, this message translates to:
+  /// **'Request conflict'**
+  String get conflict;
+
+  /// No description provided for @validationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid data'**
+  String get validationError;
+
+  /// No description provided for @tooManyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests, please try again later'**
+  String get tooManyRequests;
+
+  /// No description provided for @serviceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Service temporarily unavailable'**
+  String get serviceUnavailable;
+
+  /// No description provided for @cacheError.
+  ///
+  /// In en, this message translates to:
+  /// **'Cache Error'**
+  String get cacheError;
+
+  /// No description provided for @requestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request was cancelled'**
+  String get requestCancelled;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @selectSurahFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a Surah first'**
+  String get selectSurahFirst;
+
+  /// No description provided for @noAyahsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Ayahs found in the selected range.'**
+  String get noAyahsFound;
+
+  /// No description provided for @listeningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening...'**
+  String get listeningStatus;
+
+  /// No description provided for @readyToRecite.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to recite. Tap the microphone to start.'**
+  String get readyToRecite;
+
+  /// No description provided for @speechUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Speech recognition service is currently unavailable'**
+  String get speechUnavailable;
+
+  /// No description provided for @speechRecognitionError.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred during speech recognition. Please try again'**
+  String get speechRecognitionError;
+
+  /// No description provided for @somethingWentWrongTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrongTitle;
 }
 
 class _AppLocalizationsDelegate

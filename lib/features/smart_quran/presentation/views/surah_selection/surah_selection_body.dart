@@ -6,11 +6,9 @@ import 'package:islami/core/shared/widgets/header/islami_header.dart';
 import 'package:islami/core/shared/widgets/text_fields/custom_search_field.dart';
 import 'package:islami/features/smart_quran/domain/entities/surah.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/ayah_range_selector.dart';
-import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_card.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_continue_card.dart';
-import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_empty_state.dart';
 import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_filters.dart';
-import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_section_title.dart';
+import 'package:islami/features/smart_quran/presentation/views/surah_selection/widgets/surah_list_section.dart';
 
 class SurahSelectionBody extends StatelessWidget {
   const SurahSelectionBody({
@@ -86,19 +84,12 @@ class SurahSelectionBody extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
 
-          SurahSectionTitle(surahCount: surahs.length),
-          SizedBox(height: 12.h),
-
-          if (surahs.isEmpty)
-            const SurahEmptyState()
-          else
-            ...surahs.map(
-              (surah) => SurahCard(
-                surah: surah,
-                isSelected: selectedSurah?.number == surah.number,
-                onTap: () => onSurahSelected(surah),
-              ),
-            ),
+          SurahListSection(
+            surahs: surahs,
+            selectedSurah: selectedSurah,
+            onSurahSelected: onSurahSelected,
+            isSearching: searchController.text.trim().isNotEmpty,
+          ),
 
           SizedBox(height: 20.h),
 

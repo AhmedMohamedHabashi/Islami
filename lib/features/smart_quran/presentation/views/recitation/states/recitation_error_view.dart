@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami/core/shared/widgets/bouttons/custom_action_button.dart';
+
+import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/core/shared/widgets/states/error_state_view.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+
 import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
 import 'package:islami/features/smart_quran/presentation/cubit/recitation/recitation_cubit.dart';
 
@@ -26,28 +28,17 @@ class RecitationErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(24.w),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                message,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: AppColors.white),
-              ),
-              SizedBox(height: 16.h),
-              CustomActionButton(
-                title: 'إعادة المحاولة',
-                icon: Icons.refresh,
-                onPressed: () => _retry(context),
-                isPrimary: true,
-              ),
-            ],
-          ),
+      body: SafeArea(
+        child: ErrorStateView(
+          icon: Icons.menu_book_rounded,
+          title: l10n.somethingWentWrongTitle,
+          message: message,
+          retryLabel: l10n.retry,
+          onRetry: () => _retry(context),
         ),
       ),
     );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/di/injection_container.dart';
-import 'package:islami/core/shared/widgets/bouttons/custom_action_button.dart';
+import 'package:islami/core/localization/app_error_localizer.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/core/shared/widgets/states/error_state_view.dart';
+import 'package:islami/core/shared/widgets/states/loading_state_view.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
 import 'package:islami/features/smart_quran/presentation/cubit/surah_selection/smart_quran_cubit.dart';
@@ -32,40 +34,34 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
       create: (_) => sl<SmartQuranCubit>(),
       child: BlocBuilder<SmartQuranCubit, SmartQuranState>(
         builder: (context, state) {
+          final l10n = AppLocalizations.of(context)!;
+
+          // Loading State
           if (state is SmartQuranLoading || state is SmartQuranInitial) {
-            return Scaffold(
+            return const Scaffold(
               backgroundColor: AppColors.primaryBackground,
-              body: Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.primary,
-                  strokeWidth: 2.w,
-                ),
-              ),
+              body: SafeArea(child: LoadingStateView()),
             );
           }
 
+          // Error State
           if (state is SmartQuranError) {
+            final errorMessage = AppErrorLocalizer.getMessage(
+              context,
+              state.message,
+            );
+
             return Scaffold(
               backgroundColor: AppColors.primaryBackground,
-              body: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      state.message,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: AppColors.white),
-                    ),
-                    SizedBox(height: 16.h),
-                    CustomActionButton(
-                      title: 'إعادة المحاولة',
-                      icon: Icons.refresh_rounded,
-                      onPressed: () {
-                        context.read<SmartQuranCubit>().loadSurahs();
-                      },
-                      isPrimary: true,
-                    ),
-                  ],
+              body: SafeArea(
+                child: ErrorStateView(
+                  icon: Icons.menu_book_rounded,
+                  title: l10n.somethingWentWrongTitle,
+                  message: errorMessage,
+                  retryLabel: l10n.retry,
+                  onRetry: () {
+                    context.read<SmartQuranCubit>().loadSurahs();
+                  },
                 ),
               ),
             );
@@ -75,7 +71,9 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
             final cubit = context.read<SmartQuranCubit>();
 
             return Directionality(
-              textDirection: TextDirection.rtl,
+              textDirection: l10n.localeName == 'ar'
+                  ? TextDirection.rtl
+                  : TextDirection.ltr,
               child: Scaffold(
                 backgroundColor: AppColors.primaryBackground,
                 body: SafeArea(
@@ -98,9 +96,7 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
 
                       if (selectedSurah == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('من فضلك اختر السورة أولاً'),
-                          ),
+                          SnackBar(content: Text(l10n.selectSurahFirst)),
                         );
                         return;
                       }
