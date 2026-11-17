@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/features/smart_quran/constants/surah_filter.dart';
 
 class SurahFilters extends StatelessWidget {
   final String selectedFilter;
@@ -15,20 +17,27 @@ class SurahFilters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const filters = ['المحفوظة', 'المقترحة', 'المكية', 'المدنية'];
+    final l10n = AppLocalizations.of(context)!;
+
+    final filters = [
+      (SurahFilter.saved, l10n.saved),
+      (SurahFilter.suggested, l10n.suggested),
+      (SurahFilter.meccan, l10n.meccan),
+      (SurahFilter.medinan, l10n.medinan),
+    ];
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: filters.map((filter) {
-          final selected = filter == selectedFilter;
+          final selected = filter.$1 == selectedFilter;
 
           return Padding(
             padding: EdgeInsetsDirectional.only(end: 8.w),
             child: ChoiceChip(
-              label: Text(filter),
+              label: Text(filter.$2),
               selected: selected,
-              onSelected: (_) => onFilterChanged(filter),
+              onSelected: (_) => onFilterChanged(filter.$1),
               showCheckmark: false,
               selectedColor: AppColors.primary,
               shape: RoundedRectangleBorder(

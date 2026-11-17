@@ -72,10 +72,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recitationModeTitle => 'Preferred Recitation Mode';
 
   @override
-  String get repetitionMode => 'Reading and Repetition';
+  String get repetitionMode => 'Read & Repeat';
 
   @override
-  String get errorMode => 'Recitation with Simulated Errors';
+  String get errorMode => 'Smart Recitation';
 
   @override
   String selectedSurah(String surahName) {
@@ -324,4 +324,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get somethingWentWrongTitle => 'Something went wrong';
+
+  @override
+  String get saved => 'Saved';
+
+  @override
+  String get suggested => 'Suggested';
 }

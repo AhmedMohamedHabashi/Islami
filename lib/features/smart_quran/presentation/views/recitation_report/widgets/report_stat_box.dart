@@ -63,7 +63,6 @@ class ReportStatBox extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: AppTextStyles.body10.copyWith(
               color: titleColor,
-
               fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
             ),
           ),
@@ -108,15 +107,11 @@ class ReportStatBox extends StatelessWidget {
 class _DashedBorderPainter extends CustomPainter {
   final Color color;
   final double radius;
-  final double dash;
-  final double gap;
 
-  const _DashedBorderPainter({
-    required this.color,
-    required this.radius,
-    this.dash = 5,
-    this.gap = 3.5,
-  });
+  static const double _dash = 5;
+  static const double _gap = 3.5;
+
+  const _DashedBorderPainter({required this.color, required this.radius});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -134,20 +129,17 @@ class _DashedBorderPainter extends CustomPainter {
       var distance = 0.0;
 
       while (distance < metric.length) {
-        final end = math.min(distance + dash, metric.length);
+        final end = math.min(distance + _dash, metric.length);
 
         canvas.drawPath(metric.extractPath(distance, end), paint);
 
-        distance += dash + gap;
+        distance += _dash + _gap;
       }
     }
   }
 
   @override
   bool shouldRepaint(covariant _DashedBorderPainter oldDelegate) {
-    return oldDelegate.color != color ||
-        oldDelegate.radius != radius ||
-        oldDelegate.dash != dash ||
-        oldDelegate.gap != gap;
+    return oldDelegate.color != color || oldDelegate.radius != radius;
   }
 }

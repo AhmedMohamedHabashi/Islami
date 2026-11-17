@@ -73,10 +73,10 @@ final class SmartQuranLoaded extends SmartQuranState {
       final matchesSearch = surah.name.contains(searchQuery);
 
       final matchesFilter = switch (selectedFilter) {
-        'المحفوظة' => surah.isSaved,
-        'المقترحة' => true,
-        'المكية' => surah.revelationType == 'Meccan',
-        'المدنية' => surah.revelationType == 'Medinan',
+        SurahFilter.saved => surah.isSaved,
+        SurahFilter.suggested => true,
+        SurahFilter.meccan => surah.revelationType == 'Meccan',
+        SurahFilter.medinan => surah.revelationType == 'Medinan',
         _ => true,
       };
 

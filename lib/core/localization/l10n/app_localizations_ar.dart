@@ -73,7 +73,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get repetitionMode => 'القراءة والترديد';
 
   @override
-  String get errorMode => 'التسميع بالأخطاء الاصطناعية';
+  String get errorMode => 'التسميع الذكي';
 
   @override
   String selectedSurah(String surahName) {
@@ -322,4 +322,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get somethingWentWrongTitle => 'حدث خطأ غير متوقع';
+
+  @override
+  String get saved => 'المحفوظة';
+
+  @override
+  String get suggested => 'المقترحة';
 }

@@ -63,7 +63,7 @@ class RecitationModeSelector extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 11.h),
         decoration: BoxDecoration(
-          color: selected ? AppColors.primary : Colors.transparent,
+          color: selected ? AppColors.primary : AppColors.transparent,
           borderRadius: BorderRadius.circular(8.r),
           border: Border.all(
             color: selected

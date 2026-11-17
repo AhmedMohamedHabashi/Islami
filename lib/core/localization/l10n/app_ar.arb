@@ -21,7 +21,7 @@
   "toAyah": "إلى الآية",
   "recitationModeTitle": "نمط التسميع المفضل",
   "repetitionMode": "القراءة والترديد",
-  "errorMode": "التسميع بالأخطاء الاصطناعية",
+  "errorMode": "التسميع الذكي",
   "selectedSurah": "اخترت {surahName}",
   "@selectedSurah": {
     "placeholders": {
@@ -135,5 +135,7 @@
   "readyToRecite": "استعد للتسميع عند الضغط على الميكروفون",
   "speechUnavailable": "خدمة التعرف على الكلام غير متاحة حاليًا",
   "speechRecognitionError": "حدث خطأ أثناء التعرف على الكلام، حاول مرة أخرى",
-  "somethingWentWrongTitle": "حدث خطأ غير متوقع"
+  "somethingWentWrongTitle": "حدث خطأ غير متوقع",
+  "saved": "المحفوظة",
+  "suggested": "المقترحة"
 }
