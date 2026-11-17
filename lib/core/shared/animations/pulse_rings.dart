@@ -23,32 +23,40 @@ class PulseRings extends StatefulWidget {
 
 class _PulseRingsState extends State<PulseRings>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(
-    vsync: this,
-    duration: widget.duration,
-  );
+  late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    if (widget.active) _c.repeat();
+
+    _controller = AnimationController(vsync: this, duration: widget.duration);
+
+    if (widget.active) {
+      _controller.repeat();
+    }
   }
 
   @override
-  void didUpdateWidget(covariant PulseRings old) {
-    super.didUpdateWidget(old);
-    if (old.active == widget.active) return;
+  void didUpdateWidget(covariant PulseRings oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.duration != widget.duration) {
+      _controller.duration = widget.duration;
+    }
+
+    if (oldWidget.active == widget.active) return;
+
     if (widget.active) {
-      _c.repeat();
+      _controller.repeat();
     } else {
-      _c.stop();
-      _c.value = 0;
+      _controller.stop();
+      _controller.value = 0;
     }
   }
 
   @override
   void dispose() {
-    _c.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -56,12 +64,15 @@ class _PulseRingsState extends State<PulseRings>
   Widget build(BuildContext context) {
     if (!widget.active) return const SizedBox.shrink();
     return AnimatedBuilder(
-      animation: _c,
+      animation: _controller,
       builder: (_, __) => Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: List.generate(widget.rings, (i) {
-          final t = Curves.easeOut.transform((_c.value + i / widget.rings) % 1);
+          final t = Curves.easeOut.transform(
+            (_controller.value + i / widget.rings) % 1,
+          );
+
           final s = widget.size * (1 + 0.55 * t);
           return Container(
             width: s,
