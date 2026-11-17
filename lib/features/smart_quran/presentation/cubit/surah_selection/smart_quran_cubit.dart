@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:islami/core/errors/app_errors.dart';
+import 'package:islami/core/errors/failures.dart';
 import 'package:islami/features/smart_quran/domain/entities/surah.dart';
 import 'package:islami/features/smart_quran/domain/usecases/get_surahs_usecase.dart';
 
@@ -31,8 +33,10 @@ class SmartQuranCubit extends Cubit<SmartQuranState> {
           endAyah: 15,
         ),
       );
+    } on Failure catch (failure) {
+      emit(SmartQuranError(failure.message));
     } catch (error) {
-      emit(SmartQuranError(error.toString()));
+      emit(const SmartQuranError(AppErrors.unexpectedError));
     }
   }
 

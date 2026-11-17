@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-
+import 'package:islami/core/errors/app_errors.dart';
 import '../../../data/mock/recitation_report_mock.dart';
 import '../../../domain/entities/recitation_report.dart';
 
@@ -28,7 +28,7 @@ class RecitationReportCubit extends Cubit<RecitationReportState> {
         ),
       );
     } catch (_) {
-      emit(const RecitationReportError('حدث خطأ أثناء تحميل تقرير التسميع'));
+      emit(const RecitationReportError(AppErrors.unexpectedError));
     }
   }
 

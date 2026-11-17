@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/di/injection_container.dart';
+import 'package:islami/core/localization/app_error_localizer.dart';
+import 'package:islami/core/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/utils/helpers/recitation_help_dialog.dart';
 import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
@@ -32,18 +34,25 @@ class RecitationView extends StatelessWidget {
         ),
       child: BlocBuilder<RecitationCubit, RecitationState>(
         builder: (context, state) {
+          final l10n = AppLocalizations.of(context)!;
+
           if (state is RecitationInitial || state is RecitationLoading) {
             return const RecitationLoadingView();
           }
 
           if (state is RecitationError) {
-            return RecitationErrorView(message: state.message, args: args);
+            final errorMessage = AppErrorLocalizer.getMessage(
+              context,
+              state.message,
+            );
+
+            return RecitationErrorView(message: errorMessage, args: args);
           }
 
           if (state is RecitationLoaded) {
             if (state.ayahs.isEmpty) {
               return RecitationErrorView(
-                message: 'لم يتم العثور على آيات في النطاق المحدد.',
+                message: l10n.noAyahsFound,
                 args: args,
               );
             }
@@ -58,59 +67,63 @@ class RecitationView extends StatelessWidget {
 
             final statusText =
                 state.speechError ??
-                (state.isListening
-                    ? 'جاري الاستماع...'
-                    : 'استعد للتسميع عند الضغط على الميكروفون');
+                (state.isListening ? l10n.listeningStatus : l10n.readyToRecite);
 
-            return Scaffold(
-              backgroundColor: AppColors.primaryBackground,
-              body: Stack(
-                children: [
-                  SafeArea(
-                    child: RecitationBody(
-                      surahName: args.selectedSurah.name,
-                      ayahInfo: 'الآيات ${args.startAyah} - ${args.endAyah}',
-                      ayahs: state.ayahs,
-                      highlightedWord: null,
-                      showBasmala: showBasmala,
+            return Directionality(
+              textDirection: l10n.localeName == 'ar'
+                  ? TextDirection.rtl
+                  : TextDirection.ltr,
+              child: Scaffold(
+                backgroundColor: AppColors.primaryBackground,
+                body: Stack(
+                  children: [
+                    SafeArea(
+                      child: RecitationBody(
+                        surahName: args.selectedSurah.name,
+                        ayahInfo:
+                            '${l10n.fromAyah} ${args.startAyah} - ${args.endAyah}',
+                        ayahs: state.ayahs,
+                        highlightedWord: null,
+                        showBasmala: showBasmala,
 
-                      // Speech recognition state.
-                      isRecording: state.isListening,
-                      statusText: statusText,
-
-                      onBack: () => context.pop(),
-                      onHelp: () => RecitationHelpDialog.show(context),
-
-                      onMicrophoneTap: () {
-                        if (state.isListening) {
-                          cubit.stopListening();
-                        } else {
-                          cubit.startListening();
-                        }
-                      },
-
-                      onListen: _onListen,
-
-                      onFinish: () async {
-                        await cubit.stopListening();
-
-                        if (!context.mounted) return;
-
-                        context.push(RouteNames.recitationReportView);
-                      },
-                    ),
-                  ),
-                  Positioned(
-                    top: MediaQuery.of(context).padding.top + 2,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: RecordingDynamicIsland(
+                        // Speech recognition state.
                         isRecording: state.isListening,
+                        statusText: statusText,
+
+                        onBack: () => context.pop(),
+                        onHelp: () => RecitationHelpDialog.show(context),
+
+                        onMicrophoneTap: () {
+                          if (state.isListening) {
+                            cubit.stopListening();
+                          } else {
+                            cubit.startListening();
+                          }
+                        },
+
+                        onListen: _onListen,
+
+                        onFinish: () async {
+                          await cubit.stopListening();
+
+                          if (!context.mounted) return;
+
+                          context.push(RouteNames.recitationReportView);
+                        },
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: MediaQuery.of(context).padding.top + 2,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: RecordingDynamicIsland(
+                          isRecording: state.isListening,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           }

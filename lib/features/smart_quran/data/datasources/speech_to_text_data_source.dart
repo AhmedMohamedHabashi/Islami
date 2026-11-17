@@ -17,7 +17,9 @@ class SpeechToTextDataSource {
     void Function(String status)? onStatus,
     void Function(String error)? onError,
   }) async {
-    if (_isInitialized) return true;
+    if (_isInitialized && _speechToText.isAvailable) {
+      return true;
+    }
 
     try {
       _isInitialized = await _speechToText.initialize(
@@ -35,7 +37,7 @@ class SpeechToTextDataSource {
   }
 
   Future<List<stt.LocaleName>> getAvailableLocales() async {
-    if (!_isInitialized) {
+    if (!_isInitialized || !_speechToText.isAvailable) {
       throw StateError('Speech recognition is not initialized');
     }
 
@@ -46,7 +48,8 @@ class SpeechToTextDataSource {
     final locales = await getAvailableLocales();
 
     for (final locale in locales) {
-      if (locale.localeId == 'ar_EG' || locale.localeId == 'ar-EG') {
+      if (locale.localeId == 'ar_EG' ||
+          locale.localeId.toLowerCase() == 'ar-eg') {
         return locale;
       }
     }

@@ -249,4 +249,77 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get finishRecitation => 'إنهاء التسميع';
+
+  @override
+  String get showMore => 'عرض المزيد';
+
+  @override
+  String get showLess => 'عرض أقل';
+
+  @override
+  String get networkError => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get timeoutError => 'انتهت مهلة الاتصال';
+
+  @override
+  String get serverError => 'حدث خطأ في الخادم';
+
+  @override
+  String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get badRequest => 'طلب غير صالح';
+
+  @override
+  String get unauthorized => 'غير مصرح بالوصول';
+
+  @override
+  String get forbidden => 'تم رفض الوصول';
+
+  @override
+  String get notFound => 'العنصر المطلوب غير موجود';
+
+  @override
+  String get conflict => 'يوجد تعارض في الطلب';
+
+  @override
+  String get validationError => 'البيانات المدخلة غير صحيحة';
+
+  @override
+  String get tooManyRequests => 'طلبات كثيرة جدًا، حاول مرة أخرى لاحقًا';
+
+  @override
+  String get serviceUnavailable => 'الخدمة غير متاحة مؤقتًا';
+
+  @override
+  String get cacheError => 'حدث خطأ في التخزين المحلي';
+
+  @override
+  String get requestCancelled => 'تم إلغاء الطلب';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get selectSurahFirst => 'من فضلك اختر السورة أولاً';
+
+  @override
+  String get noAyahsFound => 'لم يتم العثور على آيات في النطاق المحدد.';
+
+  @override
+  String get listeningStatus => 'جاري الاستماع...';
+
+  @override
+  String get readyToRecite => 'استعد للتسميع عند الضغط على الميكروفون';
+
+  @override
+  String get speechUnavailable => 'خدمة التعرف على الكلام غير متاحة حاليًا';
+
+  @override
+  String get speechRecognitionError =>
+      'حدث خطأ أثناء التعرف على الكلام، حاول مرة أخرى';
+
+  @override
+  String get somethingWentWrongTitle => 'حدث خطأ غير متوقع';
 }
