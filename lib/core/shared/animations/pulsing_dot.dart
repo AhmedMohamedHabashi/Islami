@@ -19,48 +19,61 @@ class PulsingDot extends StatefulWidget {
 
 class _PulsingDotState extends State<PulsingDot>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 1200),
-  );
+  late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    if (widget.pulsing) _c.repeat();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    if (widget.pulsing) {
+      _controller.repeat();
+    }
   }
 
   @override
-  void didUpdateWidget(covariant PulsingDot old) {
-    super.didUpdateWidget(old);
-    if (old.pulsing == widget.pulsing) return;
-    widget.pulsing ? _c.repeat() : _c.reset();
+  void didUpdateWidget(covariant PulsingDot oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.pulsing == widget.pulsing) return;
+
+    if (widget.pulsing) {
+      _controller.repeat();
+    } else {
+      _controller.reset();
+    }
   }
 
   @override
   void dispose() {
-    _c.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final s = widget.size;
+    final size = widget.size;
+
     return SizedBox(
-      width: s * 2.4,
-      height: s * 2.4,
+      width: size * 2.4,
+      height: size * 2.4,
       child: Stack(
         alignment: Alignment.center,
         children: [
           if (widget.pulsing)
             AnimatedBuilder(
-              animation: _c,
+              animation: _controller,
               builder: (_, __) {
-                final t = Curves.easeOut.transform(_c.value);
-                final d = s + s * 1.4 * t;
+                final t = Curves.easeOut.transform(_controller.value);
+                final diameter = size + size * 1.4 * t;
+
                 return Container(
-                  width: d,
-                  height: d,
+                  width: diameter,
+                  height: diameter,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: widget.color.withValues(alpha: 0.35 * (1 - t)),
@@ -70,8 +83,8 @@ class _PulsingDotState extends State<PulsingDot>
             ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
-            width: s,
-            height: s,
+            width: size,
+            height: size,
             decoration: BoxDecoration(
               color: widget.color,
               shape: BoxShape.circle,
@@ -79,7 +92,7 @@ class _PulsingDotState extends State<PulsingDot>
                   ? [
                       BoxShadow(
                         color: widget.color.withValues(alpha: 0.5),
-                        blurRadius: s,
+                        blurRadius: size,
                         spreadRadius: 1,
                       ),
                     ]
