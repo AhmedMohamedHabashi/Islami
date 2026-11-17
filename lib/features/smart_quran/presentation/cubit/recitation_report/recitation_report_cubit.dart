@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:islami/core/errors/app_errors.dart';
 import '../../../data/mock/recitation_report_mock.dart';

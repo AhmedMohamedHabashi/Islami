@@ -20,8 +20,8 @@
   "fromAyah": "From Ayah",
   "toAyah": "To Ayah",
   "recitationModeTitle": "Preferred Recitation Mode",
-  "repetitionMode": "Reading and Repetition",
-  "errorMode": "Recitation with Simulated Errors",
+  "repetitionMode": "Read & Repeat",
+  "errorMode": "Smart Recitation",
   "selectedSurah": "You selected {surahName}",
   "@selectedSurah": {
     "placeholders": {
@@ -135,5 +135,7 @@
   "readyToRecite": "Ready to recite. Tap the microphone to start.",
   "speechUnavailable": "Speech recognition service is currently unavailable",
   "speechRecognitionError": "An error occurred during speech recognition. Please try again",
-  "somethingWentWrongTitle": "Something went wrong"
+  "somethingWentWrongTitle": "Something went wrong",
+  "saved": "Saved",
+  "suggested": "Suggested"
 }

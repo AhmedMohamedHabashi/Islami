@@ -23,6 +23,18 @@ class RecitationView extends StatelessWidget {
     // TODO: Connect Quran audio playback later.
   }
 
+  bool _shouldShowBasmala(RecitationLoaded state) {
+    final surahNumber = args.selectedSurah.number;
+    final firstAyah = state.ayahs.first;
+
+    return surahNumber != 1 && surahNumber != 9 && firstAyah.numberInSurah == 1;
+  }
+
+  String _getStatusText(RecitationLoaded state, AppLocalizations l10n) {
+    return state.speechError ??
+        (state.isListening ? l10n.listeningStatus : l10n.readyToRecite);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -41,95 +53,88 @@ class RecitationView extends StatelessWidget {
           }
 
           if (state is RecitationError) {
-            final errorMessage = AppErrorLocalizer.getMessage(
-              context,
-              state.message,
-            );
-
-            return RecitationErrorView(message: errorMessage, args: args);
+            return _buildErrorView(context, state);
           }
 
           if (state is RecitationLoaded) {
             if (state.ayahs.isEmpty) {
-              return RecitationErrorView(
-                message: l10n.noAyahsFound,
-                args: args,
-              );
+              return _buildEmptyAyahsView(context, l10n);
             }
 
-            final firstAyah = state.ayahs.first;
-            final showBasmala =
-                args.selectedSurah.number != 1 &&
-                args.selectedSurah.number != 9 &&
-                firstAyah.numberInSurah == 1;
-
-            final cubit = context.read<RecitationCubit>();
-
-            final statusText =
-                state.speechError ??
-                (state.isListening ? l10n.listeningStatus : l10n.readyToRecite);
-
-            return Directionality(
-              textDirection: l10n.localeName == 'ar'
-                  ? TextDirection.rtl
-                  : TextDirection.ltr,
-              child: Scaffold(
-                backgroundColor: AppColors.primaryBackground,
-                body: Stack(
-                  children: [
-                    SafeArea(
-                      child: RecitationBody(
-                        surahName: args.selectedSurah.name,
-                        ayahInfo:
-                            '${l10n.fromAyah} ${args.startAyah} - ${args.endAyah}',
-                        ayahs: state.ayahs,
-                        highlightedWord: null,
-                        showBasmala: showBasmala,
-
-                        // Speech recognition state.
-                        isRecording: state.isListening,
-                        statusText: statusText,
-
-                        onBack: () => context.pop(),
-                        onHelp: () => RecitationHelpDialog.show(context),
-
-                        onMicrophoneTap: () {
-                          if (state.isListening) {
-                            cubit.stopListening();
-                          } else {
-                            cubit.startListening();
-                          }
-                        },
-
-                        onListen: _onListen,
-
-                        onFinish: () async {
-                          await cubit.stopListening();
-
-                          if (!context.mounted) return;
-
-                          context.push(RouteNames.recitationReportView);
-                        },
-                      ),
-                    ),
-                    Positioned(
-                      top: MediaQuery.of(context).padding.top + 2,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: RecordingDynamicIsland(
-                          isRecording: state.isListening,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return _buildLoadedView(context, state, l10n);
           }
 
           return const SizedBox.shrink();
         },
+      ),
+    );
+  }
+
+  Widget _buildErrorView(BuildContext context, RecitationError state) {
+    final errorMessage = AppErrorLocalizer.getMessage(context, state.message);
+
+    return RecitationErrorView(message: errorMessage, args: args);
+  }
+
+  Widget _buildEmptyAyahsView(BuildContext context, AppLocalizations l10n) {
+    return RecitationErrorView(message: l10n.noAyahsFound, args: args);
+  }
+
+  Widget _buildLoadedView(
+    BuildContext context,
+    RecitationLoaded state,
+    AppLocalizations l10n,
+  ) {
+    final cubit = context.read<RecitationCubit>();
+
+    return Directionality(
+      textDirection: l10n.localeName == 'ar'
+          ? TextDirection.rtl
+          : TextDirection.ltr,
+      child: Scaffold(
+        backgroundColor: AppColors.primaryBackground,
+        body: Stack(
+          children: [
+            SafeArea(
+              child: RecitationBody(
+                surahName: args.selectedSurah.name,
+                ayahInfo:
+                    '${l10n.fromAyah} ${args.startAyah} - ${args.endAyah}',
+                duration: state.formattedDuration,
+                ayahs: state.ayahs,
+                highlightedWord: null,
+                showBasmala: _shouldShowBasmala(state),
+                isRecording: state.isListening,
+                statusText: _getStatusText(state, l10n),
+                onBack: () => context.pop(),
+                onHelp: () => RecitationHelpDialog.show(context),
+                onMicrophoneTap: () {
+                  if (state.isListening) {
+                    cubit.stopListening();
+                  } else {
+                    cubit.startListening();
+                  }
+                },
+                onListen: _onListen,
+                onFinish: () async {
+                  await cubit.stopListening();
+
+                  if (!context.mounted) return;
+
+                  context.push(RouteNames.recitationReportView);
+                },
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).padding.top + 2,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: RecordingDynamicIsland(isRecording: state.isListening),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

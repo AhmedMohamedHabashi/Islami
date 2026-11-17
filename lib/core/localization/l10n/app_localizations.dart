@@ -221,13 +221,13 @@ abstract class AppLocalizations {
   /// No description provided for @repetitionMode.
   ///
   /// In en, this message translates to:
-  /// **'Reading and Repetition'**
+  /// **'Read & Repeat'**
   String get repetitionMode;
 
   /// No description provided for @errorMode.
   ///
   /// In en, this message translates to:
-  /// **'Recitation with Simulated Errors'**
+  /// **'Smart Recitation'**
   String get errorMode;
 
   /// No description provided for @selectedSurah.
@@ -685,6 +685,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong'**
   String get somethingWentWrongTitle;
+
+  /// No description provided for @saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get saved;
+
+  /// No description provided for @suggested.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested'**
+  String get suggested;
 }
 
 class _AppLocalizationsDelegate

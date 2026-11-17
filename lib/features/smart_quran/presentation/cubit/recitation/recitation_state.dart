@@ -32,6 +32,7 @@ final class RecitationLoaded extends RecitationState {
   final String recognizedText;
   final bool isFinalResult;
   final String? speechError;
+  final int durationInSeconds;
 
   const RecitationLoaded({
     required this.ayahs,
@@ -40,6 +41,7 @@ final class RecitationLoaded extends RecitationState {
     this.recognizedText = '',
     this.isFinalResult = false,
     this.speechError,
+    this.durationInSeconds = 0,
   });
 
   Ayah? get currentAyah {
@@ -51,6 +53,14 @@ final class RecitationLoaded extends RecitationState {
 
   bool get hasPreviousAyah => currentAyahIndex > 0;
 
+  String get formattedDuration {
+    final minutes = durationInSeconds ~/ 60;
+    final seconds = durationInSeconds % 60;
+
+    return '${minutes.toString().padLeft(2, '0')}:'
+        '${seconds.toString().padLeft(2, '0')}';
+  }
+
   RecitationLoaded copyWith({
     List<Ayah>? ayahs,
     int? currentAyahIndex,
@@ -58,6 +68,7 @@ final class RecitationLoaded extends RecitationState {
     String? recognizedText,
     bool? isFinalResult,
     String? speechError,
+    int? durationInSeconds,
     bool clearSpeechError = false,
   }) {
     return RecitationLoaded(
@@ -67,6 +78,7 @@ final class RecitationLoaded extends RecitationState {
       recognizedText: recognizedText ?? this.recognizedText,
       isFinalResult: isFinalResult ?? this.isFinalResult,
       speechError: clearSpeechError ? null : speechError ?? this.speechError,
+      durationInSeconds: durationInSeconds ?? this.durationInSeconds,
     );
   }
 
@@ -78,5 +90,6 @@ final class RecitationLoaded extends RecitationState {
     recognizedText,
     isFinalResult,
     speechError,
+    durationInSeconds,
   ];
 }

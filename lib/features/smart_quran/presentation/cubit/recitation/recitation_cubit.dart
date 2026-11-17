@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -13,6 +14,9 @@ class RecitationCubit extends Cubit<RecitationState> {
   final GetAyahsUseCase getAyahsUseCase;
   final SpeechToTextDataSource speechDataSource;
 
+  final Stopwatch _stopwatch = Stopwatch();
+  Timer? _durationTimer;
+
   RecitationCubit({
     required this.getAyahsUseCase,
     required this.speechDataSource,
@@ -24,6 +28,7 @@ class RecitationCubit extends Cubit<RecitationState> {
     required int startAyah,
     required int endAyah,
   }) async {
+    _resetDuration();
     emit(const RecitationLoading());
 
     try {
@@ -81,6 +86,12 @@ class RecitationCubit extends Cubit<RecitationState> {
         localeId: 'ar_EG',
         onResult: _onSpeechResult,
       );
+
+      // Start the timer only if listening is still active.
+      if (state is RecitationLoaded &&
+          (state as RecitationLoaded).isListening) {
+        _startDurationTimer();
+      }
     } catch (_) {
       _updateSpeechError(AppErrors.speechRecognitionError);
     }
@@ -91,8 +102,13 @@ class RecitationCubit extends Cubit<RecitationState> {
     try {
       await speechDataSource.stopListening();
 
+      _pauseDurationTimer();
+
       _updateSpeechState(
-        (currentState) => currentState.copyWith(isListening: false),
+        (currentState) => currentState.copyWith(
+          isListening: false,
+          durationInSeconds: _stopwatch.elapsed.inSeconds,
+        ),
       );
     } catch (_) {
       _updateSpeechError(AppErrors.speechRecognitionError);
@@ -104,12 +120,47 @@ class RecitationCubit extends Cubit<RecitationState> {
     try {
       await speechDataSource.cancelListening();
 
+      _pauseDurationTimer();
+
       _updateSpeechState(
-        (currentState) => currentState.copyWith(isListening: false),
+        (currentState) => currentState.copyWith(
+          isListening: false,
+          durationInSeconds: _stopwatch.elapsed.inSeconds,
+        ),
       );
     } catch (_) {
       _updateSpeechError(AppErrors.speechRecognitionError);
     }
+  }
+
+  // Start Duration Timer
+  void _startDurationTimer() {
+    if (isClosed || _stopwatch.isRunning) return;
+
+    _stopwatch.start();
+
+    _durationTimer ??= Timer.periodic(const Duration(seconds: 1), (_) {
+      if (isClosed) return;
+
+      _updateSpeechState(
+        (currentState) => currentState.copyWith(
+          durationInSeconds: _stopwatch.elapsed.inSeconds,
+        ),
+      );
+    });
+  }
+
+  // Pause Duration Timer
+  void _pauseDurationTimer() {
+    _stopwatch.stop();
+    _durationTimer?.cancel();
+    _durationTimer = null;
+  }
+
+  // Reset Duration
+  void _resetDuration() {
+    _pauseDurationTimer();
+    _stopwatch.reset();
   }
 
   // Speech Recognition Result
@@ -123,12 +174,19 @@ class RecitationCubit extends Cubit<RecitationState> {
   // Speech Recognition Status
   void _onSpeechStatus(String status) {
     if (status == 'listening') {
+      _startDurationTimer();
+
       _updateSpeechState(
         (currentState) => currentState.copyWith(isListening: true),
       );
     } else if (status == 'notListening' || status == 'done') {
+      _pauseDurationTimer();
+
       _updateSpeechState(
-        (currentState) => currentState.copyWith(isListening: false),
+        (currentState) => currentState.copyWith(
+          isListening: false,
+          durationInSeconds: _stopwatch.elapsed.inSeconds,
+        ),
       );
     }
   }
@@ -140,9 +198,14 @@ class RecitationCubit extends Cubit<RecitationState> {
 
   // Update Speech Error
   void _updateSpeechError(String error) {
+    _pauseDurationTimer();
+
     _updateSpeechState(
-      (currentState) =>
-          currentState.copyWith(isListening: false, speechError: error),
+      (currentState) => currentState.copyWith(
+        isListening: false,
+        durationInSeconds: _stopwatch.elapsed.inSeconds,
+        speechError: error,
+      ),
     );
   }
 
@@ -172,6 +235,7 @@ class RecitationCubit extends Cubit<RecitationState> {
     );
   }
 
+  // Previous Ayah
   void previousAyah() {
     final currentState = state;
 
@@ -188,7 +252,10 @@ class RecitationCubit extends Cubit<RecitationState> {
 
   @override
   Future<void> close() async {
+    _pauseDurationTimer();
+
     await speechDataSource.cancelListening();
+
     return super.close();
   }
 }
