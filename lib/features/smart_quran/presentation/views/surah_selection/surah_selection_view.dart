@@ -5,6 +5,7 @@ import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/di/injection_container.dart';
 import 'package:islami/core/localization/app_error_localizer.dart';
 import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/core/shared/widgets/snackbars/custom_snack_bar.dart';
 import 'package:islami/core/shared/widgets/states/error_state_view.dart';
 import 'package:islami/core/shared/widgets/states/loading_state_view.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
@@ -95,8 +96,11 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
                       final selectedSurah = state.selectedSurah;
 
                       if (selectedSurah == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(l10n.selectSurahFirst)),
+                        CustomSnackBar.show(
+                          context,
+                          title: l10n.somethingWentWrongTitle,
+                          message: l10n.selectSurahFirst,
+                          icon: Icons.menu_book_rounded,
                         );
                         return;
                       }

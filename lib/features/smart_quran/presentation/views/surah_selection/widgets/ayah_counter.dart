@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
-import 'package:islami/core/themes/text_style/app_text_styles.dart';
-
 import 'ayah_counter_button.dart';
+import 'ayah_counter_value.dart';
 
 class AyahCounter extends StatelessWidget {
   final String title;
   final int value;
+  final int minValue;
   final int maxValue;
   final ValueChanged<int> onChanged;
 
@@ -15,6 +15,7 @@ class AyahCounter extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
+    this.minValue = 1,
     required this.maxValue,
     required this.onChanged,
   });
@@ -42,17 +43,17 @@ class AyahCounter extends StatelessWidget {
               AyahCounterButton(
                 icon: Icons.remove,
                 onTap: () {
-                  if (value > 1) {
+                  if (value > minValue) {
                     onChanged(value - 1);
                   }
                 },
               ),
-              Text(
-                '$value',
-                style: AppTextStyles.body14.copyWith(
-                  color: AppColors.primary,
-                  fontWeight: FontWeight.bold,
-                ),
+              AyahCounterValue(
+                title: title,
+                value: value,
+                minValue: minValue,
+                maxValue: maxValue,
+                onChanged: onChanged,
               ),
               AyahCounterButton(
                 icon: Icons.add,

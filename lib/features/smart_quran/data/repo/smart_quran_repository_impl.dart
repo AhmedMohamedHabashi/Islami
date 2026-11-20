@@ -3,7 +3,6 @@ import 'package:islami/core/errors/app_errors.dart';
 import 'package:islami/core/errors/dio_exception_handler.dart';
 import 'package:islami/core/errors/exceptions.dart';
 import 'package:islami/core/errors/failures.dart';
-
 import '../../domain/entities/ayah.dart';
 import '../../domain/entities/surah.dart';
 import '../../domain/repo/smart_quran_repository.dart';
