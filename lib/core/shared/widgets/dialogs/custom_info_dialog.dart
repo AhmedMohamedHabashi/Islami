@@ -10,14 +10,26 @@ class CustomInfoDialog extends StatelessWidget {
   final String title;
   final String message;
   final String? buttonText;
+  final Widget? content;
+  final IconData icon;
   final VoidCallback? onPressed;
+  final bool isEnabled;
+  final String? secondaryButtonText;
+  final IconData secondaryIcon;
+  final VoidCallback? onSecondaryPressed;
 
   const CustomInfoDialog({
     super.key,
     required this.title,
-    required this.message,
+    this.message = '',
     this.buttonText,
+    this.content,
     this.onPressed,
+    this.isEnabled = true,
+    this.icon = Icons.info_outline_rounded,
+    this.secondaryButtonText,
+    this.secondaryIcon = Icons.close_rounded,
+    this.onSecondaryPressed,
   });
 
   @override
@@ -62,15 +74,9 @@ class CustomInfoDialog extends StatelessWidget {
                   width: 1.2.w,
                 ),
               ),
-              child: Icon(
-                Icons.info_outline_rounded,
-                color: AppColors.primary,
-                size: 34.sp,
-              ),
+              child: Icon(icon, color: AppColors.primary, size: 34.sp),
             ),
-
             SizedBox(height: 10.h),
-
             Text(
               title,
               textAlign: TextAlign.center,
@@ -79,9 +85,7 @@ class CustomInfoDialog extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             SizedBox(height: 10.h),
-
             Row(
               children: [
                 Expanded(
@@ -106,30 +110,53 @@ class CustomInfoDialog extends StatelessWidget {
                 ),
               ],
             ),
-
             SizedBox(height: 10.h),
-
             Flexible(
               child: SingleChildScrollView(
-                child: Text(
-                  message,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.body14.copyWith(
-                    color: AppColors.white.withValues(alpha: 0.8),
-                    height: 1.5.h,
-                  ),
-                ),
+                child:
+                    content ??
+                    Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.body14.copyWith(
+                        color: AppColors.white.withValues(alpha: 0.8),
+                        height: 1.5.h,
+                      ),
+                    ),
               ),
             ),
-
             SizedBox(height: 20.h),
-
-            CustomActionButton(
-              title: buttonText ?? l10n.dialogOkButton,
-              icon: Icons.check_rounded,
-              onPressed: onPressed ?? () => context.pop(),
-              isPrimary: true,
-            ),
+            if (secondaryButtonText != null)
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomActionButton(
+                      title: buttonText ?? l10n.dialogOkButton,
+                      icon: Icons.check_rounded,
+                      onPressed: onPressed ?? () => context.pop(),
+                      isPrimary: true,
+                      isEnabled: isEnabled,
+                    ),
+                  ),
+                  SizedBox(width: 8.w),
+                  Expanded(
+                    child: CustomActionButton(
+                      title: secondaryButtonText!,
+                      icon: secondaryIcon,
+                      onPressed: onSecondaryPressed ?? () => context.pop(),
+                      isPrimary: false,
+                    ),
+                  ),
+                ],
+              )
+            else
+              CustomActionButton(
+                title: buttonText ?? l10n.dialogOkButton,
+                icon: Icons.check_rounded,
+                onPressed: onPressed ?? () => context.pop(),
+                isPrimary: true,
+                isEnabled: isEnabled,
+              ),
           ],
         ),
       ),
