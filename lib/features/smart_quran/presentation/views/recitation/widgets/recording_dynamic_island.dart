@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/shared/animations/ade_slide_switcher.dart';
 import 'package:islami/core/shared/animations/audio_wave_bars.dart';
 import 'package:islami/core/shared/animations/pulsing_dot.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class RecordingDynamicIsland extends StatelessWidget {
   final bool isRecording;
@@ -33,8 +34,8 @@ class RecordingDynamicIsland extends StatelessWidget {
       duration: const Duration(milliseconds: 450),
       curve: Curves.easeOutBack,
       padding: EdgeInsets.symmetric(
-        horizontal: rec ? 16.w : 12.w,
-        vertical: rec ? 8.h : 5.h,
+        horizontal: rec ? AppSizes.size16W : AppSizes.size12W,
+        vertical: rec ? AppSizes.size8H : AppSizes.size5H,
       ),
       decoration: BoxDecoration(
         color: AppColors.ayahCardGradientBottom,
@@ -56,8 +57,8 @@ class RecordingDynamicIsland extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            PulsingDot(pulsing: rec, color: accent, size: 8.w),
-            SizedBox(width: 8.w),
+            PulsingDot(pulsing: rec, color: accent, size: AppSizes.size8W),
+            SizedBox(width: AppSizes.size8W),
             FadeSlideSwitcher(
               child: Text(
                 rec ? l10n.recording : l10n.recitationMode,
@@ -69,10 +70,10 @@ class RecordingDynamicIsland extends StatelessWidget {
               ),
             ),
             if (rec) ...[
-              SizedBox(width: 10.w),
+              SizedBox(width: AppSizes.size10W),
               AudioWaveBars(active: rec, color: AppColors.primary),
               if (elapsed != null) ...[
-                SizedBox(width: 10.w),
+                SizedBox(width: AppSizes.size10W),
                 Text(
                   _format(elapsed!),
                   style: AppTextStyles.body10.copyWith(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 enum ReportStatBoxStyle { normal, highlighted, dashed }
 
@@ -38,12 +39,15 @@ class ReportStatBox extends StatelessWidget {
     final content = Container(
       width: double.infinity,
       height: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 5.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.size4W,
+        vertical: AppSizes.size5H,
+      ),
       decoration: BoxDecoration(
         color: isDashed
             ? AppColors.white.withValues(alpha: 0.025)
             : AppColors.progressBackground,
-        borderRadius: BorderRadius.circular(14.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius14),
         border: isDashed
             ? null
             : Border.all(
@@ -66,7 +70,7 @@ class ReportStatBox extends StatelessWidget {
               fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
             ),
           ),
-          SizedBox(height: 5.h),
+          SizedBox(height: AppSizes.size5H),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
@@ -78,7 +82,7 @@ class ReportStatBox extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 4.h),
+          SizedBox(height: AppSizes.size4H),
           Text(
             description,
             maxLines: 1,
@@ -94,7 +98,7 @@ class ReportStatBox extends StatelessWidget {
       return CustomPaint(
         foregroundPainter: _DashedBorderPainter(
           color: AppColors.primary.withValues(alpha: 0.65),
-          radius: 14.r,
+          radius: AppSizes.radius14,
         ),
         child: content,
       );

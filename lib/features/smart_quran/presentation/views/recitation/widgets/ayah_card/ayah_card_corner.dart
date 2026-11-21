@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AyahCardCorner extends StatelessWidget {
   final int quarterTurns;
@@ -12,12 +12,12 @@ class AyahCardCorner extends StatelessWidget {
     return RotatedBox(
       quarterTurns: quarterTurns,
       child: Container(
-        width: 14.w,
-        height: 14.w,
+        width: AppSizes.size14W,
+        height: AppSizes.size14H,
         decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: AppColors.primary, width: 2.w),
-            left: BorderSide(color: AppColors.primary, width: 2.w),
+            top: BorderSide(color: AppColors.primary, width: AppSizes.size2W),
+            left: BorderSide(color: AppColors.primary, width: AppSizes.size2W),
           ),
         ),
       ),

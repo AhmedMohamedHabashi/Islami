@@ -56,9 +56,9 @@ import '../../features/time/presentation/cubit/azkar/oazkar_cubit.dart'
     as _i558;
 import '../../features/time/presentation/cubit/prayer_times/prayer_times_cubit.dart'
     as _i943;
-import '../network/network_info.dart' as _i932;
-import '../network/network_info_impl.dart' as _i865;
-import '../services/location_service.dart' as _i669;
+import '../../core/api/network_info.dart' as _i932;
+import '../../core/api/network_info_impl.dart' as _i865;
+import '../../core/services/location_service.dart' as _i669;
 import 'modules/register_module.dart' as _i911;
 
 // initializes the registration of main-scope dependencies inside of GetIt

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class LiveRecitationHeader extends StatelessWidget {
   final String duration;
@@ -17,13 +18,13 @@ class LiveRecitationHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(12.w),
+      padding: EdgeInsets.all(AppSizes.size12H),
       decoration: BoxDecoration(
         color: AppColors.ayahCardGradientBottom,
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius16),
         border: Border.all(
           color: AppColors.primary.withValues(alpha: 0.35),
-          width: 1.w,
+          width: AppSizes.size1W,
         ),
       ),
       child: Row(
@@ -32,8 +33,8 @@ class LiveRecitationHeader extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  width: 8.w,
-                  height: 8.w,
+                  width: AppSizes.size8W,
+                  height: AppSizes.size8H,
                   decoration: BoxDecoration(
                     color: isRecording
                         ? AppColors.incorrectWord
@@ -42,7 +43,7 @@ class LiveRecitationHeader extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(width: 8.w),
+                SizedBox(width: AppSizes.size8W),
 
                 Flexible(
                   child: Text(
@@ -59,16 +60,19 @@ class LiveRecitationHeader extends StatelessWidget {
             ),
           ),
 
-          SizedBox(width: 12.w),
+          SizedBox(width: AppSizes.size12W),
 
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.size8W,
+              vertical: AppSizes.size4H,
+            ),
             decoration: BoxDecoration(
               color: AppColors.white.withValues(alpha: 0.05),
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AppSizes.radius12),
               border: Border.all(
                 color: AppColors.primary.withValues(alpha: 0.35),
-                width: 1.w,
+                width: AppSizes.size1W,
               ),
             ),
             child: Row(
@@ -80,7 +84,7 @@ class LiveRecitationHeader extends StatelessWidget {
                   size: 16.sp,
                 ),
 
-                SizedBox(width: 6.w),
+                SizedBox(width: AppSizes.size6W),
 
                 Text(
                   duration,

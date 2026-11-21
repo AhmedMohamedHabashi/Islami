@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation_report/widgets/recitation_audio_card.dart';
 import '../../../../domain/entities/recitation_report.dart';
 import '../../../cubit/recitation_report/recitation_report_cubit.dart';
@@ -26,10 +26,10 @@ class RecitationAlertSection extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(AppSizes.size14W),
       decoration: BoxDecoration(
         color: AppColors.black.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(AppSizes.size20W),
         border: Border.all(color: AppColors.white.withValues(alpha: 0.08)),
       ),
       child: Column(
@@ -38,14 +38,14 @@ class RecitationAlertSection extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 8.w,
-                height: 8.h,
+                width: AppSizes.size8W,
+                height: AppSizes.size8H,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
                   shape: BoxShape.circle,
                 ),
               ),
-              SizedBox(width: 8.w),
+              SizedBox(width: AppSizes.size8W),
               Expanded(
                 child: Text(
                   l10n.recitationPronunciationAlert(word.text),
@@ -60,7 +60,7 @@ class RecitationAlertSection extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: AppSizes.size12H),
           IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -79,7 +79,7 @@ class RecitationAlertSection extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(width: 10.w),
+                SizedBox(width: AppSizes.size10W),
                 Expanded(
                   child: RecitationAudioCard(
                     title: l10n.recitationRecordedTitle,

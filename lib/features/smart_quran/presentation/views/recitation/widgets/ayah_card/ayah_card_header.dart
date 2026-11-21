@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AyahCardHeader extends StatelessWidget {
   final String? surahName;
@@ -14,16 +15,16 @@ class AyahCardHeader extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 12.h),
+          padding: EdgeInsets.only(top: AppSizes.size12H),
           child: Row(
             children: [
               Expanded(child: _goldLine()),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: AppSizes.size10W),
                 child: Icon(
                   Icons.diamond_outlined,
                   color: AppColors.primary,
-                  size: 20.sp,
+                  size: AppSizes.icon20,
                 ),
               ),
               Expanded(child: _goldLine()),
@@ -31,7 +32,7 @@ class AyahCardHeader extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 5.h),
+        SizedBox(height: AppSizes.size5H),
 
         Text(
           surahName ?? 'سورة',
@@ -43,7 +44,7 @@ class AyahCardHeader extends StatelessWidget {
         ),
 
         if (showBasmala) ...[
-          SizedBox(height: 5.h),
+          SizedBox(height: AppSizes.size5H),
           Text(
             'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
             textAlign: TextAlign.center,

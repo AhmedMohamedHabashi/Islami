@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/routes/app_router.dart';
-import 'core/localization/cubits/locale_cubit.dart';
-import 'core/localization/cubits/locale_state.dart';
-import 'core/localization/l10n/app_localizations.dart';
+import 'config/localization/cubits/locale_cubit.dart';
+import 'config/localization/cubits/locale_state.dart';
+import 'config/localization/l10n/app_localizations.dart';
 import 'core/utils/app_responsive.dart';
 
 class IslamiApp extends StatelessWidget {

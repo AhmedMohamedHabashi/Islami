@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami/core/localization/widgets/language_switch.dart';
+import 'package:islami/config/localization/widgets/language_switch.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class OnboardingLanguageSwitch extends StatelessWidget {
   const OnboardingLanguageSwitch({super.key, required this.visible});
@@ -14,8 +14,8 @@ class OnboardingLanguageSwitch extends StatelessWidget {
     }
 
     return PositionedDirectional(
-      top: 8.h,
-      end: 8.w,
+      top: AppSizes.size8H,
+      end: AppSizes.size8W,
       child: const LanguageSwitch(),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AyahCardText extends StatelessWidget {
   final String ayahText;
@@ -17,7 +17,7 @@ class AyahCardText extends StatelessWidget {
       text: TextSpan(
         style: AppTextStyles.body24.copyWith(
           color: AppColors.primary,
-          height: 1.7.h,
+          height: AppSizes.size1_7H,
         ),
         children: _buildAyahSpans(),
       ),
@@ -45,17 +45,20 @@ class AyahCardText extends StatelessWidget {
       WidgetSpan(
         alignment: PlaceholderAlignment.middle,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 6.w),
+          padding: EdgeInsets.symmetric(horizontal: AppSizes.size6W),
           decoration: BoxDecoration(
             color: AppColors.ayahCardGradientBottom,
-            borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(color: AppColors.primary, width: 1.w),
+            borderRadius: BorderRadius.circular(AppSizes.radius12),
+            border: Border.all(
+              color: AppColors.primary,
+              width: AppSizes.size1W,
+            ),
           ),
           child: Text(
             word,
             style: AppTextStyles.body24.copyWith(
               color: AppColors.primary,
-              height: 1.8.h,
+              height: AppSizes.size1_8H,
               fontWeight: FontWeight.bold,
             ),
           ),

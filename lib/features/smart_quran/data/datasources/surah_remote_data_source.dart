@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:islami/core/errors/dio_exception_handler.dart';
 import 'package:islami/core/errors/exceptions.dart';
-import 'package:islami/core/network/endpoints.dart';
+import 'package:islami/core/api/endpoints.dart';
 import '../models/ayah_model.dart';
 import '../models/surah_model.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
-import 'package:islami/core/di/injection_container.dart';
+import 'package:islami/config/di/injection_container.dart';
 import 'package:islami/features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_details_view.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_view.dart';

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami/core/localization/cubits/locale_cubit.dart';
-import 'package:islami/core/localization/cubits/locale_state.dart';
+import 'package:islami/config/localization/cubits/locale_cubit.dart';
+import 'package:islami/config/localization/cubits/locale_state.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class LanguageSwitch extends StatelessWidget {
   const LanguageSwitch({super.key});
@@ -17,11 +18,11 @@ class LanguageSwitch extends StatelessWidget {
 
         return PopupMenuButton<String>(
           tooltip: 'Change language',
-          offset: Offset(0, 40.h),
+          offset: Offset(0, AppSizes.size40H),
           color: AppColors.primaryBackground,
           elevation: 6,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(AppSizes.radius12),
           ),
           onSelected: (languageCode) {
             if (languageCode != state.locale.languageCode) {
@@ -60,7 +61,7 @@ class LanguageSwitch extends StatelessWidget {
                     color: isEnglish ? AppColors.primary : AppColors.white,
                     size: 20.sp,
                   ),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: AppSizes.size10W),
                   Text(
                     'English',
                     style: AppTextStyles.body14.copyWith(

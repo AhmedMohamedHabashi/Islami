@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import '../../../../domain/entities/recitation_report.dart';
 
 class RecitationGuidanceCard extends StatelessWidget {
@@ -17,10 +17,10 @@ class RecitationGuidanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(14.w),
+      padding: EdgeInsets.all(AppSizes.size14W),
       decoration: BoxDecoration(
         color: AppColors.black.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius16),
         border: Border.all(color: AppColors.white.withValues(alpha: 0.1)),
       ),
       child: Row(
@@ -37,29 +37,29 @@ class RecitationGuidanceCard extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 6.h),
+                SizedBox(height: AppSizes.size6H),
                 Text(
                   guidance.description,
                   style: AppTextStyles.body12.copyWith(
                     color: AppColors.white.withValues(alpha: 0.6),
-                    height: 1.6.h,
+                    height: AppSizes.size1_7H,
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(width: 12.w),
+          SizedBox(width: AppSizes.size12W),
           Container(
-            width: 38.w,
-            height: 38.h,
+            width: AppSizes.size38W,
+            height: AppSizes.size38H,
             decoration: BoxDecoration(
               color: AppColors.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(AppSizes.radius12),
               border: Border.all(
                 color: AppColors.primary.withValues(alpha: 0.4),
               ),
             ),
-            child: Icon(_icon, color: AppColors.primary, size: 20.sp),
+            child: Icon(_icon, color: AppColors.primary, size: AppSizes.icon20),
           ),
         ],
       ),

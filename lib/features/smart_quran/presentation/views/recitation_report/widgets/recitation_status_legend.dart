@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class RecitationStatusLegend extends StatelessWidget {
   const RecitationStatusLegend({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Wrap(
-      spacing: 8,
-      runSpacing: 8,
+    return Wrap(
+      spacing: AppSizes.size8W,
+      runSpacing: AppSizes.size8H,
       children: [
         _LegendChip(
           label: 'نطق سليم',
@@ -46,17 +46,20 @@ class _LegendChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.size10W,
+        vertical: AppSizes.size6H,
+      ),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius10),
         border: Border.all(color: color.withValues(alpha: 0.5)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 14.sp, color: color),
-          SizedBox(width: 4.w),
+          Icon(icon, size: AppSizes.icon14, color: color),
+          SizedBox(width: AppSizes.size4W),
           Text(
             label,
             style: AppTextStyles.body10.copyWith(color: AppColors.white),
