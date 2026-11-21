@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:islami/config/routes/route_names.dart';
 import 'package:islami/core/constants/app_assets.dart';
 import 'package:islami/core/constants/app_icons.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 

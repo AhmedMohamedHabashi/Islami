@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/shared/widgets/app_bar/custom_app_bar.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import 'package:islami/features/smart_quran/domain/entities/ayah.dart';
-
 import 'widgets/current_ayah_card.dart';
 import 'widgets/live_recitation_header.dart';
 import 'widgets/recitation_controls.dart';
@@ -53,7 +52,12 @@ class RecitationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(16.w, 45.h, 16.w, 16.h),
+      padding: EdgeInsets.fromLTRB(
+        AppSizes.size16W,
+        AppSizes.size46H,
+        AppSizes.size16W,
+        AppSizes.size16H,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -64,11 +68,11 @@ class RecitationBody extends StatelessWidget {
             onHelp: onHelp,
           ),
 
-          SizedBox(height: 15.h),
+          SizedBox(height: AppSizes.size14H),
 
           LiveRecitationHeader(duration: duration, isRecording: isRecording),
 
-          SizedBox(height: 15.h),
+          SizedBox(height: AppSizes.size14H),
 
           CurrentAyahCard(
             surahName: surahName,
@@ -76,14 +80,14 @@ class RecitationBody extends StatelessWidget {
             highlightedWord: highlightedWord,
             showBasmala: showBasmala,
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: AppSizes.size14H),
 
           RecitationStatusIndicator(
             statusText: statusText,
             isLoading: isLoading,
           ),
 
-          SizedBox(height: 15.h),
+          SizedBox(height: AppSizes.size14H),
 
           Center(
             child: RecitationMicrophoneButton(
@@ -93,7 +97,7 @@ class RecitationBody extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 15.h),
+          SizedBox(height: AppSizes.size14H),
 
           RecitationControls(
             onListen: onListen,

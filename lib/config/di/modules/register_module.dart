@@ -1,8 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:islami/core/network/api_constants.dart';
-import 'package:islami/core/network/dio_factory.dart';
+import 'package:islami/core/api/api_constants.dart';
+import 'package:islami/core/api/dio_factory.dart';
 
 @module
 abstract class RegisterModule {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import 'package:islami/features/smart_quran/domain/entities/ayah.dart';
 import 'package:islami/core/utils/functions/ayah_text_formatter.dart';
 import 'ayah_card/ayah_card_corner.dart';
@@ -30,7 +30,7 @@ class CurrentAyahCard extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20.w),
+      padding: EdgeInsets.all(AppSizes.size20W),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topCenter,
@@ -41,16 +41,16 @@ class CurrentAyahCard extends StatelessWidget {
             AppColors.ayahCardGradientBottom,
           ],
         ),
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius20),
         border: Border.all(
           color: AppColors.primary.withValues(alpha: 0.5),
-          width: 1.w,
+          width: AppSizes.size1W,
         ),
         boxShadow: [
           BoxShadow(
             color: AppColors.primary.withValues(alpha: 0.05),
-            blurRadius: 18.r,
-            spreadRadius: 1.r,
+            blurRadius: AppSizes.size18H,
+            spreadRadius: AppSizes.size1W,
           ),
         ],
       ),
@@ -78,13 +78,16 @@ class CurrentAyahCard extends StatelessWidget {
           ),
 
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.size8W,
+              vertical: AppSizes.size8H,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AyahCardHeader(surahName: surahName, showBasmala: showBasmala),
 
-                SizedBox(height: 16.h),
+                SizedBox(height: AppSizes.size16H),
 
                 AyahCardText(
                   ayahText: AyahTextFormatter.formatAyahs(
@@ -94,7 +97,7 @@ class CurrentAyahCard extends StatelessWidget {
                   highlightedWord: highlightedWord,
                 ),
 
-                SizedBox(height: 16.h),
+                SizedBox(height: AppSizes.size16H),
 
                 AyahCardFooter(
                   startAyah: ayahs.first.numberInSurah,

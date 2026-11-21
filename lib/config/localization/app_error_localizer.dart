@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:islami/core/errors/app_errors.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 
 class AppErrorLocalizer {
   AppErrorLocalizer._();

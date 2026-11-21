@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import '../../../cubit/recitation_report/recitation_report_cubit.dart';
 import 'recitation_alert_section.dart';
 import 'recitation_guidance_section.dart';
@@ -27,10 +27,10 @@ class RecitationReportContent extends StatelessWidget {
       children: [
         // Word-by-word analysis
         Container(
-          padding: EdgeInsets.all(14.w),
+          padding: EdgeInsets.all(AppSizes.size14H),
           decoration: BoxDecoration(
             color: AppColors.white.withValues(alpha: 0.03),
-            borderRadius: BorderRadius.circular(24.r),
+            borderRadius: BorderRadius.circular(AppSizes.radius24),
             border: Border.all(color: AppColors.white.withValues(alpha: 0.08)),
           ),
           child: Column(
@@ -38,11 +38,11 @@ class RecitationReportContent extends StatelessWidget {
             children: [
               const RecitationReportHeader(),
 
-              SizedBox(height: 12.h),
+              SizedBox(height: AppSizes.size12H),
 
               const RecitationStatusLegend(),
 
-              SizedBox(height: 14.h),
+              SizedBox(height: AppSizes.size14H),
 
               RecitationWordsPanel(
                 ayahs: state.report.ayahs,
@@ -52,7 +52,7 @@ class RecitationReportContent extends StatelessWidget {
 
               // Selected word alert
               if (alert != null && selectedWord != null) ...[
-                SizedBox(height: 14.h),
+                SizedBox(height: AppSizes.size14H),
 
                 RecitationAlertSection(
                   word: selectedWord,
@@ -65,12 +65,12 @@ class RecitationReportContent extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 20.h),
+        SizedBox(height: AppSizes.size20H),
 
         // AI guidance
         RecitationGuidanceSection(guidance: state.report.guidance),
 
-        SizedBox(height: 20.h),
+        SizedBox(height: AppSizes.size20H),
 
         // Report actions
         RecitationReportActions(

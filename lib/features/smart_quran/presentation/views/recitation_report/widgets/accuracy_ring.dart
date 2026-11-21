@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AccuracyRing extends StatelessWidget {
   final double percent;
@@ -13,10 +13,10 @@ class AccuracyRing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 82.w,
-      height: 82.w,
+      width: AppSizes.size82W,
+      height: AppSizes.size82H,
       child: CustomPaint(
-        painter: _RingPainter(percent: percent, strokeWidth: 7.w),
+        painter: _RingPainter(percent: percent, strokeWidth: AppSizes.size7W),
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -27,7 +27,7 @@ class AccuracyRing extends StatelessWidget {
                   label,
                   style: AppTextStyles.body18.copyWith(
                     color: AppColors.primary,
-                    height: 1.h,
+                    height: AppSizes.size1H,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

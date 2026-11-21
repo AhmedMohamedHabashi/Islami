@@ -1,5 +1,5 @@
 import 'package:islami/core/constants/app_assets.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/features/onboarding/domain/entities/onboarding_model.dart';
 
 class OnboardingData {

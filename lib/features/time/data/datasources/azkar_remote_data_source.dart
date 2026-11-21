@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:islami/core/network/endpoints.dart';
+import 'package:islami/core/api/endpoints.dart';
 import 'package:islami/features/azkar/data/models/zekr_model.dart';
 
 @LazySingleton()

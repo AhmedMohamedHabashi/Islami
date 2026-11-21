@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AyahEndMarker extends StatelessWidget {
   final int ayahNumber;
@@ -11,8 +11,8 @@ class AyahEndMarker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 30.w,
-      height: 30.h,
+      width: AppSizes.size30W,
+      height: AppSizes.size30H,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,

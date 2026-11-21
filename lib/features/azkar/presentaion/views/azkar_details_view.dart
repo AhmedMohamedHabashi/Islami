@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart'; // ضيف الـ import ده
+import 'package:islami/config/localization/l10n/app_localizations.dart'; // ضيف الـ import ده
 import 'package:islami/core/shared/widgets/surah_details/surah_details_view.dart';
 
 class AzkarDetailsView extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class AyahCardFooter extends StatelessWidget {
   final int startAyah;
@@ -26,14 +27,14 @@ class AyahCardFooter extends StatelessWidget {
               child: Icon(
                 Icons.diamond_outlined,
                 color: AppColors.primary,
-                size: 15.sp,
+                size: AppSizes.icon14,
               ),
             ),
             Expanded(child: _goldLine()),
           ],
         ),
 
-        SizedBox(height: 5.h),
+        SizedBox(height: AppSizes.size5H),
 
         // Selected ayah range.
         Row(
@@ -42,10 +43,10 @@ class AyahCardFooter extends StatelessWidget {
             Icon(
               Icons.menu_book_rounded,
               color: AppColors.white.withValues(alpha: 0.65),
-              size: 14.sp,
+              size: AppSizes.icon14,
             ),
 
-            SizedBox(width: 6.w),
+            SizedBox(width: AppSizes.size6W),
 
             Flexible(
               child: Text(
@@ -64,10 +65,10 @@ class AyahCardFooter extends StatelessWidget {
 
   Widget _goldLine() {
     return Container(
-      height: 1.h,
+      height: AppSizes.size1H,
       decoration: BoxDecoration(
         color: AppColors.primary.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(2.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius2),
       ),
     );
   }

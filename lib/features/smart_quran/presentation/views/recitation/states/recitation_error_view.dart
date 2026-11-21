@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/shared/widgets/states/error_state_view.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
-
 import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
 import 'package:islami/features/smart_quran/presentation/cubit/recitation/recitation_cubit.dart';
 

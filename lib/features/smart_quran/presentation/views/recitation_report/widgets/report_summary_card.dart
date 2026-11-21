@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import 'package:islami/features/smart_quran/domain/entities/recitation_report.dart';
 
 import 'accuracy_ring.dart';
@@ -33,13 +33,13 @@ class ReportSummaryCard extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(14.r),
+        padding: EdgeInsets.all(AppSizes.size14W),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22.r),
+          borderRadius: BorderRadius.circular(AppSizes.radius22),
           border: Border.all(color: AppColors.primary.withValues(alpha: 0.45)),
           gradient: RadialGradient(
-            center: Alignment(0, -2.r),
-            radius: 1.3.r,
+            center: Alignment(0, -AppSizes.size1_7H),
+            radius: AppSizes.size1_5w,
             colors: [
               AppColors.primary.withValues(alpha: 0.15),
               AppColors.primaryBackground,
@@ -54,79 +54,86 @@ class ReportSummaryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     AccuracyRing(
                       percent: percentage / 100,
                       label: '${_toArabicDigits('$percentage')}٪',
                     ),
-                    SizedBox(width: 12.w),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8.w,
-                              vertical: 4.h,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.r),
-                              border: Border.all(
-                                color: AppColors.primary.withValues(
-                                  alpha: 0.75,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.only(
+                          start: AppSizes.size20W,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: AppSizes.size8W,
+                                vertical: AppSizes.size4H,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  AppSizes.radius20,
+                                ),
+                                border: Border.all(
+                                  color: AppColors.primary.withValues(
+                                    alpha: 0.75,
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'تقييم الأداء: ${report.resultTitle}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.body10.copyWith(
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            child: Text(
-                              'تقييم الأداء: ${report.resultTitle}',
+                            SizedBox(height: AppSizes.size8H),
+                            Text(
+                              report.surahName,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: AppTextStyles.body10.copyWith(
-                                color: AppColors.primary,
+                              style: AppTextStyles.body18.copyWith(
+                                color: AppColors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            report.surahName,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyles.body18.copyWith(
-                              color: AppColors.white,
-                              fontWeight: FontWeight.bold,
+                            SizedBox(height: AppSizes.size5H),
+                            Text(
+                              'الآيات ${_toArabicDigits('${report.startAyah}')} - '
+                              '${_toArabicDigits('${report.endAyah}')}',
+                              style: AppTextStyles.body10.copyWith(
+                                color: AppColors.white.withValues(alpha: 0.75),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5.h),
-                          Text(
-                            'الآيات ${_toArabicDigits('${report.startAyah}')} - '
-                            '${_toArabicDigits('${report.endAyah}')}',
-                            style: AppTextStyles.body10.copyWith(
-                              color: AppColors.white.withValues(alpha: 0.75),
+                            SizedBox(height: AppSizes.size5H),
+                            Text(
+                              'عدد الكلمات الصحيحة: '
+                              '${_toArabicDigits('${report.correctWordCount}')}',
+                              style: AppTextStyles.body10.copyWith(
+                                color: AppColors.white.withValues(alpha: 0.7),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5.h),
-                          Text(
-                            'عدد الكلمات الصحيحة: '
-                            '${_toArabicDigits('${report.correctWordCount}')}',
-                            style: AppTextStyles.body10.copyWith(
-                              color: AppColors.white.withValues(alpha: 0.7),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: AppSizes.size16H),
                 Container(
                   height: 1,
                   color: AppColors.primary.withValues(alpha: 0.3),
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: AppSizes.size12H),
                 SizedBox(
-                  height: 76.h,
+                  height: AppSizes.size76H,
                   child: Row(
                     children: [
                       Expanded(
@@ -137,7 +144,7 @@ class ReportSummaryCard extends StatelessWidget {
                           description: 'أداء صحيح',
                         ),
                       ),
-                      SizedBox(width: 7.w),
+                      SizedBox(width: AppSizes.size7W),
                       Expanded(
                         child: ReportStatBox(
                           style: ReportStatBoxStyle.highlighted,
@@ -146,7 +153,7 @@ class ReportSummaryCard extends StatelessWidget {
                           description: 'تحتاج مراجعة',
                         ),
                       ),
-                      SizedBox(width: 7.w),
+                      SizedBox(width: AppSizes.size7W),
                       Expanded(
                         child: ReportStatBox(
                           style: ReportStatBoxStyle.dashed,
@@ -164,7 +171,7 @@ class ReportSummaryCard extends StatelessWidget {
               top: 0,
               right: 0,
               child: Transform.translate(
-                offset: Offset(5.w, -5.h),
+                offset: Offset(AppSizes.size5W, -AppSizes.size5H),
                 child: const ReportDiamond(),
               ),
             ),
@@ -172,7 +179,7 @@ class ReportSummaryCard extends StatelessWidget {
               top: 0,
               left: 0,
               child: Transform.translate(
-                offset: Offset(-5.w, -5.h),
+                offset: Offset(-AppSizes.size5W, -AppSizes.size5H),
                 child: const ReportDiamond(),
               ),
             ),

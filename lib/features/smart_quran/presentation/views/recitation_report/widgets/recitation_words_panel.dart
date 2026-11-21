@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation_report/widgets/ayah_end_marker.dart';
 import 'package:islami/features/smart_quran/presentation/views/recitation_report/widgets/recitation_word_chip.dart';
 import '../../../../domain/entities/recitation_report.dart';
@@ -20,18 +20,21 @@ class RecitationWordsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 18.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.size12W,
+        vertical: AppSizes.size18H,
+      ),
       decoration: BoxDecoration(
         color: AppColors.black.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius20),
         border: Border.all(color: AppColors.white.withValues(alpha: 0.08)),
       ),
       child: Wrap(
         textDirection: TextDirection.rtl,
         alignment: WrapAlignment.center,
         crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: 8,
-        runSpacing: 14,
+        spacing: AppSizes.size8W,
+        runSpacing: AppSizes.size14H,
         children: [
           for (final ayah in ayahs) ...[
             for (final word in ayah.words)

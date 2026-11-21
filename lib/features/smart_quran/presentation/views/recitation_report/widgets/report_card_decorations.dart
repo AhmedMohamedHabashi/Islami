@@ -1,8 +1,7 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class ReportDiamond extends StatelessWidget {
   const ReportDiamond({super.key});
@@ -12,8 +11,8 @@ class ReportDiamond extends StatelessWidget {
     return Transform.rotate(
       angle: math.pi / 4,
       child: Container(
-        width: 7.w,
-        height: 7.w,
+        width: AppSizes.size7W,
+        height: AppSizes.size7H,
         decoration: BoxDecoration(
           color: AppColors.primaryBackground,
           border: Border.all(

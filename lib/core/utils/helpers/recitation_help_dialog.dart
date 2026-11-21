@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/core/localization/l10n/app_localizations.dart';
+import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/shared/widgets/dialogs/custom_info_dialog.dart';
 
 class RecitationHelpDialog {

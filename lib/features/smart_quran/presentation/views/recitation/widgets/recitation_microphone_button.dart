@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/shared/animations/press_scale.dart';
 import 'package:islami/core/shared/animations/pulse_rings.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class RecitationMicrophoneButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -19,15 +19,15 @@ class RecitationMicrophoneButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = isRecording ? AppColors.incorrectWord : AppColors.primary;
-    final inner = 68.w;
+    final inner = AppSizes.size68W;
 
     return Semantics(
       button: true,
       enabled: isEnabled,
       label: isRecording ? 'إيقاف التسجيل' : 'بدء التسميع',
       child: SizedBox(
-        width: 88.w,
-        height: 88.w,
+        width: AppSizes.size88W,
+        height: AppSizes.size88H,
         child: Stack(
           alignment: Alignment.center,
           clipBehavior: Clip.none,
@@ -41,8 +41,12 @@ class RecitationMicrophoneButton extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: color.withValues(alpha: isRecording ? 0.28 : 0.15),
-                    blurRadius: isRecording ? 30.r : 22.r,
-                    spreadRadius: isRecording ? 6.r : 4.r,
+                    blurRadius: isRecording
+                        ? AppSizes.size30W
+                        : AppSizes.size22W,
+                    spreadRadius: isRecording
+                        ? AppSizes.size6W
+                        : AppSizes.size4W,
                   ),
                 ],
               ),
@@ -60,7 +64,7 @@ class RecitationMicrophoneButton extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
-                    isRecording ? 22.r : inner / 2,
+                    isRecording ? AppSizes.radius22 : inner / 2,
                   ),
                   color: isEnabled ? null : AppColors.progressBackground,
                   gradient: isEnabled
@@ -68,7 +72,7 @@ class RecitationMicrophoneButton extends StatelessWidget {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Color.lerp(color, Colors.white, 0.18)!,
+                            Color.lerp(color, AppColors.white, 0.18)!,
                             color,
                           ],
                         )
@@ -77,8 +81,8 @@ class RecitationMicrophoneButton extends StatelessWidget {
                       ? [
                           BoxShadow(
                             color: color.withValues(alpha: 0.35),
-                            blurRadius: 12.r,
-                            offset: Offset(0, 4.h),
+                            blurRadius: AppSizes.size12H,
+                            offset: Offset(0, AppSizes.size4H),
                           ),
                         ]
                       : null,
@@ -98,7 +102,7 @@ class RecitationMicrophoneButton extends StatelessWidget {
                     color: AppColors.black.withValues(
                       alpha: isEnabled ? 1 : 0.35,
                     ),
-                    size: 32.sp,
+                    size: AppSizes.icon32,
                   ),
                 ),
               ),
