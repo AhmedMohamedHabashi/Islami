@@ -5,6 +5,7 @@ import 'package:islami/config/di/injection_container.dart';
 import 'package:islami/features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_details_view.dart';
 import 'package:islami/features/azkar/presentaion/views/azkar_view.dart';
+import 'package:islami/features/home/presentation/views/home_view.dart';
 import 'package:islami/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:islami/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:islami/features/onboarding/presentation/views/splash_view.dart';
@@ -36,6 +37,10 @@ class AppRouter {
             child: const OnboardingView(),
           );
         },
+      ),
+      GoRoute(
+        path: RouteNames.home,
+        builder: (context, state) => const HomeView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
