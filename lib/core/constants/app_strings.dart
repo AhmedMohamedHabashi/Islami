@@ -1,6 +1,7 @@
-class SurahFilter {
-  SurahFilter._();
+class AppStrings {
+  AppStrings._();
 
+  // Surah Filters
   static const String saved = 'saved';
   static const String suggested = 'suggested';
   static const String meccan = 'meccan';

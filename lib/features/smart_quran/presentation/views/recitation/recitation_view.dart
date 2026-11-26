@@ -10,8 +10,8 @@ import 'package:islami/core/utils/helpers/recitation_help_dialog.dart';
 import 'package:islami/features/smart_quran/presentation/common/recitation_args.dart';
 import 'package:islami/features/smart_quran/presentation/cubit/recitation/recitation_cubit.dart';
 import 'recitation_body.dart';
-import 'states/recitation_error_view.dart';
-import 'states/recitation_loading_view.dart';
+import '../../../../../core/shared/widgets/states/recitation_error_view.dart';
+import '../../../../../core/shared/widgets/states/recitation_loading_view.dart';
 import 'widgets/recording_dynamic_island.dart';
 
 class RecitationView extends StatelessWidget {

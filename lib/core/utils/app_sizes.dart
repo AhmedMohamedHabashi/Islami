@@ -9,6 +9,7 @@ class AppSizes {
   static double size1_7w = 1.7.w;
   static double size1_8w = 1.8.w;
   static double size2W = 2.w;
+  static double size3W = 3.w;
   static double size4W = 4.w;
   static double size5W = 5.w;
   static double size6W = 6.w;
@@ -29,6 +30,7 @@ class AppSizes {
   static double size36W = 36.w;
   static double size38W = 38.w;
   static double size40W = 40.w;
+  static double size42W = 42.w;
   static double size44W = 44.w;
   static double size46W = 46.w;
   static double size48W = 48.w;
@@ -40,6 +42,12 @@ class AppSizes {
   static double size88W = 88.w;
   static double size92W = 92.w;
   static double size100W = 100.w;
+  static double size104W = 104.w;
+  static double size106W = 106.w;
+  static double size108W = 108.w;
+  static double size110W = 110.w;
+
+  static double size220W = 220.w;
 
   // Height
   static double size1H = 1.h;
@@ -47,6 +55,7 @@ class AppSizes {
   static double size1_7H = 1.7.h;
   static double size1_8H = 1.8.h;
   static double size2H = 2.h;
+  static double size3H = 3.h;
   static double size4H = 4.h;
   static double size5H = 5.h;
   static double size6H = 6.h;
@@ -67,6 +76,7 @@ class AppSizes {
   static double size36H = 36.h;
   static double size38H = 38.h;
   static double size40H = 40.h;
+  static double size42H = 42.h;
   static double size44H = 44.h;
   static double size46H = 46.h;
   static double size48H = 48.h;
@@ -78,6 +88,12 @@ class AppSizes {
   static double size88H = 88.h;
   static double size92H = 92.h;
   static double size100H = 100.h;
+  static double size104H = 104.h;
+  static double size106H = 106.h;
+  static double size108H = 108.h;
+  static double size110H = 110.h;
+
+  static double size220H = 220.h;
 
   //
 

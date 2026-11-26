@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class CustomSearchField extends StatelessWidget {
   const CustomSearchField({
@@ -41,18 +41,15 @@ class CustomSearchField extends StatelessWidget {
           prefixIcon: Icon(
             Icons.search_rounded,
             color: AppColors.primary,
-            size: 20.sp,
+            size: AppSizes.icon24,
           ),
           filled: true,
           fillColor: AppColors.black.withValues(alpha: 0.22),
-          contentPadding: EdgeInsets.symmetric(
-            vertical: 12.h,
-            horizontal: 12.w,
-          ),
+          contentPadding: EdgeInsets.all(AppSizes.size12H),
           border: _buildBorder(),
           enabledBorder: _buildBorder(),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(AppSizes.radius12),
             borderSide: const BorderSide(color: AppColors.primary),
           ),
         ),
@@ -62,7 +59,7 @@ class CustomSearchField extends StatelessWidget {
 
   OutlineInputBorder _buildBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
+      borderRadius: BorderRadius.circular(AppSizes.radius12),
       borderSide: BorderSide(color: AppColors.white.withValues(alpha: 0.15)),
     );
   }

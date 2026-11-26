@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:islami/core/constants/app_strings.dart';
 import 'package:islami/core/errors/app_errors.dart';
 import 'package:islami/core/errors/failures.dart';
-import 'package:islami/features/smart_quran/constants/surah_filter.dart';
 import 'package:islami/features/smart_quran/domain/entities/surah.dart';
 import 'package:islami/features/smart_quran/domain/usecases/get_surahs_usecase.dart';
 
@@ -28,7 +28,7 @@ class SmartQuranCubit extends Cubit<SmartQuranState> {
         SmartQuranLoaded(
           surahs: surahs,
           searchQuery: '',
-          selectedFilter: SurahFilter.suggested,
+          selectedFilter: AppStrings.suggested,
           selectedMode: 'error',
           startAyah: 1,
           endAyah: 15,

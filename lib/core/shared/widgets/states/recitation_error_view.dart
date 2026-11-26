@@ -33,7 +33,6 @@ class RecitationErrorView extends StatelessWidget {
       body: SafeArea(
         child: ErrorStateView(
           icon: Icons.menu_book_rounded,
-          title: l10n.somethingWentWrongTitle,
           message: message,
           retryLabel: l10n.retry,
           onRetry: () => _retry(context),
