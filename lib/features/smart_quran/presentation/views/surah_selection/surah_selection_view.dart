@@ -104,8 +104,9 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
                         return;
                       }
 
+                      // Navigate to Recitation View
                       context.push(
-                        '${RouteNames.quran}${RouteNames.recitationView}',
+                        RouteNames.recitationView,
                         extra: RecitationArgs(
                           selectedSurah: selectedSurah,
                           startAyah: state.startAyah,

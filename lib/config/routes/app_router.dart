@@ -38,29 +38,18 @@ class AppRouter {
           );
         },
       ),
-      GoRoute(
-        path: RouteNames.home,
-        builder: (context, state) => const HomeView(),
-      ),
+
+      // Bottom Navigation
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            MainLayout(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) {
+          return MainLayout(navigationShell: navigationShell);
+        },
         branches: [
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: RouteNames.quran,
-                builder: (context, state) => const SurahSelectionView(),
-                routes: [
-                  GoRoute(
-                    path: RouteNames.recitationView.replaceFirst('/', ''),
-                    builder: (context, state) {
-                      return RecitationView(
-                        args: state.extra as RecitationArgs,
-                      );
-                    },
-                  ),
-                ],
+                builder: (context, state) => const HomeView(),
               ),
             ],
           ),
@@ -68,7 +57,8 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.hadith,
-                builder: (_, _) => const ComingSoonPage(title: 'Hadith'),
+                builder: (context, state) =>
+                    const ComingSoonPage(title: 'Hadith'),
               ),
             ],
           ),
@@ -76,7 +66,8 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.tasbih,
-                builder: (_, _) => const ComingSoonPage(title: 'Tasbih'),
+                builder: (context, state) =>
+                    const ComingSoonPage(title: 'Tasbih'),
               ),
             ],
           ),
@@ -84,7 +75,7 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: RouteNames.radio,
-                builder: (_, _) => const RadioView(),
+                builder: (context, state) => const RadioView(),
               ),
             ],
           ),
@@ -96,12 +87,11 @@ class AppRouter {
                   return MultiBlocProvider(
                     providers: [
                       BlocProvider(
-                        create: (context) =>
+                        create: (_) =>
                             sl<PrayerTimesCubit>()..fetchPrayerTimes(),
                       ),
                       BlocProvider(
-                        create: (context) =>
-                            sl<AzkarCubit>()..fetchAzkarCategories(),
+                        create: (_) => sl<AzkarCubit>()..fetchAzkarCategories(),
                       ),
                     ],
                     child: const TimeView(),
@@ -120,7 +110,7 @@ class AppRouter {
         path: RouteNames.recitationView,
         redirect: (context, state) {
           if (state.extra is! RecitationArgs) {
-            return RouteNames.quran;
+            return RouteNames.surahSelectionView;
           }
           return null;
         },
@@ -130,10 +120,12 @@ class AppRouter {
       ),
       GoRoute(
         path: RouteNames.recitationReportView,
-        builder: (context, state) => BlocProvider(
-          create: (_) => RecitationReportCubit(),
-          child: const RecitationReportView(),
-        ),
+        builder: (context, state) {
+          return BlocProvider(
+            create: (_) => RecitationReportCubit(),
+            child: const RecitationReportView(),
+          );
+        },
       ),
       GoRoute(
         path: RouteNames.azkar,
@@ -141,8 +133,7 @@ class AppRouter {
           final categoryTitle = state.extra as String? ?? '';
 
           return BlocProvider(
-            create: (context) =>
-                sl<AzkarDetailsCubit>()..fetchZkars(categoryTitle),
+            create: (_) => sl<AzkarDetailsCubit>()..fetchZkars(categoryTitle),
             child: AzkarView(categoryTitle: categoryTitle),
           );
         },
