@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class CustomSnackBar {
   CustomSnackBar._();
@@ -22,13 +23,17 @@ class CustomSnackBar {
           content: Row(
             children: [
               Container(
-                width: 42.w,
-                height: 42.h,
+                width: AppSizes.size42W,
+                height: AppSizes.size42H,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.primary.withValues(alpha: 0.12),
                 ),
-                child: Icon(icon, color: AppColors.primary, size: 23.sp),
+                child: Icon(
+                  icon,
+                  color: AppColors.primary,
+                  size: AppSizes.icon24,
+                ),
               ),
               SizedBox(width: 12.w),
               Expanded(
@@ -44,7 +49,7 @@ class CustomSnackBar {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 3.h),
+                      SizedBox(height: AppSizes.size3H),
                     ],
                     Text(
                       message,
@@ -62,10 +67,18 @@ class CustomSnackBar {
           backgroundColor: AppColors.ayahCardGradientTop,
           behavior: SnackBarBehavior.floating,
           elevation: 0,
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-          margin: EdgeInsetsDirectional.fromSTEB(16.w, 0, 16.w, 12.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.size14W,
+            vertical: AppSizes.size12H,
+          ),
+          margin: EdgeInsetsDirectional.fromSTEB(
+            AppSizes.size16W,
+            0,
+            AppSizes.size16W,
+            AppSizes.size12H,
+          ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
+            borderRadius: BorderRadius.circular(AppSizes.radius16),
             side: BorderSide(color: AppColors.primary.withValues(alpha: 0.3)),
           ),
           duration: duration,

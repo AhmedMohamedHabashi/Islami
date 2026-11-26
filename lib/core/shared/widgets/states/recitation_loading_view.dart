@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:islami/core/shared/widgets/states/loading_state_view.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 

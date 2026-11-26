@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/constants/app_icons.dart';
 import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
+import 'package:islami/core/utils/app_sizes.dart';
 
 class CustomRadioBottom extends StatelessWidget {
   const CustomRadioBottom({
@@ -37,7 +37,7 @@ class CustomRadioBottom extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: SizedBox(
-          height: 65.h,
+          height: AppSizes.size64H,
           child: Row(
             children: List.generate(_icons.length, (index) {
               final isSelected = selectedIndex == index;
@@ -51,24 +51,26 @@ class CustomRadioBottom extends StatelessWidget {
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 250),
                           padding: EdgeInsets.symmetric(
-                            horizontal: isSelected ? 16 : 0,
-                            vertical: isSelected ? 6 : 0,
+                            horizontal: isSelected ? AppSizes.size16W : 0,
+                            vertical: isSelected ? AppSizes.size6H : 0,
                           ),
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? AppColors.primary
                                 : Colors.transparent,
-                            borderRadius: BorderRadius.circular(20.r),
+                            borderRadius: BorderRadius.circular(
+                              AppSizes.radius20,
+                            ),
                           ),
                           child: Image.asset(
                             _icons[index],
-                            width: 20.w,
-                            height: 20.h,
+                            width: AppSizes.size20W,
+                            height: AppSizes.size20H,
                             color: isSelected ? AppColors.white : null,
                           ),
                         ),
                         if (isSelected) ...[
-                          SizedBox(height: 2.h),
+                          SizedBox(height: AppSizes.size2H),
                           Text(
                             labels[index],
                             style: AppTextStyles.caption12.copyWith(

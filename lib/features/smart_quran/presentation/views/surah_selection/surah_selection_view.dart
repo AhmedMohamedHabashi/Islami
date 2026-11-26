@@ -57,7 +57,6 @@ class _SurahSelectionViewState extends State<SurahSelectionView> {
               body: SafeArea(
                 child: ErrorStateView(
                   icon: Icons.menu_book_rounded,
-                  title: l10n.somethingWentWrongTitle,
                   message: errorMessage,
                   retryLabel: l10n.retry,
                   onRetry: () {
