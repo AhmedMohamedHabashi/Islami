@@ -697,6 +697,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Suggested'**
   String get suggested;
+
+  /// No description provided for @microphonePermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Microphone permission is required to start recording.'**
+  String get microphonePermissionDenied;
+
+  /// No description provided for @audioRecordingError.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while recording audio.'**
+  String get audioRecordingError;
 }
 
 class _AppLocalizationsDelegate

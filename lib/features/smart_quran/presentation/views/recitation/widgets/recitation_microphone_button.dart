@@ -20,21 +20,24 @@ class RecitationMicrophoneButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = isRecording ? AppColors.incorrectWord : AppColors.primary;
     final inner = AppSizes.size68W;
+    final outer = AppSizes.size88W;
 
     return Semantics(
       button: true,
       enabled: isEnabled,
       label: isRecording ? 'إيقاف التسجيل' : 'بدء التسميع',
+      onTap: isEnabled ? onTap : null,
       child: SizedBox(
-        width: AppSizes.size88W,
+        width: outer,
         height: AppSizes.size88H,
         child: Stack(
           alignment: Alignment.center,
           clipBehavior: Clip.none,
           children: [
-            // الهالة + الجلو
             AnimatedContainer(
               duration: const Duration(milliseconds: 350),
+              width: outer,
+              height: outer,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: color.withValues(alpha: 0.12),
@@ -89,13 +92,15 @@ class RecitationMicrophoneButton extends StatelessWidget {
                 ),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (child, anim) => RotationTransition(
-                    turns: Tween(begin: 0.85, end: 1.0).animate(anim),
-                    child: ScaleTransition(
-                      scale: anim,
-                      child: FadeTransition(opacity: anim, child: child),
-                    ),
-                  ),
+                  transitionBuilder: (child, animation) {
+                    return RotationTransition(
+                      turns: Tween(begin: 0.85, end: 1.0).animate(animation),
+                      child: ScaleTransition(
+                        scale: animation,
+                        child: FadeTransition(opacity: animation, child: child),
+                      ),
+                    );
+                  },
                   child: Icon(
                     isRecording ? Icons.stop_rounded : Icons.mic_rounded,
                     key: ValueKey(isRecording),

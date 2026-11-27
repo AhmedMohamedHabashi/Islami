@@ -25,6 +25,11 @@ class AppErrorLocalizer {
       AppErrors.requestCancelled => l10n.requestCancelled,
       AppErrors.speechUnavailable => l10n.speechUnavailable,
       AppErrors.speechRecognitionError => l10n.speechRecognitionError,
+
+      // Audio Recording Errors
+      AppErrors.microphonePermissionDenied => l10n.microphonePermissionDenied,
+      AppErrors.audioRecordingError => l10n.audioRecordingError,
+
       _ => l10n.unexpectedError,
     };
   }

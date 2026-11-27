@@ -27,20 +27,17 @@ final class RecitationError extends RecitationState {
 final class RecitationLoaded extends RecitationState {
   final List<Ayah> ayahs;
   final int currentAyahIndex;
-
+  final bool isRecording;
   final bool isListening;
-  final String recognizedText;
-  final bool isFinalResult;
-  final String? speechError;
+  final String? recordingError;
   final int durationInSeconds;
 
   const RecitationLoaded({
     required this.ayahs,
     this.currentAyahIndex = 0,
+    this.isRecording = false,
     this.isListening = false,
-    this.recognizedText = '',
-    this.isFinalResult = false,
-    this.speechError,
+    this.recordingError,
     this.durationInSeconds = 0,
   });
 
@@ -64,20 +61,20 @@ final class RecitationLoaded extends RecitationState {
   RecitationLoaded copyWith({
     List<Ayah>? ayahs,
     int? currentAyahIndex,
+    bool? isRecording,
     bool? isListening,
-    String? recognizedText,
-    bool? isFinalResult,
-    String? speechError,
+    String? recordingError,
     int? durationInSeconds,
-    bool clearSpeechError = false,
+    bool clearRecordingError = false,
   }) {
     return RecitationLoaded(
       ayahs: ayahs ?? this.ayahs,
       currentAyahIndex: currentAyahIndex ?? this.currentAyahIndex,
+      isRecording: isRecording ?? this.isRecording,
       isListening: isListening ?? this.isListening,
-      recognizedText: recognizedText ?? this.recognizedText,
-      isFinalResult: isFinalResult ?? this.isFinalResult,
-      speechError: clearSpeechError ? null : speechError ?? this.speechError,
+      recordingError: clearRecordingError
+          ? null
+          : recordingError ?? this.recordingError,
       durationInSeconds: durationInSeconds ?? this.durationInSeconds,
     );
   }
@@ -86,10 +83,9 @@ final class RecitationLoaded extends RecitationState {
   List<Object?> get props => [
     ayahs,
     currentAyahIndex,
+    isRecording,
     isListening,
-    recognizedText,
-    isFinalResult,
-    speechError,
+    recordingError,
     durationInSeconds,
   ];
 }

@@ -330,4 +330,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get suggested => 'Suggested';
+
+  @override
+  String get microphonePermissionDenied =>
+      'Microphone permission is required to start recording.';
+
+  @override
+  String get audioRecordingError => 'An error occurred while recording audio.';
 }
