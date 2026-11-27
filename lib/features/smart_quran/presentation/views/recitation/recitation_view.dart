@@ -31,8 +31,8 @@ class RecitationView extends StatelessWidget {
   }
 
   String _getStatusText(RecitationLoaded state, AppLocalizations l10n) {
-    return state.speechError ??
-        (state.isListening ? l10n.listeningStatus : l10n.readyToRecite);
+    return state.recordingError ??
+        (state.isRecording ? l10n.listeningStatus : l10n.readyToRecite);
   }
 
   @override
@@ -104,12 +104,13 @@ class RecitationView extends StatelessWidget {
                 ayahs: state.ayahs,
                 highlightedWord: null,
                 showBasmala: _shouldShowBasmala(state),
-                isRecording: state.isListening,
+                isError: state.recordingError != null,
+                isRecording: state.isRecording,
                 statusText: _getStatusText(state, l10n),
                 onBack: () => context.pop(),
                 onHelp: () => RecitationHelpDialog.show(context),
                 onMicrophoneTap: () {
-                  if (state.isListening) {
+                  if (state.isRecording) {
                     cubit.stopListening();
                   } else {
                     cubit.startListening();
@@ -125,12 +126,13 @@ class RecitationView extends StatelessWidget {
                 },
               ),
             ),
+
             Positioned(
               top: MediaQuery.of(context).padding.top + 2,
               left: 0,
               right: 0,
               child: Center(
-                child: RecordingDynamicIsland(isRecording: state.isListening),
+                child: RecordingDynamicIsland(isRecording: state.isRecording),
               ),
             ),
           ],

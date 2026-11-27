@@ -6,22 +6,32 @@ import 'package:islami/core/utils/app_sizes.dart';
 class RecitationStatusIndicator extends StatelessWidget {
   final String statusText;
   final bool isLoading;
+  final bool isError;
+  final bool isRecording;
 
   const RecitationStatusIndicator({
     super.key,
     required this.statusText,
     this.isLoading = false,
+    this.isError = false,
+    this.isRecording = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final statusColor = isError
+        ? AppColors.incorrectWord
+        : isRecording
+        ? AppColors.primary
+        : AppColors.primary.withValues(alpha: 0.75);
+
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 250),
       child: Row(
-        key: ValueKey('$statusText-$isLoading'),
+        key: ValueKey('$statusText-$isLoading-$isError-$isRecording'),
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (isLoading) ...[
+          if (isLoading)
             SizedBox(
               width: AppSizes.size16W,
               height: AppSizes.size16H,
@@ -30,23 +40,23 @@ class RecitationStatusIndicator extends StatelessWidget {
                 backgroundColor: AppColors.primary.withValues(alpha: 0.15),
                 color: AppColors.primary,
               ),
-            ),
-            SizedBox(width: AppSizes.size10W),
-          ] else ...[
+            )
+          else
             Icon(
-              Icons.info_outline_rounded,
+              isError
+                  ? Icons.error_outline_rounded
+                  : isRecording
+                  ? Icons.mic_rounded
+                  : Icons.info_outline_rounded,
               size: AppSizes.icon18,
-              color: AppColors.primary.withValues(alpha: 0.75),
+              color: statusColor,
             ),
-            SizedBox(width: AppSizes.size8W),
-          ],
+          SizedBox(width: AppSizes.size8W),
           Flexible(
             child: Text(
               statusText,
               textAlign: TextAlign.center,
-              style: AppTextStyles.body14.copyWith(
-                color: AppColors.primary.withValues(alpha: 0.75),
-              ),
+              style: AppTextStyles.body14.copyWith(color: statusColor),
             ),
           ),
         ],

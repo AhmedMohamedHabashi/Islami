@@ -25,6 +25,7 @@ class RecitationBody extends StatelessWidget {
 
   final String? highlightedWord;
   final bool showBasmala;
+  final bool isError;
 
   final bool isRecording;
   final bool isLoading;
@@ -47,6 +48,7 @@ class RecitationBody extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.showBasmala = true,
+    this.isError = false,
   });
 
   @override
@@ -85,6 +87,8 @@ class RecitationBody extends StatelessWidget {
           RecitationStatusIndicator(
             statusText: statusText,
             isLoading: isLoading,
+            isError: isError,
+            isRecording: isRecording,
           ),
 
           SizedBox(height: AppSizes.size14H),

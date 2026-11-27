@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/core/themes/colors/app_colors.dart';
 import 'package:islami/core/themes/text_style/app_text_styles.dart';
 import 'package:islami/core/utils/app_sizes.dart';
@@ -16,6 +15,10 @@ class LiveRecitationHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final indicatorColor = isRecording
+        ? AppColors.incorrectWord
+        : AppColors.primary;
+
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(AppSizes.size12H),
@@ -32,19 +35,22 @@ class LiveRecitationHeader extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                Container(
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
                   width: AppSizes.size8W,
                   height: AppSizes.size8H,
                   decoration: BoxDecoration(
-                    color: isRecording
-                        ? AppColors.incorrectWord
-                        : AppColors.primary,
+                    color: indicatorColor,
                     shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: indicatorColor.withValues(alpha: 0.4),
+                        blurRadius: isRecording ? AppSizes.size8W : 0,
+                      ),
+                    ],
                   ),
                 ),
-
                 SizedBox(width: AppSizes.size8W),
-
                 Flexible(
                   child: Text(
                     'تسميع صوتي مباشر',
@@ -59,9 +65,7 @@ class LiveRecitationHeader extends StatelessWidget {
               ],
             ),
           ),
-
           SizedBox(width: AppSizes.size12W),
-
           Container(
             padding: EdgeInsets.symmetric(
               horizontal: AppSizes.size8W,
@@ -81,11 +85,9 @@ class LiveRecitationHeader extends StatelessWidget {
                 Icon(
                   Icons.access_time_rounded,
                   color: AppColors.primary,
-                  size: 16.sp,
+                  size: AppSizes.icon16,
                 ),
-
                 SizedBox(width: AppSizes.size6W),
-
                 Text(
                   duration,
                   style: AppTextStyles.body14.copyWith(

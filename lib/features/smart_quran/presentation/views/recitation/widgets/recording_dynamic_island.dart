@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/config/localization/l10n/app_localizations.dart';
 import 'package:islami/core/shared/animations/ade_slide_switcher.dart';
 import 'package:islami/core/shared/animations/audio_wave_bars.dart';
@@ -18,36 +17,38 @@ class RecordingDynamicIsland extends StatelessWidget {
     this.elapsed,
   });
 
-  String _format(Duration d) {
-    final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return '$m:$s';
+  String _format(Duration duration) {
+    final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final seconds = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
+
+    return '$minutes:$seconds';
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final rec = isRecording;
-    final accent = rec ? AppColors.incorrectWord : AppColors.primary;
+    final accentColor = isRecording
+        ? AppColors.incorrectWord
+        : AppColors.primary;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 450),
       curve: Curves.easeOutBack,
       padding: EdgeInsets.symmetric(
-        horizontal: rec ? AppSizes.size16W : AppSizes.size12W,
-        vertical: rec ? AppSizes.size8H : AppSizes.size5H,
+        horizontal: isRecording ? AppSizes.size16W : AppSizes.size12W,
+        vertical: isRecording ? AppSizes.size8H : AppSizes.size5H,
       ),
       decoration: BoxDecoration(
         color: AppColors.ayahCardGradientBottom,
-        borderRadius: BorderRadius.circular(30.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius30),
         border: Border.all(
-          color: AppColors.primary.withValues(alpha: rec ? 0.55 : 0.15),
+          color: AppColors.primary.withValues(alpha: isRecording ? 0.55 : 0.15),
         ),
         boxShadow: [
           BoxShadow(
-            color: accent.withValues(alpha: rec ? 0.22 : 0.08),
-            blurRadius: rec ? 18.r : 8.r,
-            spreadRadius: rec ? 1.r : 0,
+            color: accentColor.withValues(alpha: isRecording ? 0.22 : 0.08),
+            blurRadius: isRecording ? AppSizes.size18W : AppSizes.size8W,
+            spreadRadius: isRecording ? AppSizes.size1W : 0,
           ),
         ],
       ),
@@ -57,21 +58,25 @@ class RecordingDynamicIsland extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            PulsingDot(pulsing: rec, color: accent, size: AppSizes.size8W),
+            PulsingDot(
+              pulsing: isRecording,
+              color: accentColor,
+              size: AppSizes.size8W,
+            ),
             SizedBox(width: AppSizes.size8W),
             FadeSlideSwitcher(
               child: Text(
-                rec ? l10n.recording : l10n.recitationMode,
-                key: ValueKey(rec),
+                isRecording ? l10n.recording : l10n.recitationMode,
+                key: ValueKey(isRecording),
                 style: AppTextStyles.body10.copyWith(
-                  color: rec ? AppColors.white : AppColors.primary,
+                  color: isRecording ? AppColors.white : AppColors.primary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
-            if (rec) ...[
+            if (isRecording) ...[
               SizedBox(width: AppSizes.size10W),
-              AudioWaveBars(active: rec, color: AppColors.primary),
+              AudioWaveBars(active: true, color: AppColors.primary),
               if (elapsed != null) ...[
                 SizedBox(width: AppSizes.size10W),
                 Text(

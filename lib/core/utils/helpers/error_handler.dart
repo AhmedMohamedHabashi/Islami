@@ -21,6 +21,10 @@ class ErrorHandler {
       throw const CacheFailure();
     } on RequestCancelledException {
       throw const RequestCancelledFailure();
+    } on MicrophonePermissionException {
+      throw const MicrophonePermissionFailure();
+    } on AudioRecordingException {
+      throw const AudioRecordingFailure();
     } catch (_) {
       throw const ServerFailure(AppErrors.unexpectedError);
     }

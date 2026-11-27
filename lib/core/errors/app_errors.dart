@@ -19,4 +19,8 @@ class AppErrors {
   // Speech Recognition Errors
   static const String speechUnavailable = 'speechUnavailable';
   static const String speechRecognitionError = 'speechRecognitionError';
+
+  // Audio Recording Errors
+  static const String microphonePermissionDenied = 'microphonePermissionDenied';
+  static const String audioRecordingError = 'audioRecordingError';
 }

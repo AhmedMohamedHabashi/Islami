@@ -15,16 +15,23 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../core/api/network_info.dart' as _i633;
+import '../../core/api/network_info_impl.dart' as _i150;
+import '../../core/services/location_service.dart' as _i752;
 import '../../features/azkar/domain/usecases/get_zkars_by_category_usecase.dart'
     as _i476;
 import '../../features/azkar/presentaion/cubit/azkar/azkar_details_cubit.dart'
     as _i870;
-import '../../features/smart_quran/data/datasources/speech_to_text_data_source.dart'
-    as _i90;
+import '../../features/smart_quran/data/datasources/audio_recording_data_source.dart'
+    as _i669;
 import '../../features/smart_quran/data/datasources/surah_remote_data_source.dart'
     as _i40;
+import '../../features/smart_quran/data/repo/audio_recording_repository_impl.dart'
+    as _i700;
 import '../../features/smart_quran/data/repo/smart_quran_repository_impl.dart'
     as _i788;
+import '../../features/smart_quran/domain/repo/audio_recording_repository.dart'
+    as _i135;
 import '../../features/smart_quran/domain/repo/smart_quran_repository.dart'
     as _i1005;
 import '../../features/smart_quran/domain/usecases/get_ayahs_usecase.dart'
@@ -56,9 +63,6 @@ import '../../features/time/presentation/cubit/azkar/oazkar_cubit.dart'
     as _i558;
 import '../../features/time/presentation/cubit/prayer_times/prayer_times_cubit.dart'
     as _i943;
-import '../../core/api/network_info.dart' as _i932;
-import '../../core/api/network_info_impl.dart' as _i865;
-import '../../core/services/location_service.dart' as _i669;
 import 'modules/register_module.dart' as _i911;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -70,9 +74,12 @@ _i174.GetIt $initGetIt(
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final registerModule = _$RegisterModule();
   gh.lazySingleton<_i895.Connectivity>(() => registerModule.connectivity);
-  gh.lazySingleton<_i669.LocationService>(() => _i669.LocationService());
-  gh.lazySingleton<_i90.SpeechToTextDataSource>(
-    () => _i90.SpeechToTextDataSource(),
+  gh.lazySingleton<_i752.LocationService>(() => _i752.LocationService());
+  gh.lazySingleton<_i669.AudioRecordingDataSource>(
+    () => _i669.AudioRecordingDataSource(),
+  );
+  gh.lazySingleton<_i633.NetworkInfo>(
+    () => _i150.NetworkInfoImpl(gh<_i895.Connectivity>()),
   );
   gh.lazySingleton<_i361.Dio>(
     () => registerModule.azkarDio,
@@ -85,8 +92,10 @@ _i174.GetIt $initGetIt(
     () => registerModule.dio,
     instanceName: 'prayerDio',
   );
-  gh.lazySingleton<_i932.NetworkInfo>(
-    () => _i865.NetworkInfoImpl(gh<_i895.Connectivity>()),
+  gh.lazySingleton<_i135.AudioRecordingRepository>(
+    () => _i700.AudioRecordingRepositoryImpl(
+      dataSource: gh<_i669.AudioRecordingDataSource>(),
+    ),
   );
   gh.lazySingleton<_i361.Dio>(
     () => registerModule.smartQuranDio,
@@ -140,7 +149,7 @@ _i174.GetIt $initGetIt(
     () => _i943.PrayerTimesCubit(
       getPrayerHeaderUseCase: gh<_i285.GetPrayerHeaderUseCase>(),
       getPrayerTimesListUseCase: gh<_i406.GetPrayerTimesListUseCase>(),
-      locationService: gh<_i669.LocationService>(),
+      locationService: gh<_i752.LocationService>(),
     ),
   );
   gh.lazySingleton<_i705.GetAyahsUseCase>(
@@ -150,15 +159,15 @@ _i174.GetIt $initGetIt(
     () =>
         _i1059.GetSurahsUseCase(repository: gh<_i1005.SmartQuranRepository>()),
   );
-  gh.factory<_i606.RecitationCubit>(
-    () => _i606.RecitationCubit(
-      getAyahsUseCase: gh<_i705.GetAyahsUseCase>(),
-      speechDataSource: gh<_i90.SpeechToTextDataSource>(),
-    ),
-  );
   gh.factory<_i867.SmartQuranCubit>(
     () =>
         _i867.SmartQuranCubit(getSurahsUseCase: gh<_i1059.GetSurahsUseCase>()),
+  );
+  gh.factory<_i606.RecitationCubit>(
+    () => _i606.RecitationCubit(
+      getAyahsUseCase: gh<_i705.GetAyahsUseCase>(),
+      audioRecordingRepository: gh<_i135.AudioRecordingRepository>(),
+    ),
   );
   return getIt;
 }

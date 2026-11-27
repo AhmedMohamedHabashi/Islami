@@ -137,5 +137,7 @@
   "speechRecognitionError": "An error occurred during speech recognition. Please try again",
   "somethingWentWrongTitle": "Something went wrong",
   "saved": "Saved",
-  "suggested": "Suggested"
+  "suggested": "Suggested",
+  "microphonePermissionDenied": "Microphone permission is required to start recording.",
+  "audioRecordingError": "An error occurred while recording audio."
 }

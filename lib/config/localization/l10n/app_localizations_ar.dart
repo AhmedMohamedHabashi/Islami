@@ -328,4 +328,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get suggested => 'المقترحة';
+
+  @override
+  String get microphonePermissionDenied =>
+      'يجب السماح بالوصول إلى الميكروفون لبدء التسجيل.';
+
+  @override
+  String get audioRecordingError => 'حدث خطأ أثناء تسجيل الصوت.';
 }

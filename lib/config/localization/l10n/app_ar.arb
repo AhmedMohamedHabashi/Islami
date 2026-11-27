@@ -137,5 +137,7 @@
   "speechRecognitionError": "حدث خطأ أثناء التعرف على الكلام، حاول مرة أخرى",
   "somethingWentWrongTitle": "حدث خطأ غير متوقع",
   "saved": "المحفوظة",
-  "suggested": "المقترحة"
+  "suggested": "المقترحة",
+  "microphonePermissionDenied": "يجب السماح بالوصول إلى الميكروفون لبدء التسجيل.",
+  "audioRecordingError": "حدث خطأ أثناء تسجيل الصوت."
 }

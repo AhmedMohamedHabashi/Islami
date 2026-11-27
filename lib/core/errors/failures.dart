@@ -25,3 +25,13 @@ class TimeoutFailure extends Failure {
 class RequestCancelledFailure extends Failure {
   const RequestCancelledFailure([super.message = AppErrors.requestCancelled]);
 }
+
+class MicrophonePermissionFailure extends Failure {
+  const MicrophonePermissionFailure([
+    super.message = AppErrors.microphonePermissionDenied,
+  ]);
+}
+
+class AudioRecordingFailure extends Failure {
+  const AudioRecordingFailure([super.message = AppErrors.audioRecordingError]);
+}

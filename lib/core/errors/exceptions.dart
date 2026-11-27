@@ -11,3 +11,7 @@ class CacheException implements Exception {}
 class AppTimeoutException implements Exception {}
 
 class RequestCancelledException implements Exception {}
+
+class MicrophonePermissionException implements Exception {}
+
+class AudioRecordingException implements Exception {}
